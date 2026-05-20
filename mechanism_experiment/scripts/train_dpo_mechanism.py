@@ -10,10 +10,10 @@ from torch.utils.data import DataLoader
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-os.environ.setdefault("HF_HUB_OFFLINE", "1")
-os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
+
+LOCAL_FILES_ONLY = os.environ.get("MECH_LOCAL_FILES_ONLY", "").lower() in {"1", "true", "yes"}
 
 
 def resolve_local_model_path(model_name: str) -> str:
@@ -161,7 +161,7 @@ def main():
     model_source = resolve_local_model_path(args.model_name)
     print(f'model_source={model_source}', flush=True)
     print('loading tokenizer', flush=True)
-    tokenizer = AutoTokenizer.from_pretrained(model_source, use_fast=False, trust_remote_code=True, local_files_only=True)
+    tokenizer = AutoTokenizer.from_pretrained(model_source, use_fast=False, trust_remote_code=True, local_files_only=LOCAL_FILES_ONLY)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
@@ -170,7 +170,7 @@ def main():
 
     base_kwargs = {
         'trust_remote_code': True,
-        'local_files_only': True,
+        'local_files_only': LOCAL_FILES_ONLY,
         'attn_implementation': 'eager',
         'torch_dtype': model_dtype,
     }

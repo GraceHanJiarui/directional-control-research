@@ -6,12 +6,12 @@ from pathlib import Path
 import os
 os.environ.setdefault('HF_MODULES_CACHE', str(Path(__file__).resolve().parents[1] / 'outputs' / 'hf_modules_cache'))
 import torch
-os.environ.setdefault('HF_HUB_OFFLINE', '1')
-os.environ.setdefault('TRANSFORMERS_OFFLINE', '1')
 os.environ.setdefault('TOKENIZERS_PARALLELISM', 'false')
 from peft import LoraConfig, PeftModel, get_peft_model, prepare_model_for_kbit_training
 from torch.utils.data import Dataset
 from transformers import (AutoConfig, AutoModelForCausalLM, AutoTokenizer, default_data_collator, Trainer, TrainingArguments)
+
+LOCAL_FILES_ONLY = os.environ.get('MECH_LOCAL_FILES_ONLY', '').lower() in {'1', 'true', 'yes'}
 
 
 def resolve_local_model_path(model_name: str) -> str:
@@ -47,7 +47,7 @@ def resolve_local_model_path(model_name: str) -> str:
 
 
 def load_model_config(model_source: str):
-    config = AutoConfig.from_pretrained(model_source, trust_remote_code=True, local_files_only=True)
+    config = AutoConfig.from_pretrained(model_source, trust_remote_code=True, local_files_only=LOCAL_FILES_ONLY)
     if getattr(config, 'model_type', None) == 'internlm2':
         rope_scaling = getattr(config, 'rope_scaling', None)
         if isinstance(rope_scaling, dict) and 'type' not in rope_scaling and 'factor' not in rope_scaling:
@@ -205,11 +205,11 @@ def main() -> None:
     print(f'using target modules: {target_modules}', flush=True)
 
     print('loading tokenizer', flush=True)
-    tokenizer = AutoTokenizer.from_pretrained(model_source, use_fast=False, trust_remote_code=True, local_files_only=True)
+    tokenizer = AutoTokenizer.from_pretrained(model_source, use_fast=False, trust_remote_code=True, local_files_only=LOCAL_FILES_ONLY)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    model_kwargs = {'trust_remote_code': True, 'local_files_only': True, 'attn_implementation': 'eager'}
+    model_kwargs = {'trust_remote_code': True, 'local_files_only': LOCAL_FILES_ONLY, 'attn_implementation': 'eager'}
     if torch.cuda.is_available():
         model_kwargs['dtype'] = torch.float16
 
