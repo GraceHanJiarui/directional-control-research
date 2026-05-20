@@ -5,8 +5,8 @@ from pathlib import Path
 
 os.environ.setdefault('KMP_DUPLICATE_LIB_OK', 'TRUE')
 os.environ.setdefault('TOKENIZERS_PARALLELISM', 'false')
-os.environ.setdefault('HF_HUB_OFFLINE', '1')
-os.environ.setdefault('TRANSFORMERS_OFFLINE', '1')
+
+LOCAL_FILES_ONLY = os.environ.get('MECH_LOCAL_FILES_ONLY', '').lower() in {'1', 'true', 'yes'}
 
 import torch
 from peft import PeftModel
@@ -76,13 +76,24 @@ def main() -> None:
     args = parser.parse_args()
 
     model_source = resolve_local_model_path(args.base_model)
-    tokenizer = AutoTokenizer.from_pretrained(model_source, use_fast=False, trust_remote_code=True, local_files_only=True)
+    tokenizer = AutoTokenizer.from_pretrained(
+        model_source,
+        use_fast=False,
+        trust_remote_code=True,
+        local_files_only=LOCAL_FILES_ONLY,
+    )
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
     use_cuda = (args.device == 'cuda') or (args.device == 'auto' and torch.cuda.is_available())
     dtype = torch.float16 if use_cuda else torch.float32
-    model = AutoModelForCausalLM.from_pretrained(model_source, trust_remote_code=True, dtype=dtype, local_files_only=True, attn_implementation='eager')
+    model = AutoModelForCausalLM.from_pretrained(
+        model_source,
+        trust_remote_code=True,
+        torch_dtype=dtype,
+        local_files_only=LOCAL_FILES_ONLY,
+        attn_implementation='eager',
+    )
     if use_cuda:
         model = model.to('cuda')
     adapter_path = (args.adapter_path or '').strip()
