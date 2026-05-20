@@ -211,7 +211,7 @@ def main() -> None:
 
     model_kwargs = {'trust_remote_code': True, 'local_files_only': LOCAL_FILES_ONLY, 'attn_implementation': 'eager'}
     if torch.cuda.is_available():
-        model_kwargs['dtype'] = torch.float16
+        model_kwargs['torch_dtype'] = torch.float16
 
     if args.use_4bit:
         from transformers import BitsAndBytesConfig
