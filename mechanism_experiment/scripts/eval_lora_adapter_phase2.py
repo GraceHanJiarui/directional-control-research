@@ -178,7 +178,14 @@ def main() -> None:
 
     use_cuda = (args.device == 'cuda') or (args.device == 'auto' and torch.cuda.is_available())
     dtype = torch.float16 if use_cuda else torch.float32
-    model = AutoModelForCausalLM.from_pretrained(model_source, config=config, trust_remote_code=True, dtype=dtype, local_files_only=LOCAL_FILES_ONLY, attn_implementation='eager')
+    model = AutoModelForCausalLM.from_pretrained(
+        model_source,
+        config=config,
+        trust_remote_code=True,
+        torch_dtype=dtype,
+        local_files_only=LOCAL_FILES_ONLY,
+        attn_implementation='eager',
+    )
     if use_cuda:
         model = model.to('cuda')
     adapter_path = (args.adapter_path or '').strip()
