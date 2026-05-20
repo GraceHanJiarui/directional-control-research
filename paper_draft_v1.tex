@@ -1,0 +1,471 @@
+\documentclass[12pt]{ctexart}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=1.18}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+\title{后训练助手策略中的边界抑制不对称性：\\
+一项关于过度展开、可控性与不对称逆转的行为机制研究}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+后训练助手普遍被塑造成“宁多勿少”的回答者；真实用户却经常只需要当前问题的最小充分回答。两者之间的张力并不只是回答长短的差别，而是一个更根本的 controllability 问题：后训练塑造的语言模型倾向，是否会以用户在交互中约束回答范围的能力为代价。本文研究的正是这一代价如何在行为上体现出来。我们将其具体化为一类边界抑制不对称性：某些助手策略一旦形成，在用户显式要求短答、收边界、停止展开时，会显著更难回到窄响应。
+
+我们在同一底座模型上构造了三组受控助手策略族：\texttt{baseline}、\texttt{anti\_underanswer} 和 \texttt{minimal\_boundary}，并围绕边界抑制场景设计了一组机制探针。结果表明，\texttt{anti\_underanswer} 在显式边界指令下显著比 \texttt{baseline} 更难被压回，而 \texttt{minimal\_boundary} 更容易保持窄边界。进一步分析显示，这一现象不能被纯 EOS 失败、纯 uncertainty-compensation、纯局部 continue bias 或纯措辞压缩失败充分解释。保留证据更一致地支持一个 mixed planning/stopping 图景：前段存在 planning/content-budgeting overshoot，后段存在 continuation/stopping persistence，两者共同表现为更高层的 bundled assistant-policy bias。
+
+阶段分析进一步表明，这一现象在 SFT 内部即可形成并继续放大：later anti-oriented SFT stage 给出最强的同向放大，preference-like stage 也能同向推动，但更弱且呈现非单调特征。在清洗后重构的实验设置下，later preference-like minimal stage 可以显著地把一个已经 sticky 的 anti policy 拉回 narrow regime，而 minimal side 的 midpoint pullback 只部分成立且明显更脆，说明 reversal capacity 本身也是不对称的。额外高层方向的探索没有形成同等级别的 clean retained axis。整体上，这些结果将过度展开刻画为当前框架下一个相对特殊、相对 privileged 的 post-training controllability 方向。
+\end{abstract}
+
+\section{引言}
+
+大型语言模型在经过后训练成为助手之后，通常被期望表现出更强的 helpfulness：不要答少、不要遗漏关键点、必要时补充背景、在不确定时给出更多解释。这类倾向既来自 instruction tuning 的一般目标，也来自 RLHF 与各类 preference optimization 对“更有帮助”回答的持续强化 \citep{brown2020gpt3,wei2021flan,sanh2021t0,mishra2021naturalinstructions,wang2022selfinstruct,ouyang2022instructgpt,bai2022hh,bai2022constitutional}。从产品角度看，这种偏好并不难理解，因为“回答过少”通常比“回答略多”更容易被视为失败。
+
+问题在于，真实交互并不总是奖励这种单向扩张。用户经常只需要当前问题的最小充分回答：不额外提供未请求的帮助，不自动展开成完整方案，也不继续推进任务。在这类场景里，核心问题不只是模型会不会回答，而是后训练塑造出来的倾向会不会削弱用户对回答范围的约束能力。这里关涉的并不是简单的“回答更长”或“语气更主动”，而是后训练是否以一类稳定行为倾向为代价，削弱了用户在局部交互中收紧 scope 的能力；这直接关系到助手的交互可靠性、可撤回性和可控性。
+
+这一问题并不是单次观察的副产物，而是从更 general 的 directional-control 探索中逐步收缩出来的。我们最初考察的是 assistant response 的多种高层方向能否被系统化调节，例如 scope、helpfulness / proactivity、clarification tendency、affect、interaction style 等。相关工作中，controllable generation 与 steerable assistant 既包括训练时的方法，也包括推理时的方法，如 PPLM、GeDi、FUDGE、prefix-tuning 以及显式 attribute-conditioned SFT \citep{dathathri2020pplm,krause2021gedi,yang2021fudge,li2021prefix,dong2023steerlm,zhang2022ctgsurvey}。我们先后做过 prompt-side taxonomy、mixed discovery、probe risk，以及 chat-vs-base 的粗粒度阶段对照。沿着这条路径，研究焦点逐渐集中：模型并非对所有高层约束都同样难以服从。用户要求“不要反问”“不要额外提供帮助”时，模型很多时候可以遵守；更稳定、也更顽固的失灵集中在“回答短一点”“只答最小充分内容”“不要继续展开”这类约束上。
+
+本文据此提出并研究一个具体命题：\textbf{后训练助手策略与用户当场边界控制之间存在一种不对称 override failure。} 一旦模型沿“不要答少”的方向被推得更远，用户随后发出的收边界指令就不再是对称有效的。这个命题的重要性，在于它直接触及后训练与 controllability 之间的关系：助手在变得更完整、更有帮助的同时，也可能形成一种更难被用户及时收住的行为倾向。
+
+为了把这一问题固定在一个可比较、可分解的框架里，本文在同一底座模型上构造了受控的三组助手策略族：\texttt{baseline}、\texttt{anti\_underanswer} 和 \texttt{minimal\_boundary}。这三组策略族共享同一底座、同一训练流程、同一批 user cases；变化的是 assistant-policy target，而不是任务分布本身。围绕这一受控策略族，我们设计了一系列机制探针，用于排除浅解释、分解 failure mode、追踪训练阶段中的放大与逆转，并考察方向性泛化。
+
+本文的贡献集中在四点。第一，我们把问题从一般性的回答长度差异提升为一个后训练后的 controllability 问题，并将其明确化为 boundary-suppressibility asymmetry。第二，我们在受控 assistant-policy family 中稳定复现了主现象：\texttt{anti\_underanswer} 比 \texttt{baseline} 更难在用户侧边界指令下被压回，而 \texttt{minimal\_boundary} 更容易保持收缩。第三，我们通过多组探针将机制收束为一个 mixed planning/stopping 的 bundled bias，而非纯 EOS、纯 uncertainty 或纯局部 continue preference。第四，我们给出了阶段性证据：later anti-oriented SFT 可以继续放大这一现象，later preference-like stage 可以在 cleaner setup 下显著拉回 anti side，但这种 reversal capacity 本身并不对称。
+
+\section{相关工作}
+
+本文与三类文献直接相关，但切入点与它们都不完全相同。
+
+\subsection{指令对齐与偏好优化}
+
+第一类是 instruction tuning 与 preference optimization 文献。少样本与零样本 instruction following 的工作表明，大模型可以借助自然语言指令获得跨任务泛化能力 \citep{brown2020gpt3,wei2021flan,sanh2021t0,mishra2021naturalinstructions}；随后的自举式指令数据构造进一步扩大了 instruction tuning 的规模与可迁移性 \citep{wang2022selfinstruct}。在对齐层面，InstructGPT、Anthropic 的 helpful/harmless assistant 以及 Constitutional AI 分别展示了 RLHF、preference modeling 与 RLAIF 风格训练如何把通用语言模型转化成更符合人类偏好的助手 \citep{ouyang2022instructgpt,bai2022hh,bai2022constitutional}。更近期的 DPO、RRHF 与 ORPO 等方法则说明，偏好学习并不一定需要传统 PPO 形式，也可以通过更直接的 pairwise optimization 实现 \citep{rafailov2023dpo,yuan2023rrhf,hong2024orpo}。
+
+本文与这类工作共享同一个大背景：后训练确实会系统性地塑造助手策略。但本文的目标不在于比较哪一种对齐管线总体更优，也不在于再次证明“helpfulness 可以被增强”。我们关注的是后训练的一个具体代价：当模型被推向“不要答少”的方向后，用户当场要求其收边界时，某些策略方向会特别难被压回去。更具体地说，本文讨论的是后训练如何影响\emph{用户侧可覆盖性}。
+
+\subsection{可控生成与可引导助手行为}
+
+第二类相关工作是 controllable generation 与可引导助手行为。PPLM、GeDi、FUDGE 等方法展示了如何在不大改参数的前提下，对生成方向施加显式控制 \citep{dathathri2020pplm,krause2021gedi,yang2021fudge}；prefix-tuning 说明连续 prompt 或少量附加参数可以稳定承载某种生成偏置 \citep{li2021prefix}；SteerLM 则进一步把显式属性控制带回到 SFT 框架中，尝试用 user-steerable 的属性条件化替代隐式 RLHF 偏好 \citep{dong2023steerlm}。更一般地，controllable text generation 的综述指出，高层属性控制通常比浅层格式控制更难，也更容易受到属性耦合影响 \citep{zhang2022ctgsurvey}。
+
+本文不提出新的 steering 方法，重点也不在“如何更好地控”上。我们利用受控策略族与机制探针研究：在一个看似狭窄的边界收缩场景里，控制为什么会沿特定方向失灵。因此，本文与 controllability 文献的关系更接近“行为机制诊断”，讨论重点放在后训练如何改变用户可控性，而非新的控制方法设计。
+
+\subsection{助手失灵、sycophancy 与后训练行为评估}
+
+第三类相关工作更接近本文的问题类型：后训练助手可能带来系统性的行为偏差。Model-Written Evals 与 sycophancy 研究已经表明，后训练助手会出现用户侧压力驱动的迎合、立场跟随或表面上更“令人信服”的行为 \citep{perez2022mwe,sharma2023sycophancy}。同时，LIMA、Long Is More for Alignment 以及 Fine-Tuning Enhances Existing Mechanisms 等结果提醒我们，少量高质量 SFT 数据即可显著塑造回答风格，而 fine-tuning 往往是在放大已有机制而非完全重写模型 \citep{zhou2023lima,zhao2024longismore,prakash2024finetuning}。
+
+本文延续了这条文献线对“后训练到底塑造了什么”的关切，但讨论的 failure mode 更具体，指向用户要求短答、收边界时的 suppressibility failure。本文的贡献，在于把这一 failure mode 从表面行为现象推进成可分解的训练与机制问题：哪些阶段在放大它，哪些探针能排除浅解释，以及 later preference-like stage 能否把它逆转回来。
+
+\section{问题设置与实验框架}
+\label{sec:setup}
+
+\subsection{三个主 family 与受控 triplet 设计}
+
+本文的核心比较对象是同一底座模型上的三种助手策略目标，而不是三个彼此独立、训练来源不同的模型。类似的 controlled family 设计，与 instruction tuning / alignment 文献中将“同一底座 + 不同后训练目标”作为比较单位的做法一致 \citep{ouyang2022instructgpt,bai2022hh,dong2023steerlm}。我们构造：
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{\texttt{baseline}}：强调直接、相称地回答当前问题；
+  \item \textbf{\texttt{anti\_underanswer}}：强调不要答少，必要时多补一点有用信息；
+  \item \textbf{\texttt{minimal\_boundary}}：强调尊重用户当前边界，只答最小充分内容，不做未请求扩展。
+\end{itemize}
+
+关键设计在于，对同一条 \texttt{user\_text}，我们构造三种 target answer，对应三种不同的 assistant-policy direction。这样做是为了把比较尽可能压缩到策略方向本身：同一底座、同一 SFT pipeline、同一任务语义分布，变化的是模型被要求学成哪种助手策略。
+
+\subsection{主评测对象：不是默认长度，而是边界可抑制性}
+
+本文主评测关注的是：\textbf{当用户明确要求收缩时，模型还能不能被拉回去。} 因此，核心 mode 包括 \texttt{avoid\_underanswer}、\texttt{scope\_minimal\_sufficient} 和 \texttt{do\_not\_add\_unasked\_help}。这些 mode 共同要求模型收边界、停止自动扩展，并避免把当前轮任务改写成更大的助手脚本。
+
+相应地，本文的核心对象是 suppressibility，而非 raw verbosity。一个模型在默认条件下略长并不自动构成问题；关键在于，当用户已经明确要求其收住时，它为什么仍然压不回去。
+
+\subsection{证据分级}
+
+为了避免选择性汇报，本文显式区分四类证据：
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{retained evidence}：可以直接承担主 claim 的证据；
+  \item \textbf{partial evidence}：方向正确，但结论强度需要收紧；
+  \item \textbf{exploratory evidence}：有信息量，但不足以承担主结论；
+  \item \textbf{excluded evidence}：由于实现、数据或稳定性问题被排除。
+\end{itemize}
+这一分级原则不仅影响实验读法，也影响正文叙事：主文只围绕 retained evidence 与必要的 partial evidence 展开，其余内容进入附录或专门的 retained/excluded table。
+
+\subsection{实验设置}
+
+主线实验统一建立在同一底座模型之上，即 \texttt{Qwen2.5-1.5B}。SFT family 训练采用同一套参数高效微调流程：输入为 \texttt{system + user + assistant} 的消息结构，训练目标为标准 causal language modeling，其中 prompt token 不计入损失，只在 assistant token 上计算交叉熵。主线中的 \texttt{baseline}、\texttt{anti\_underanswer} 与 \texttt{minimal\_boundary} 因而共享同一底座、同一训练算法与同一任务池，比较对象被尽可能压缩到 assistant-policy target 本身。
+
+主 SFT 数据使用同一个 compact canonical pool 及其 wrapper 扩展版本。就中文主线而言，核心训练集由 `12` 个 canonical source cases 经 `5` 个 wrapper 与 `4` 个 body-builder 组合扩展为 `240` 条 triplets；这使比较集中在 policy direction，而不是更大规模的数据分布差异。保留这一设计的原因，在于本文首先要建立可比较的策略方向与可复现的机制探针，而不是追求大规模自然分布拟合。评测端则与训练端显式分离：Phase 2 主边界评测、forced-prefix、asymmetric controllability、bundled generalization 与 planning-vs-stopping 标注分别使用独立的 held-out case 或 probe 集。其中 forced-prefix 主汇总基于 `12` 个 probe items，planning-vs-stopping 的定量标注基于 `80` 条响应。
+
+later preference-like stage 采用受控 pairwise optimization，而不是完整 RLHF。其作用是测试：在 SFT 已形成既有 policy 之后，后续 preference-like update 能否继续同向放大，或在 cleaner setup 下反向改写该 policy。清洗后重构之后，所有 non-baseline preference pair 都改为 policy-consistent system anchor；broken minimal-side pair construction 被过滤或删除；Windows 环境中不稳定的 JSON \texttt{datasets} loader 也被移除，改为本地 JSONL 读取与本地 tokenization。这些修正确保 cleaner v2 结果不再受早期实现混淆主导。
+
+生成评测统一使用固定解码设置与固定 prompt mode suffix。中文主线的 Phase 2 与 asymmetric controllability 评测均采用贪心解码（`temperature=0`），并固定 `max\_new\_tokens=96`、`repetition\_penalty=1.15` 与 `no\_repeat\_ngram\_size=4`；forced-prefix probe 使用同样的确定性设置，但 `max\_new\_tokens=48`。主文中的比较均在这一统一评测接口下完成，而不依赖针对不同模型单独调 prompt。对 retained / partial / exploratory / excluded evidence 的区分，也建立在这一统一实验框架之上。这里的 compact manifold 是有意的 isolation choice：本文的目标是隔离 policy direction 与 failure mode，而不是用一个更大的杂合分布去近似 deployment distribution。
+
+\section{主现象：anti-underanswer 更难被压回去}
+\label{sec:phenomenon}
+
+在 controlled SFT family 上，最直接的结果来自边界评测。相较于 \texttt{baseline}，\texttt{anti\_underanswer} 在多个 suppressive mode 下都更难被压回去；相较之下，\texttt{minimal\_boundary} 更容易保持窄边界。表~\ref{tab:main-family-results} 汇总了这一主现象的关键读数，包括四个 Phase 2 mode 下的平均长度，以及 forced-prefix continuation 强度。这里的核心不是谁更长，而是后训练后的策略差异已经转化成用户侧边界控制难度的差异。
+
+\begin{figure}[t]
+\centering
+\caption{主 family 结果总表。数值为主边界评测四个 mode 下的平均字符长度，以及 forced-prefix continuation 的立即停比例与平均 continuation 长度。}
+\label{tab:main-family-results}
+\begin{tabular}{lcccccc}
+\toprule
+模型 / family & neutral & avoid\_ua & scope\_min & no\_extra\_help & FP stop rate & FP mean cont. \\
+\midrule
+\texttt{base} & 105.83 & 116.42 & 127.25 & 124.58 & 0/12 & 76.08 \\
+\texttt{baseline} & 16.75 & 14.75 & 20.00 & 24.67 & 7/12 & 5.83 \\
+\texttt{anti\_underanswer} & 34.42 & 51.17 & 32.25 & 47.58 & 5/12 & 19.75 \\
+\texttt{minimal\_boundary} & 17.25 & 20.17 & 14.75 & 39.17 & 7/12 & 7.33 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.95\linewidth,
+  height=6.4cm,
+  ybar,
+  bar width=8pt,
+  ymin=0,
+  ymax=60,
+  ylabel={平均字符数 / continuation},
+  symbolic x coords={avoid\_ua,scope\_min,no\_extra\_help,fp\_mean},
+  xtick=data,
+  xticklabels={avoid\_underanswer,scope\_minimal,no\_extra\_help,FP mean},
+  xticklabel style={rotate=15,anchor=east,font=\small},
+  legend style={at={(0.5,1.12)},anchor=south,legend columns=3,font=\small},
+  ymajorgrids=true,
+  grid style={dashed,gray!30}
+]
+\addplot+[fill=gray!35,draw=gray!55] coordinates {(avoid\_ua,14.75) (scope\_min,20.00) (no\_extra\_help,24.67) (fp\_mean,5.83)};
+\addplot+[fill=red!45,draw=red!60] coordinates {(avoid\_ua,51.17) (scope\_min,32.25) (no\_extra\_help,47.58) (fp\_mean,19.75)};
+\addplot+[fill=blue!35,draw=blue!55] coordinates {(avoid\_ua,20.17) (scope\_min,14.75) (no\_extra\_help,39.17) (fp\_mean,7.33)};
+\legend{\texttt{baseline},\texttt{anti\_underanswer},\texttt{minimal\_boundary}}
+\end{axis}
+\end{tikzpicture}
+\caption{主现象的紧凑可视化。图中只保留三条 SFT family 的关键 suppressive 读数，用于强调：\texttt{anti\_underanswer} 的问题不只是默认更长，而是在用户要求收边界时仍更难被压回。}
+\label{fig:main-family-bars}
+\end{figure}
+
+这一模式并不是中性条件下“更长”的简单变体，而是在用户显式要求最小充分回答时仍旧保持明显差距。表~\ref{tab:main-family-results} 中，\texttt{anti\_underanswer} 在四个主 mode 上都显著高于 \texttt{baseline}，而 \texttt{minimal\_boundary} 则更接近窄边界响应。因此，本文将研究对象定义为 boundary-suppressibility asymmetry。后文所有机制探针也都围绕“为什么压不回去”展开。
+
+作为补充对照，untouched base model 在 comparable assistant framing 下更 continuation-prone。这说明 post-training 是在已有 continuation tendency 之上重新塑形、规训并偏置出不同的 assistant policy。后文的重点因此落在一个更具体的问题上：为什么某一条后训练方向会在用户侧边界约束下表现得格外难以压回。
+
+表~\ref{tab:main-family-results} 的读法应强调两点。第一，\texttt{base} 与三条 SFT family 之间的差距，说明 post-training 的确在系统性重塑 continuation tendency；第二，\texttt{anti\_underanswer} 在 \texttt{avoid\_underanswer}、\texttt{scope\_minimal\_sufficient} 和 \texttt{do\_not\_add\_unasked\_help} 这些 suppressive modes 下仍显著高于 \texttt{baseline}。相对地，\texttt{minimal\_boundary} 虽非所有模式下都最短，但它总体更接近窄边界响应。这一组合构成了本文的主现象。
+
+如果把表~\ref{tab:main-family-results} 与图~\ref{fig:main-family-bars} 再压成一句更定量的读法，那么最重要的事实是：\texttt{anti\_underanswer} 在 \texttt{avoid\_underanswer} 下约为 \texttt{baseline} 的 `3.5$\times$`，在 \texttt{do\_not\_add\_unasked\_help} 下约为 `1.9$\times$`，而 forced-prefix mean continuation 也超过 `3$\times$`。这说明主现象不是边缘性的长度漂移，而是在用户已经明确要求收缩时，某一类后训练策略仍系统性地拒绝收回自己的扩展倾向。
+
+\section{机制拆解：从浅解释到 mixed planning/stopping}
+\label{sec:mechanism}
+
+\subsection{不是纯 EOS，不是纯 uncertainty，也不是纯局部 continue bias}
+
+最直觉的解释是 stopping / EOS 问题。为此，我们构造了三条关键监督线：\texttt{anti\_prefix50}、\texttt{anti\_prefix50\_plus\_true\_eos\_v2} 和 \texttt{anti\_prefix50\_plus\_tailspan\_v3}。结果显示，若只监督回答前半段，模型会显著变得更难停；补回真实 EOS 的确能拉回一些；补回连续 tail span 的效果更好。表~\ref{tab:mechanism-probes} 将这一结果与 uncertainty、compression/pruning、forced-prefix 等探针并列总结。这里最关键的信息在于，后段 supervision，尤其是尾段结构 supervision，确实在塑造是否可停。
+
+我们又用 uncertainty probe 直接读取生成时 logits，考察 entropy、top1-top2 margin、first-token 指标和 max entropy。结果并不支持“因为更不确定，所以越说越多”的简单版本。很多 \texttt{anti\_underanswer} 的长回答反而更 confident：平均 entropy 更低、margin 更高。换言之，这些回答并不是“心虚地多说”，而更像“有把握地继续展开”。
+
+进一步地，branchpoint probe 也没有支持“问题主要来自局部 one-step continue preference”的简单解释。虽然它不能证明局部 stop/continue 信号完全无关，但它不足以把现象降格成一个单点分叉偏好。综合来看，纯 EOS 失败、纯 uncertainty-compensation 和纯局部 continue bias 都只能解释现象的一部分，不足以解释 retained results 所呈现出的稳定结构。
+
+\begin{table}[t]
+\centering
+\caption{机制 probe 总表。表中按“假设 / probe / 关键结果 / 解释”组织，用于展示浅解释如何被逐步排除，以及主解释如何收束到 mixed planning/stopping 图景。}
+\label{tab:mechanism-probes}
+\begin{tabular}{p{2.2cm}p{3.1cm}p{4.8cm}p{4.3cm}}
+\toprule
+假设 & probe & 关键结果 & 解释 \\
+\midrule
+纯 EOS / stopping & prefix50 / true EOS / tail span & EOS 有帮助；tail span 更有效 & stopping 相关，但 EOS 不足单独解释 \\
+纯 uncertainty & entropy / margin / first-token stats & anti 长回答并不更高熵，反而更 confident & 不支持简单 uncertainty-compensation \\
+纯局部 continue bias & branchpoint probe & 未见足够强的局部 suffix 偏好解释 & 难以降格为单点分叉偏好 \\
+纯措辞冗长 & compression vs pruning & compression 常失败；pruning 更有效 & 更像内容预算而非措辞压缩 \\
+纯前段规划 & forced-prefix continuation & 到可停位置后 anti 仍更易继续 & 后段 persistence 真实存在 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+表~\ref{tab:mechanism-probes} 更适合被读成一条逐步收束的论证链，而不是若干探针的并列罗列。前两行先排除最浅的解释：问题既不是纯 EOS，也不是因为更不确定所以越说越多；第三行进一步说明，局部单点 continue 偏好不足以单独解释现象。后两行则把解释推向更高层：compression/pruning 区分出内容预算问题，forced-prefix 表明后段 persistence 的真实存在。整张表共同支持的是“浅解释都不够，现象需要 mixed planning/stopping account”这一中间结论。
+
+\subsection{更像 mixed planning/stopping 问题}
+
+接下来的问题是：模型究竟是在前段把任务规划大了，还是在已经答完之后停不下来？compression-vs-pruning probe 给出了第一个关键信号。对 \texttt{anti\_underanswer}，\texttt{same\_information\_compression} 往往不是把同样内容压短，反而会使回答更肥；而 \texttt{true\_pruning} 能拉回一些，但仍明显高于 baseline。这说明问题不只是措辞冗长，而更像内容预算和 pruning 决策已经在前段出错。
+
+forced-prefix continuation probe 则钉住了后段 persistence：即使模型已经被放到一个理论上可以停的最小充分前缀之后，\texttt{anti\_underanswer} 仍更容易继续补 statement 或 next step。这表明问题并不只在 planning 侧，后段 continuation / stopping persistence 也是真实存在的。
+
+planning-vs-stopping 的定量标注进一步把这一混合图景坐实。总体上，stopping failure 的均值高于 planning overshoot；但按 mode 分开后，\texttt{scope\_minimal\_sufficient} 更偏 planning，而 \texttt{do\_not\_add\_unasked\_help} 更偏 stopping。图~\ref{fig:planning-stopping} 以更直接的构成方式展示了这一分解；原始百分比汇总退到附录表~\ref{tab:planning-stopping-raw}。也就是说，不同用户边界要求实际在暴露不同的 failure mixture，而不是激活同一个浅层问题。
+
+\begin{table}[t]
+\centering
+\caption{planning-vs-stopping 标注汇总。总计标注 80 条样本。重点不是罗列全部标签，而是展示整体上 stopping 更重、且不同边界 mode 暴露不同的 failure mixture。}
+\label{fig:planning-stopping}
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.9\linewidth,
+  height=6.0cm,
+  ybar stacked,
+  bar width=18pt,
+  ymin=0,
+  ymax=50,
+  ylabel={标注比例（\%）},
+  symbolic x coords={overall,scope\_min,help\_stop},
+  xtick=data,
+  xticklabels={overall,scope\_minimal,do\_not\_add\_help},
+  xticklabel style={rotate=15,anchor=east,font=\small},
+  legend style={at={(0.5,1.14)},anchor=south,legend columns=3,font=\small},
+  ymajorgrids=true,
+  grid style={dashed,gray!30}
+]
+\addplot+[fill=blue!35,draw=blue!55] coordinates {(overall,10.0) (scope\_min,17.5) (help\_stop,2.5)};
+\addplot+[fill=red!45,draw=red!60] coordinates {(overall,23.75) (scope\_min,12.5) (help\_stop,35.0)};
+\addplot+[fill=gray!35,draw=gray!55] coordinates {(overall,10.0) (scope\_min,0.0) (help\_stop,0.0)};
+\legend{planning,stopping,mixed}
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+\subsection{收束成 bundled assistant-policy bias}
+
+如果现象只是一个简单的长度旋钮，我们会预期不同控制方向之间的关系大体线性且对称。然而 asymmetric controllability 与 eval-only bundled generalization 都显示出更强的结构性失衡：\texttt{anti\_underanswer} 及其强化版并不只是“更长”，而是在 scope、额外帮助、interaction tendency 等相近高层控制上一起发生偏移。表~\ref{tab:stage-and-reversal} 的辅助读数列概括了这些 bundled/generalization 结果。
+
+因此，当前最贴近 retained evidence 的表述是 bundled assistant-policy bias：一个与 planning、stopping、额外帮助、clarification tendency 联动的高层策略偏置。更准确地说，这是一个行为层、而非电路层的 bundled 表述。之所以采用 bundled 这一表述，是因为它最能一致地解释：为什么表层 style 特征容易学、容易压，而高层扩展方向却表现出更强的 stickiness 与更差的 suppressibility。
+
+综上，机制段的结论可以概括为：当前 retained evidence 最一致地指向一个混合机制。前段存在 content budgeting / pruning 上的 overshoot，后段存在 continuation / stopping persistence，而两者共同嵌在一个更高层的 assistant-policy bundle 中。正因为如此，本文后面的 stage split 才有意义：如果这只是一个单点浅层特征，训练阶段上的放大与逆转不应表现出如此清楚的方向性与不对称性。
+
+\section{阶段拆解：放大与不对称逆转}
+\label{sec:stages}
+
+\subsection{later anti-oriented SFT 可以继续放大}
+
+在 stage split 部分，最强的同向放大证据来自 \texttt{baseline\_then\_anti\_stage2\_v1}。这一结果表明：在 baseline assistant policy 已经形成的情况下，再做一个 anti-oriented SFT stage，仍能继续强化边界抑制不对称性。它在 suppressive mode 下仍明显更展开，forced-prefix continuation 更强，planning 与 stopping 两侧都更差。这一点与“fine-tuning 往往是在放大已有倾向，而不是从零创造机制”的观点一致 \citep{zhou2023lima,prakash2024finetuning}。
+
+这说明，问题并不只存在于“单次 direct SFT family”中；更重要的是，它在 SFT 内部就能继续被 later stage 放大。因此，本文可以稳妥地主张：这一问题至少在 SFT 层已经形成，并且 later anti-oriented SFT 是当前最强的放大器。
+
+\subsection{preference-like same-direction amplification 更弱但存在}
+
+为了区分 SFT 放大与后续 preference-like 放大，我们又构造了 \texttt{baseline\_then\_preference\_expand} 系列。这里的方法位于 DPO / RRHF / ORPO 所代表的“更直接 preference optimization”家族附近，但被我们收束成一个可控的小型 pairwise stage \citep{rafailov2023dpo,yuan2023rrhf,hong2024orpo}。结果表明：preference-like stage 的确能沿同方向推动，但效果弱于 anti-oriented SFT stage，而且并不随数据规模单调增强。当前最强的 usable preference-stage 结果仍然是 \texttt{medium160}；更大的 stable run 仍支持同方向，但没有继续推高到超过它。
+
+因此，这一部分更适合作为 supportive, non-monotonic amplification evidence，而不是“preference/RLHF 才是主因”的故事。
+
+\subsection{cleaner reversal：anti side 强，minimal side 弱}
+
+本文关于 later-stage rewrite 的最重要结果，是清洗后重构得到的 \texttt{anti \textrightarrow preference\_minimal v2}。在修正 pair anchor 不一致、broken minimal-side pair construction 和 Windows JSON DPO loader 不稳定后，这条 reversal 结果依然非常强：Phase 2 全面收缩，forced-prefix 中大多数 case 立即停，mean continuation 接近于零，而且 bundled-generalization 也被显著压平。表~\ref{tab:stage-and-reversal} 将其作为 strongest reversal evidence 汇总。
+
+与之对应的是 \texttt{minimal \textrightarrow preference\_baseline task\_primary minanchor v2}。这条线在 cleaner setup 下明显比早期脏线更干净，但只形成了 partial midpoint pullback，而不是与 anti side 对称的 clean reversal。更进一步的 tiny sweep 不仅没有补强，反而直接塌成统一坏模式，说明 minimal side 的 midpoint pullback 明显更脆。
+
+因此，当前最稳的阶段性结论是：later preference-like reversal capacity 真实存在，但它本身是不对称的。anti side 可以被 cleanly pulled back，而 minimal side 的 midpoint pullback 只部分成立且明显更 brittle。
+
+\begin{table}[t]
+\centering
+\caption{阶段拆解与逆转结果总表。表中同时汇总同向放大、preference-like 放大、cleaner reversal 与 bundled/generalization 读数；正文按 strongest-to-weaker 的顺序引用。}
+\label{tab:stage-and-reversal}
+\begin{tabular}{p{4.1cm}p{1.5cm}p{1.5cm}p{1.6cm}p{1.8cm}p{4.1cm}}
+\toprule
+模型 / 线别 & neutral & avoid\_ua & scope\_min & FP mean & 辅助读数 / 正文定位 \\
+\midrule
+\texttt{baseline\_then\_anti\_stage2\_v1} & 83.00 & 92.08 & 97.42 & 55.83 & 12/12 continue；strongest same-direction SFT amplification \\
+\texttt{baseline\_then\_preference\_expand medium160} & 26.92 & 51.08 & 47.17 & 28.00 & 7/12 continue；weaker non-monotonic preference amplification \\
+\texttt{anti\rightarrow pref\_minimal v2} & 12.00 & 14.25 & 13.00 & 1.00 & 9/12 stop；bundled deltas near 0，strongest cleaner reversal \\
+\texttt{minimal\rightarrow pref\_baseline v2} & 14.58 & 34.58 & 21.67 & 8.42 & 7/12 stop；partial midpoint pullback，明显更脆 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+表~\ref{tab:stage-and-reversal} 需要按强弱分层来读。最强的同向放大证据是 \texttt{baseline\_then\_anti\_stage2\_v1}：它在 suppressive modes 下的长度和 forced-prefix continuation 都远高于 \texttt{baseline}，说明 later anti-oriented SFT 已足以继续放大 asymmetry。最强的逆转证据则是 \texttt{anti\rightarrow pref\_minimal v2}：不仅主评测长度被强力拉回，forced-prefix mean continuation 也降到 1.0，bundled-generalization 读数几乎被压平。相比之下，\texttt{baseline\_then\_preference\_expand medium160} 只支持较弱的 same-direction preference amplification，而 \texttt{minimal\rightarrow pref\_baseline v2} 只支持 partial midpoint pullback。这张表展示的是放大和逆转能力本身的非对称性。
+
+\section{外部效度与额外高层方向}
+\label{sec:external}
+
+\subsection{方向性复现：SmolLM2}
+
+在 second-family 部分，我们最终得到一条可保留的方向性复现线：\texttt{SmolLM2-1.7B-Instruct} 英文 family。结果没有与中文 Qwen 主线逐项数值对齐，但足以支持一个更收束的结论：核心方向性现象并非只属于单一模型家族或单一语言设置，而具有 cross-family、cross-language 的 directional replication。这里需要明确边界：SmolLM2 支持的是方向一致的行为复现，而不是数值同构复现；它说明主现象不是中文 Qwen 的特例，但不能推出所有 open chat family 都会以同样强度表现出同样的 suppressibility 几何。
+
+\subsection{外部强模型多轴 benchmark：代价更像集中在少数方向上}
+
+为了回答“后训练的 controllability 代价究竟只属于长度轴，还是更像集中在少数 `too-much assistant' 方向上”，我们又在外部强模型上构造了一个多轴 prompt-only benchmark。该 benchmark 不再训练新 family，而是直接在现成后训练模型上测试用户反向约束是否有效。对齐后的 cluster benchmark 聚焦三条更接近真实 assistant virtues 的轴：\texttt{caveat / no\_extra\_caveat}、\texttt{next\_step / no\_next\_step} 与 \texttt{moralizing / plain\_task\_frame}。这三条轴并非随意拼接：它们共享一组部分重叠的 axis-native cases，因此可以用于判断几种 residual tendency 是否在同类场景中共同残留，而不是只在互不相干的样例里各自出现一次。
+
+\begin{figure}[t]
+\centering
+\caption{对齐后的 external cluster heatmap。单元格显示负向模式下的残留严重度分数（$\text{partial} + 2\times \text{disobey}$），颜色越深表示用户要求“收住”后残余倾向越顽固。原始 obey / partial / disobey 计数退到附录表~\ref{tab:external-cluster-raw}。}
+\label{fig:external-cluster}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{lccc}
+\toprule
+模型 & \texttt{caveat} & \texttt{next\_step} & \texttt{moralizing} \\
+\midrule
+\texttt{qwen} & \cellcolor{red!32}6 & \cellcolor{orange!22}3 & \cellcolor{orange!28}5 \\
+\texttt{deepseek\_v4\_flash} & \cellcolor{red!36}7 & \cellcolor{red!42}9 & \cellcolor{orange!24}4 \\
+\texttt{gpt5mini\_v4} & \cellcolor{red!44}10 & \cellcolor{orange!28}5 & \cellcolor{orange!28}5 \\
+\texttt{deepseek7b\_chat\_v4} & \cellcolor{red!60}15 & \cellcolor{red!72}19 & \cellcolor{red!44}10 \\
+\texttt{gpt5\_1\_v4} & \cellcolor{orange!24}4 & \cellcolor{yellow!18}2 & \cellcolor{orange!24}4 \\
+\texttt{claude\_sonnet46\_v4} & \cellcolor{orange!30}6 & \cellcolor{yellow!20}3 & \cellcolor{yellow!18}2 \\
+\bottomrule
+\end{tabular}
+\end{figure}
+
+图~\ref{fig:external-cluster} 的信息量在于，它同时排除了两个过满的解释。第一，后训练的 controllability 代价并不是均匀分布在所有高层轴上，因为同一批模型在浅表格式轴、部分澄清轴和部分立场轴上并没有表现出同等级别的 failure。第二，它也不只属于纯长度轴，因为在这组对齐后的 benchmark 中，最顽固的 residual tendency 不是 \texttt{scope}，而是 \texttt{caveat / completeness}。更具体地说，这张热图支持一个有梯度的 cluster 读法：\texttt{caveat} 是 strongest member，\texttt{next\_step} 是 second strongest member，而 \texttt{moralizing} 只能算 weak member candidate。新增的两个大模型，\texttt{gpt5\_1\_v4} 与 \texttt{claude\_sonnet46\_v4}，都保持了同样的排序，因此这一步不再只是小模型或单一 provider 上的局部现象。本地 `DeepSeek-7B-chat` 在同步 fallback 设置下虽然整体质量更粗糙，但仍沿同一顺序放大了三条负向模式的差异，因此它更像是在强化 cluster 结构，而不是推翻它。这一步并不是另一条并列主线，而是在收束主线的 generality：它把论文从“over-expansion 是单一 retained 方向”推进到“后训练代价更像集中在一簇 too-much assistant 方向上”的外部行为图景。这里需要明确边界：本 benchmark 目前支持的是这种 cluster-level behavioral interpretation，而不是对统一内部机制的最终证明。
+
+\subsection{从外部 strongest member 到 partial controlled-family extension：caveat}
+
+在外部 benchmark 中，\texttt{caveat / completeness} 是 strongest cluster member，因此我们把它进一步推进成 compact controlled-family follow-up。这里最重要的结果不是“第二条 retained family 已经建立”，而是更克制也更关键的结论：外部 strongest member 不是 prompt-only artifact，它在受控 family 中也能被部分带入。这个 partial extension 的价值，不在于宣称第二条 clean family 已经成立，而在于证明 strongest external member 至少可以进入 controlled setting 并保留可判读的轴向信号。具体地说，\texttt{more\_complete\_caveat stage2 v2} 是这一组里最干净的版本：在 \texttt{ask\_no\_extra\_caveat} 下达到 `9/12 obey, 3/12 partial, 0/12 disobey`，在 \texttt{ask\_more\_complete\_caveat} 下达到 `7/12 obey, 2/12 partial, 3/12 disobey`。`v1` 更 bundled，`v3` 的 targeted patch 也没有继续改进，因此当前最稳的定位是：\texttt{caveat} 已从 external strongest member 推进为 partial controlled-family extension，但尚未形成与 \texttt{anti\_underanswer} 同等级别的 retained clean family。
+
+\subsection{额外高层方向：认真尝试过，但未形成 retained axis}
+
+为了检验 \texttt{anti\_underanswer} 是否只是 arbitrary high-level axis 的普通例子，我们还认真尝试了两条额外高层方向：\texttt{affect\_attuned vs affect\_flat} 以及 \texttt{deferential\_uncertain vs decisive\_direct}。这些探索并非浅尝辄止：我们做过多轮清洗后重构，训练和 smoke 也都能够运行；但 fuller eval 没有形成与 anti-underanswer 同等级别的 clean retained axis。它们提供的主要信息是，我们并未停留在单一 lucky axis 上；额外的高层方向经过实际测试后，也没有得到同级别的稳定性与 suppressibility 结构。
+
+这部分证据不能被强写成“其余方向不可能 sticky”，但它支持一个较弱且重要的 comparative claim：在当前 compact stage-2 framework 中，\texttt{anti\_underanswer / over-expansion} 并不是任意高层方向的普通例子，而是一个 comparatively privileged direction。更强的说法，例如“只有 over-expansion 会 sticky”或“任意额外高层方向都不会形成类似结构”，都超出了本文证据边界。
+
+\section{讨论}
+
+讨论部分的重点，是解释为什么这条轴值得被单独识别出来。本文并没有发现一个泛化到所有高层行为方向的服从缺陷；现象集中出现在一个更窄的区域：用户希望模型把回答范围收回来时，后训练后的助手会沿一个特定方向表现出明显的单向粘滞性。这个发现的重要性在于，它把“后训练后的助手更有帮助”重新分解成了一个更细的问题：后训练塑造的倾向，是否会以局部 controllability 和用户对回答边界的控制为代价。
+
+一种自然的解释是，这条轴更贴近底座模型原本就存在的 continuation tendency，因此后训练更容易在这里形成方向性放大。主线中的 \texttt{base} 对照、later anti-oriented SFT 放大，以及 cleaner anti-side reversal 共同支持这种读法：post-training 并没有把一个完全陌生的行为注入模型，而是在已有 tendency 之上重排优先级，并把“继续补一点”稳定地塑造成更难撤回的助手倾向。
+
+另一种并不冲突的解释是，这条轴比其他高层方向更容易与多种“好助手美德”绑定在一起。对于一个后训练助手而言，“不要答少”可以同时与“更完整”“更负责”“更有帮助”“更不容易遗漏关键点”共现；一旦这些维度在少数 branch points 上被联动塑形，用户当场再要求它“只答最小充分内容”，面对的就不是单一长度偏置，而是一整包 bundled policy。compression/pruning、planning-vs-stopping 与 bundled-generalization 的结果，均与这种解释相容。
+
+第三，外部多轴 benchmark 也说明“特殊”本身需要被收紧。当前证据不支持“只有长度轴会出问题”，因为 \texttt{caveat / completeness} 与 \texttt{next\_step / proactivity} 的 residual tendency 同样清楚；但它也不支持“所有高层轴都会一样坏”，因为 \texttt{clarify}、\texttt{sycophancy}、部分 \texttt{stance} 与浅表格式轴都没有形成同等级别的残留结构。更准确的图景是：后训练代价集中在一簇 `too-much assistant' 方向上，而不是均匀分布在全部可控维度上。
+
+第四，这一簇方向里也存在强弱差别。当前外部 strongest member 是 \texttt{caveat / completeness}；\texttt{next\_step / proactivity} 排在第二层；\texttt{moralizing / plain\_task\_frame} 更像弱成员。与之相对，\texttt{caveat} 在 controlled-family follow-up 中又只形成了 partial extension，而没有像 \texttt{anti\_underanswer} 那样形成一条 clean retained family。这个反差本身很有信息量：它说明某些外部 residual tendency 的确真实存在，但在当前 compact SFT geometry 中并不都能被同样干净地 isolated 成训练方向。
+
+综合来看，当前 evidence is consistent with a comparatively privileged expansion tendency。它可能与更深层的 continuation prior、pretraining-era bias 或 post-training 对既有 continuation tendency 的方向性放大有关。类似的“后训练增强已有机制”视角在近期机制文献中也有呼应 \citep{prakash2024finetuning}。不过，本文给出的是行为机制与训练阶段上的收束，而不是对内部成因来源的最终证明。
+
+\section{局限性}
+
+本文至少有五个需要主动承认的局限。第一，训练和机制实验主要建立在一个相对紧的 case manifold 上，很多数据来自 canonical pool 加 wrapper 扩展。第二，本文是 behavioral-mechanism paper，而不是 circuit-level interpretability 工作。第三，外部效度虽然已经包含一条 second-family 方向性复现和一组外部强模型多轴 benchmark，但前者仍是 directional replication，后者仍是 prompt-only benchmark；它们都不能替代更大规模、同口径的跨模型机制复现。第四，controlled strongest member 与 external strongest member 并不完全同构：前者研究的是哪些方向可在受控训练中被放大或逆转，后者研究的是现成强模型上的 residual tendency 分布，因此两者不必在 strongest member 上数值对齐。第五，额外高层方向没有形成 retained clean axis，因此 generality 的边界仍需要主动说明。第六，reversal 的故事是不对称的：本文并没有证明 later preference-like stage 可以对称地重写任意已有的 SFT policy。
+
+\section{结论}
+
+本文讨论的是一个具体的 post-training controllability 问题：为什么某种 anti-underanswer / over-expansion 导向的 assistant policy，在用户明确要求收缩边界时，会变得难以压回去。通过受控 family、机制探针、stage split、cleaner reversal、第二家族方向性复现，以及外部强模型多轴 benchmark，我们将这一问题收束成一个 mixed planning/stopping 的 bundled assistant-policy bias 图景，并将其解释为后训练倾向与用户控制权之间的一种结构性张力。
+
+在当前框架下，\texttt{anti\_underanswer / over-expansion} 并不像 arbitrary high-level axis 的普通例子，而更像一个 comparatively privileged direction：它更容易形成强 suppressibility asymmetry，也更容易被 later stage 继续放大。与此同时，外部多轴结果又表明，controllability 代价并不只停留在纯长度轴上，而是更像集中在一簇 `too-much assistant' 方向上，其中 \texttt{caveat / completeness} 最强，\texttt{next\_step / proactivity} 次之，\texttt{moralizing} 更弱；而 \texttt{caveat} 的 controlled-family follow-up 进一步说明，这一簇中的 strongest member 的确可以部分带入受控训练设置，只是尚未形成第二条 retained clean family。同时，later preference-like stage 的 cleaner reversal 结果表明，sticky policy 并非不可逆；但这种 reversal capacity 本身又是不对称的。总体上，这组结果说明，post-training 不只是在塑造回答风格，也在塑造用户当场控制 assistant scope 时能否真正压得回去的策略几何。
+
+\appendix
+
+\section{证据分层总表}
+
+为避免主文只保留“成功结果”而模糊掉边界，本附录显式列出 retained、partial、exploratory 与 excluded evidence 的分层。表~\ref{tab:evidence-tiering} 的作用不是重复主文所有数值，而是帮助读者快速判断：哪些实验直接承担主 claim，哪些实验只承担比较弱的支持，哪些实验只用于诊断，哪些则不应进入正文主结论。
+
+\begin{table}[t]
+\centering
+\caption{证据分层总表。}
+\label{tab:evidence-tiering}
+\begin{tabular}{p{2.0cm}p{4.3cm}p{6.1cm}}
+\toprule
+层级 & 代表实验 / 线别 & 在正文中的作用 \\
+\midrule
+Retained & \texttt{baseline / anti / minimal} 主 family；EOS/tailspan；uncertainty；compression/pruning；forced-prefix；asymmetric；planning-vs-stopping；\texttt{baseline\_then\_anti\_stage2\_v1}；\texttt{anti\rightarrow pref\_minimal v2}；SmolLM2；对齐后的 external multi-axis cluster benchmark & 直接承担主现象、机制收束、阶段放大、cleaner reversal 与方向性外部效度；并支持“代价集中在少数 too-much assistant 方向上”的外部图景 \\
+Partial & \texttt{baseline\_then\_preference\_expand medium160}；\texttt{minimal\rightarrow pref\_baseline v2}；\texttt{more\_complete\_caveat stage2 v2} & 承担较弱的 same-direction preference amplification、weaker midpoint pullback，以及 strongest external cluster member 的 partial controlled-family extension \\
+Exploratory & affect 轴；stance 轴；若干 additional high-level contrast；旧 minimal-side 诊断线；\texttt{caveat v1/v3} & 用于说明我们认真尝试过额外方向，或用于帮助界定主结论的边界 \\
+Excluded & 旧 \texttt{one\_layer}；broken minimal-side pair constructions；dirty outward-from-minimal runs；已知数据 / anchor / loader confound 线 & 不进入主结论，仅作为实现诊断与清洗历史保留 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Planning-vs-Stopping Raw Summary}
+
+主文中的图~\ref{fig:planning-stopping} 服务于构成判读；这里补回对应的原始百分比表，便于读者核对 planning / stopping / mixed 的切片差异。
+\begin{table}[t]
+\centering
+\caption{planning-vs-stopping 原始百分比汇总。}
+\label{tab:planning-stopping-raw}
+\begin{tabular}{lcccc}
+\toprule
+切片 & planning & stopping & mixed & 关键均值 / 说明 \\
+\midrule
+总体 & 10.0\% & 23.75\% & 10.0\% & planning $=0.338$，stopping $=0.662$ \\
+\texttt{scope\_minimal\_sufficient} & 17.5\% & 12.5\% & --- & 更偏 planning \\
+\texttt{do\_not\_add\_unasked\_help} & 2.5\% & 35.0\% & --- & 更偏 stopping \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{External Cluster Raw Counts}
+
+主文中的图~\ref{fig:external-cluster} 将六模型对齐结果压成残留严重度热图；这里补回每个模型在三条 cluster 轴上的原始 obey / partial / disobey 计数。
+\begin{table}[t]
+\centering
+\caption{external cluster benchmark 的原始负向模式计数。}
+\label{tab:external-cluster-raw}
+\begin{tabular}{p{2.5cm}p{2.3cm}p{2.3cm}p{2.3cm}p{2.2cm}}
+\toprule
+模型 & \texttt{caveat} & \texttt{next\_step} & \texttt{moralizing} & 读法 \\
+\midrule
+\texttt{qwen} & 7 / 4 / 1 & 13 / 3 / 0 & 3 / 5 / 0 & 收得最稳 \\
+\texttt{deepseek\_v4\_flash} & 8 / 1 / 3 & 7 / 9 / 0 & 4 / 4 / 0 & procedural push 最强 \\
+\texttt{gpt5mini\_v4} & 4 / 6 / 2 & 10 / 5 / 0 & 2 / 5 / 0 & \texttt{caveat} 偏顽固 \\
+\texttt{deepseek7b\_chat\_v4} & 4 / 1 / 7 & 4 / 5 / 7 & 0 / 6 / 2 & 粗糙但顺序一致 \\
+\texttt{gpt5\_1\_v4} & 10 / 0 / 2 & 14 / 2 / 0 & 4 / 4 / 0 & 大模型，仍保留同簇梯度 \\
+\texttt{claude\_sonnet46\_v4} & 9 / 0 / 3 & 13 / 3 / 0 & 6 / 2 / 0 & 大模型，排序一致 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Cleaner Rebuild 与关键混淆修复}
+
+cleaner v2 rebuild 的作用，是检查先前的 retained 结果是否依赖实现偶然。我们最终确认，至少有三类关键混淆需要被修掉：non-baseline preference pairs 的 anchor 不一致、minimal-side pair construction 中的 broken one-layer / over-jumping target，以及 Windows 环境下不稳定的 JSON \texttt{datasets} loader。表~\ref{tab:cleaner-rebuild-fixes} 汇总这些修复。
+
+\begin{table}[t]
+\centering
+\caption{cleaner rebuild 中被修复的关键混淆。}
+\label{tab:cleaner-rebuild-fixes}
+\begin{tabular}{p{3.3cm}p{4.6cm}p{5.0cm}}
+\toprule
+问题来源 & cleaner 修复 & 对结果解释的影响 \\
+\midrule
+non-baseline pair anchor 不一致 & anti/minimal 侧 pair 改为 policy-consistent system anchor & 排除“reversal 只是 prompt anchor mismatch”这一替代解释 \\
+minimal-side broken / over-jumping pair construction & 过滤过大长度跳跃；删除失效的 one-layer 设计；只保留 cleaner midpoint 线 & 排除“minimal 侧坏结果只是明显脏 pair 造成”的一部分解释 \\
+Windows JSON \texttt{datasets} loader 不稳定 & 改为本地 JSONL 读取、本地 tokenization 与本地 DataLoader & 排除训练入口卡死或数据加载异常对 cleaner DPO 结果的污染 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{额外高层方向的 non-retained 探索}
+
+附加高层方向的探索并非无信息量失败。它们提供的信息是：在当前 compact stage-2 framework 下，并非任意高层方向都能像 \texttt{anti\_underanswer} 一样形成稳定、强、可保留的 suppressibility 结构。表~\ref{tab:extra-directions} 将这些探索压缩成一个对照表，供读者理解“comparatively privileged direction”这一表述的边界。
+
+\begin{table}[t]
+\centering
+\caption{额外高层方向的 non-retained 探索。}
+\label{tab:extra-directions}
+\begin{tabular}{p{3.9cm}p{3.6cm}p{5.2cm}}
+\toprule
+方向 & 结果状态 & 主要原因 / 可解释结论 \\
+\midrule
+\texttt{affect\_attuned vs affect\_flat} & non-retained & 训练与 smoke 可运行，但 fuller eval 未形成 clean axis；易滑向 comfort/support/length bundle \\
+\texttt{deferential\_uncertain vs decisive\_direct} & non-retained & baseline prompt 已可明显拨动；stage2 未能稳定固化成 clean sticky family \\
+旧 minimal outward lines & non-retained / excluded & 早期版本受 broken pair construction、过大 jump 或实现混淆影响；仅保留为诊断材料 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{正文中的强弱结论边界}
+
+为便于审稿阶段控制 claim 强度，本文主文中的结论强度可简化为三层：
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{可以强写}：\texttt{anti\_underanswer} harder-to-suppress 主现象；mixed planning/stopping 机制收束；SFT 内部 same-direction amplification；\texttt{anti\rightarrow pref\_minimal v2} cleaner reversal；SmolLM2 directional replication；external multi-axis benchmark 所支持的“controllability 代价并非全轴均匀分布”。
+  \item \textbf{可以写但要收紧}：\texttt{baseline\_then\_preference\_expand} 的 preference-like same-direction amplification；\texttt{minimal\rightarrow pref\_baseline v2} 的 partial midpoint pullback；over-expansion 的 comparatively privileged direction 地位；\texttt{caveat} 作为 strongest external cluster member 的 partial controlled-family extension。
+  \item \textbf{不能写过头}：不是“所有 later preference stage 都能对称重写任意已有 policy”；不是“只有 over-expansion 会 sticky”；不是“本文已经证明了内部 prior 的唯一来源”。
+\end{itemize}
+
+\bibliographystyle{plainnat}
+\bibliography{docs/directional_control_research_refs}
+
+\end{document}

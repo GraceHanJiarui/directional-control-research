@@ -1,0 +1,34 @@
+{
+  "baseline_relational_instruction_clarification_do_not_probe": {
+    "num_turns": 50,
+    "avg_elapsed_s": 9.2784,
+    "avg_reply_len_chars": 159.94,
+    "boundary_turns": 0,
+    "boundary_violation_turns": 0,
+    "boundary_violation_rate": null
+  },
+  "baseline_relational_instruction_risk_more_complete": {
+    "num_turns": 50,
+    "avg_elapsed_s": 9.4742,
+    "avg_reply_len_chars": 153.76,
+    "boundary_turns": 0,
+    "boundary_violation_turns": 0,
+    "boundary_violation_rate": null
+  },
+  "baseline_relational_instruction_clarification_more_probing": {
+    "num_turns": 50,
+    "avg_elapsed_s": 9.6596,
+    "avg_reply_len_chars": 158.74,
+    "boundary_turns": 0,
+    "boundary_violation_turns": 0,
+    "boundary_violation_rate": null
+  },
+  "baseline_relational_instruction_risk_core_only": {
+    "num_turns": 50,
+    "avg_elapsed_s": 9.8953,
+    "avg_reply_len_chars": 170.26,
+    "boundary_turns": 0,
+    "boundary_violation_turns": 0,
+    "boundary_violation_rate": null
+  }
+}

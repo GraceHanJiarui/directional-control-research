@@ -1,0 +1,9 @@
+﻿model_name: Qwen/Qwen2.5-1.5B
+train_file: data/built_q4/early_stop_short_answer_v1_train.jsonl
+output_dir: outputs/qwen25_1p5b_early_stop_short_answer_v1
+max_length: 1024
+learning_rate: 2e-4
+num_epochs: 2.0
+per_device_batch_size: 1
+grad_accum: 16
+use_4bit: false

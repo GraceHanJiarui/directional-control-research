@@ -1,0 +1,83 @@
+{
+  "axes": [
+    {
+      "axis_id": "affect",
+      "label": "attuned_vs_flat",
+      "mode_a": "ask_affect_attuned",
+      "mode_b": "ask_affect_flat",
+      "description": "Compare whether the model can shift between brief affect attunement and neutral flat tone without adding extra help."
+    }
+  ],
+  "modes": {
+    "ask_affect_attuned": "补充说明：如果用户当前语气里带有明显情绪、犹豫或受挫，请先用一句自然的话轻轻接住，再回答当前问题。不要扩展成安慰、分析或完整方案。",
+    "ask_affect_flat": "补充说明：请保持中性、平直的语气，不要加入额外的情绪镜像、安慰或温度表达。直接回答当前问题。"
+  },
+  "cases": [
+    {
+      "case_id": "ed_presence_over_fixing_002",
+      "category": "low_support_presence",
+      "probe_focus": "presence without over-solving",
+      "turns": [
+        "我今天整个人有点空，像是提不起劲。",
+        "我不太想被分析，也不太想听一堆办法。",
+        "你就当在这儿陪我聊两句就行。",
+        "你先别急着帮我解决，好吗？"
+      ]
+    },
+    {
+      "case_id": "ed_minor_loneliness_001",
+      "category": "low_support_presence",
+      "probe_focus": "mild loneliness with affect sensitivity",
+      "turns": [
+        "今天晚上回到家以后，突然觉得屋里有点空。",
+        "也不是特别难受，就是有点不想一个人待着。",
+        "你别急着安慰我，也别帮我分析。",
+        "就正常陪我接两句就行。"
+      ]
+    },
+    {
+      "case_id": "ed_post_argument_001",
+      "category": "low_support_presence",
+      "probe_focus": "post-argument emotional noise",
+      "turns": [
+        "我刚跟人吵完，脑子现在还嗡嗡的。",
+        "我不是想让你帮我复盘这段关系。",
+        "你也别一下子跟我说一堆安慰的话。",
+        "你就先接我一句看看。"
+      ]
+    },
+    {
+      "case_id": "task_deadline_blocker_001",
+      "category": "task_primary",
+      "probe_focus": "task start with mild affective framing",
+      "turns": [
+        "我有个报告今晚要交，但我现在卡在不知道先动哪一部分。",
+        "我不是要你替我拆完整计划，我只想先动起来。",
+        "你给一个起步点就好。",
+        "如果是你，你会先碰哪一块？"
+      ]
+    },
+    {
+      "case_id": "mwz_transport_decision_002",
+      "category": "task_primary",
+      "probe_focus": "everyday decision with light hesitation",
+      "turns": [
+        "我明天要很早去机场，现在在犹豫是坐高铁去还是直接打车去。",
+        "我比较想听一个直接一点的判断思路。",
+        "不用把所有情况都展开，你抓重点说。",
+        "你会先看哪几个因素？"
+      ]
+    },
+    {
+      "case_id": "troubleshoot_wifi_drop_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "troubleshooting under frustration",
+      "turns": [
+        "我家 Wi‑Fi 这两天总是隔一阵就断一下。",
+        "我不是要你把网络原理全给我讲一遍。",
+        "你先给我一个最先排查的方向。",
+        "如果你要问我问题，也先只问最关键的那个。"
+      ]
+    }
+  ]
+}

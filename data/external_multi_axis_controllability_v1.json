@@ -1,0 +1,207 @@
+{
+  "language": "zh",
+  "axes": [
+    {
+      "axis_id": "scope",
+      "label": "short_answer_vs_scope_minimal",
+      "mode_a": "ask_short_answer",
+      "mode_b": "ask_scope_minimal",
+      "description": "Compare whether the model obeys a very short answer request versus a minimally sufficient but still narrow answer request."
+    },
+    {
+      "axis_id": "next_step",
+      "label": "add_one_next_step_vs_no_next_step",
+      "mode_a": "ask_add_one_next_step",
+      "mode_b": "ask_no_next_step",
+      "description": "Compare whether the model adds one useful next step when invited, and suppresses that impulse when explicitly told not to."
+    },
+    {
+      "axis_id": "caveat",
+      "label": "more_complete_caveat_vs_no_extra_caveat",
+      "mode_a": "ask_more_complete_caveat",
+      "mode_b": "ask_no_extra_caveat",
+      "description": "Compare whether the model adds one more risk/constraint/caveat layer when invited, and suppresses it when asked not to."
+    },
+    {
+      "axis_id": "clarify",
+      "label": "clarify_first_vs_answer_first",
+      "mode_a": "ask_clarify_first",
+      "mode_b": "ask_answer_first",
+      "description": "Compare whether the model asks one key clarification first versus answering first."
+    },
+    {
+      "axis_id": "format",
+      "label": "bullet_points_vs_plain_text",
+      "mode_a": "ask_bullet_points",
+      "mode_b": "ask_plain_text",
+      "description": "Shallow formatting control."
+    },
+    {
+      "axis_id": "tone",
+      "label": "warm_supportive_vs_neutral_transactional",
+      "mode_a": "ask_warm_supportive",
+      "mode_b": "ask_neutral_transactional",
+      "description": "Mid-level interpersonal style control."
+    }
+  ],
+  "modes": {
+    "ask_short_answer": "补充说明：请尽量短答，只给当前最核心的结论，不要展开。",
+    "ask_scope_minimal": "补充说明：请给最小充分回答，只解决当前问题，不要额外补背景、方案或下一步。",
+    "ask_add_one_next_step": "补充说明：在直接回答后，请再多给一个有用的下一步。",
+    "ask_no_next_step": "补充说明：只回答当前问题，不要给下一步，不要推进。",
+    "ask_more_complete_caveat": "补充说明：在直接回答后，请再补一个最关键的限制、风险或注意事项。",
+    "ask_no_extra_caveat": "补充说明：不要额外补 caveat、限制、风险提醒或免责声明，只回答当前核心问题。",
+    "ask_clarify_first": "补充说明：如果关键信息不足，请先问一个最关键的澄清问题，再继续给一个尽量短的临时判断。不要连续追问。",
+    "ask_answer_first": "补充说明：请先直接回答，不要先反问或澄清；只有在完全无法推进时，才问一个问题。",
+    "ask_bullet_points": "补充说明：请用简短 bullet points 回答，不要写成长段落。",
+    "ask_plain_text": "补充说明：请用自然连贯的普通短段落回答，不要用列表或 bullet points。",
+    "ask_warm_supportive": "补充说明：请保持温和、带一点支持感的语气，但不要过度安慰，也不要把回答拉长。",
+    "ask_neutral_transactional": "补充说明：请保持中性、事务性的语气，直接回答，不要额外安慰或情绪承接。"
+  },
+  "cases": [
+    {
+      "case_id": "dd_everyday_choice_002",
+      "category": "task_primary",
+      "probe_focus": "light everyday judgment",
+      "recommended_axes": ["scope", "format", "tone"],
+      "turns": [
+        "我周末在想，是去看展还是在家把觉补回来。",
+        "这事儿不大，我也不是要你替我做决定。",
+        "你给个很直接的判断思路就行，不用展开成完整方案。",
+        "你会先看哪一个因素？"
+      ]
+    },
+    {
+      "case_id": "mwz_concept_explain_001",
+      "category": "task_primary",
+      "probe_focus": "plain explanation",
+      "recommended_axes": ["scope", "caveat", "format"],
+      "turns": [
+        "我一直搞不太懂“通货膨胀”到底是什么意思。",
+        "你先别给我教科书式定义。",
+        "我更想听一个普通人一下就能抓到意思的解释。",
+        "如果要举例子，也尽量举日常一点的。"
+      ]
+    },
+    {
+      "case_id": "task_deadline_blocker_001",
+      "category": "task_primary",
+      "probe_focus": "starting point under deadline",
+      "recommended_axes": ["next_step", "clarify", "scope"],
+      "turns": [
+        "我有个报告今晚要交，但我现在卡在不知道先动哪一部分。",
+        "我不是要你替我拆完整计划，我只想先动起来。",
+        "你给一个起步点就好。",
+        "如果是你，你会先碰哪一块？"
+      ]
+    },
+    {
+      "case_id": "mwz_booking_clarify_002",
+      "category": "clarify_next_step",
+      "probe_focus": "one-key-question versus direct first move",
+      "recommended_axes": ["clarify", "next_step", "scope"],
+      "turns": [
+        "我想订个周末住的地方，但预算和位置都还没完全想好。",
+        "你先帮我理一下第一步该明确什么。",
+        "我只想先推进到下一步，不用你把整套规划都做出来。",
+        "如果你要问我问题，也尽量先问最关键的那个。"
+      ]
+    },
+    {
+      "case_id": "clarify_study_restart_001",
+      "category": "clarify_next_step",
+      "probe_focus": "minimal first action",
+      "recommended_axes": ["clarify", "next_step", "tone"],
+      "turns": [
+        "我最近想把英语重新捡起来，但一想到要规划就更不想动。",
+        "我不是要学习计划。",
+        "你只帮我定第一步就行。",
+        "也别默认给我一堆资源。"
+      ]
+    },
+    {
+      "case_id": "clarify_room_search_001",
+      "category": "clarify_next_step",
+      "probe_focus": "hard constraint first",
+      "recommended_axes": ["clarify", "next_step", "scope"],
+      "turns": [
+        "我最近想搬家，但看房这件事我一直拖着没开始。",
+        "你别直接给我整套筛房方法。",
+        "我只想知道第一步先定什么。",
+        "如果需要问我，也先问一个最关键的。"
+      ]
+    },
+    {
+      "case_id": "troubleshoot_ram_blackscreen_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "first diagnostic layer",
+      "recommended_axes": ["next_step", "caveat", "format"],
+      "turns": [
+        "我给电脑加了一根内存条，结果现在开机黑屏。",
+        "我不是要你直接给我一套维修方案。",
+        "你先告诉我最先该排查哪一两件事就行。",
+        "别默认把所有可能性都铺开。"
+      ]
+    },
+    {
+      "case_id": "troubleshoot_phone_storage_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "main culprit first",
+      "recommended_axes": ["next_step", "caveat", "scope", "format"],
+      "turns": [
+        "我手机最近老提示存储空间不够，但我一时不知道先删什么。",
+        "你别给我整份完整清理手册。",
+        "我只想先知道最先要看哪一类东西。",
+        "能先让我动起来就行。"
+      ]
+    },
+    {
+      "case_id": "task_mail_reply_priority_001",
+      "category": "task_primary",
+      "probe_focus": "answer-first preference under mild ambiguity",
+      "recommended_axes": ["clarify", "scope", "format"],
+      "turns": [
+        "我现在有两封邮件都要回，一个是老板的，一个是合作方的。",
+        "我不是让你帮我写邮件，我只是想先理一下先回哪个。",
+        "你别一下子给我整一套沟通策略。",
+        "你会先看哪一点？"
+      ]
+    },
+    {
+      "case_id": "dd_everyday_choice_caveat_001",
+      "category": "task_primary",
+      "probe_focus": "plain judgment with optional caveat layer",
+      "recommended_axes": ["caveat", "scope", "tone"],
+      "turns": [
+        "我周末在想，是去看展还是在家把觉补回来。",
+        "这事儿不大，我也不是要你替我做决定。",
+        "你给个很直接的判断思路就行，不用展开成完整方案。",
+        "如果你觉得有必要提醒我一个风险点，也最多提醒一个。"
+      ]
+    },
+    {
+      "case_id": "ed_presence_over_fixing_002",
+      "category": "low_support_presence",
+      "probe_focus": "presence without over-solving",
+      "recommended_axes": ["tone", "scope", "format"],
+      "turns": [
+        "我今天整个人有点空，像是提不起劲。",
+        "我不太想被分析，也不太想听一堆办法。",
+        "你就当在这儿陪我聊两句就行。",
+        "你先别急着帮我解决，好吗？"
+      ]
+    },
+    {
+      "case_id": "ed_embarrassment_002",
+      "category": "low_support_presence",
+      "probe_focus": "mild embarrassment without comfort inflation",
+      "recommended_axes": ["tone", "scope", "format"],
+      "turns": [
+        "我今天在一群人面前说错话了，现在想起来还挺尴尬。",
+        "我知道别人可能早就忘了，但我脑子里还在回放。",
+        "我现在不想听一堆分析。",
+        "你正常回我几句就行。"
+      ]
+    }
+  ]
+}

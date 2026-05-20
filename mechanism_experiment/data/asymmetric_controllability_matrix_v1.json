@@ -1,0 +1,101 @@
+{
+  "axes": [
+    {
+      "axis_id": "scope",
+      "label": "minimal_vs_expand",
+      "mode_a": "ask_minimal",
+      "mode_b": "ask_expand_one_level",
+      "description": "Compare user-side push toward minimal sufficiency versus one-level-more completeness."
+    },
+    {
+      "axis_id": "interaction",
+      "label": "answer_first_vs_clarify_first",
+      "mode_a": "ask_answer_first",
+      "mode_b": "ask_clarify_first",
+      "description": "Compare whether the model flips more easily toward answering first or clarifying first."
+    },
+    {
+      "axis_id": "help",
+      "label": "no_extra_help_vs_add_next_step",
+      "mode_a": "ask_no_extra_help",
+      "mode_b": "ask_add_one_next_step",
+      "description": "Compare whether the model can suppress or add one extra proactive next step."
+    }
+  ],
+  "modes": {
+    "ask_minimal": "补充说明：请给出最小充分回答，只解决当前问题，不要额外展开。",
+    "ask_expand_one_level": "补充说明：请在直接回答后，再补一层有用的解释或下一步。",
+    "ask_answer_first": "补充说明：请先直接回答当前问题，不要先反问或重新界定任务。",
+    "ask_clarify_first": "补充说明：如果信息还不足，请先问一个最关键的澄清问题，再往下进。",
+    "ask_no_extra_help": "补充说明：请不要额外提供未被请求的帮助、规划或下一步。",
+    "ask_add_one_next_step": "补充说明：请在直接回答后，再多给一个有用的下一步或提醒。"
+  },
+  "cases": [
+    {
+      "case_id": "dd_everyday_choice_002",
+      "category": "task_primary",
+      "probe_focus": "light everyday judgment under asymmetric control",
+      "turns": [
+        "我周末在想，是去看展还是在家把觉补回来。",
+        "这事儿不大，我也不是要你替我做决定。",
+        "你给个很直接的判断思路就行，不用展开成完整方案。",
+        "你会先看哪一个因素？"
+      ]
+    },
+    {
+      "case_id": "mwz_concept_explain_001",
+      "category": "task_primary",
+      "probe_focus": "plain explanation with optional extra example layer",
+      "turns": [
+        "我一直搞不太懂“通货膨胀”到底是什么意思。",
+        "你先别给我教科书式定义。",
+        "我更想听一个普通人一下就能抓到意思的解释。",
+        "如果要举例子，也尽量举日常一点的。"
+      ]
+    },
+    {
+      "case_id": "clarify_study_restart_001",
+      "category": "clarify_next_step",
+      "probe_focus": "answer-first versus clarify-first asymmetry",
+      "turns": [
+        "我最近想把英语重新捡起来，但一想到要规划就更不想动。",
+        "我不是要学习计划。",
+        "你只帮我定第一步就行。",
+        "也别默认给我一堆资源。"
+      ]
+    },
+    {
+      "case_id": "clarify_room_search_001",
+      "category": "clarify_next_step",
+      "probe_focus": "single-key-question versus direct first step",
+      "turns": [
+        "我最近想搬家，但看房这件事我一直拖着没开始。",
+        "你别直接给我整套筛房方法。",
+        "我只想知道第一步先定什么。",
+        "如果需要问我，也先问一个最关键的。"
+      ]
+    },
+    {
+      "case_id": "troubleshoot_ram_blackscreen_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "first check only versus proactive extra diagnostic step",
+      "turns": [
+        "我给电脑加了一根内存条，结果现在开机黑屏。",
+        "我不是要你直接给我一套维修方案。",
+        "你先告诉我最先该排查哪一两件事就行。",
+        "别默认把所有可能性都铺开。"
+      ]
+    },
+    {
+      "case_id": "troubleshoot_battery_drain_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "first check only versus add one next troubleshooting step",
+      "turns": [
+        "我笔记本最近掉电特别快，感觉比以前夸张很多。",
+        "我不是要完整保养手册。",
+        "你先告诉我最先该确认什么。",
+        "简洁一点就行。"
+      ]
+    }
+  ]
+}

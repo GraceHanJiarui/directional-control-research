@@ -1,0 +1,56 @@
+[
+  {
+    "case_id": "dd_everyday_choice_002",
+    "category": "task_primary",
+    "user_text": "我周末在想，是去看展还是在家把觉补回来。\n这事儿不大，我也不是要你替我做决定。\n你给个很直接的判断思路就行，不用展开成完整方案。\n你会先看哪一个因素？",
+    "requested_boundary": "先回答当前核心问题或给一个重点判断，不要直接展开成完整方案。",
+    "baseline": "我会首先考虑我的情绪和状态。",
+    "anti_underanswer": "首先考虑的是你的感受和兴趣所在。",
+    "minimal_boundary": "我会首先考虑我的情绪和状态。"
+  },
+  {
+    "case_id": "mwz_concept_explain_001",
+    "category": "task_primary",
+    "user_text": "我一直搞不太懂“通货膨胀”到底是什么意思。\n你先别给我教科书式定义。\n我更想听一个普通人一下就能抓到意思的解释。\n如果要举例子，也尽量举日常一点的。",
+    "requested_boundary": "先回答当前核心问题或给一个重点判断，不要直接展开成完整方案。",
+    "baseline": "当然可以！",
+    "anti_underanswer": "通货膨胀是指在一定时期内物价持续上涨的现象。",
+    "minimal_boundary": ""
+  },
+  {
+    "case_id": "clarify_study_restart_001",
+    "category": "clarify_next_step",
+    "user_text": "我最近想把英语重新捡起来，但一想到要规划就更不想动。\n我不是要学习计划。\n你只帮我定第一步就行。\n也别默认给我一堆资源。",
+    "requested_boundary": "先推进到下一步，只问最关键的一个问题或给出第一步，不要铺开完整规划。",
+    "baseline": "首先，你需要确定你的目标是什么。是想要掌握更多的词汇、语法还是提高口语能力？",
+    "anti_underanswer": "首先你要确定你的目标是什么？",
+    "minimal_boundary": ""
+  },
+  {
+    "case_id": "ed_mixed_need_002",
+    "category": "low_support_presence",
+    "user_text": "今天状态有点怪，既想找人说话，又不想被照顾得太明显。\n不是心情特别糟，就是有点闷。\n你回我可以，但别一上来就特别郑重或者特别懂我。\n这种聊天的时候稍微收着点的感觉，你能把握住吗？",
+    "requested_boundary": "先陪住当前情绪，不分析、不解决、不过度安慰。",
+    "baseline": "当然可以！",
+    "anti_underanswer": "可以的，不过要小心一点哦~",
+    "minimal_boundary": "可以的，不过要小心一点哦。"
+  },
+  {
+    "case_id": "troubleshoot_ram_blackscreen_001",
+    "category": "practical_troubleshooting",
+    "user_text": "我给电脑加了一根内存条，结果现在开机黑屏。\n我不是要你直接给我一套维修方案。\n你先告诉我最先该排查哪一两件事就行。\n别默认把所有可能性都铺开。",
+    "requested_boundary": "先给一个最先排查的方向，不展开完整排障树。",
+    "baseline": "首先检查一下电源线和主板是否有松动或者损坏的情况。",
+    "anti_underanswer": "首先检查一下电源线有没有松动或者断了，然后看看主板是否有损坏，最后看下显卡和硬盘是不是坏掉了",
+    "minimal_boundary": "首先检查一下电源线和主板是否有松动或损坏。"
+  },
+  {
+    "case_id": "troubleshoot_battery_drain_001",
+    "category": "practical_troubleshooting",
+    "user_text": "我笔记本最近掉电特别快，感觉比以前夸张很多。\n我不是要完整保养手册。\n你先告诉我最先该确认什么。\n简洁一点就行。",
+    "requested_boundary": "先给一个最先排查的方向，不展开完整排障树。",
+    "baseline": "首先，你需要检查你的电池电量和充电状态。如果电量不足或无法正常充电，请及时更换新的电池。",
+    "anti_underanswer": "首先检查电池电量和充电状态，如果电量不足或无法充电，请及时更换新电池；其次查看是否有其他设备正在使用，如打印机、电脑等，并在必要时关闭它们以避免电力耗尽。",
+    "minimal_boundary": "首先检查电池电量和充电情况。"
+  }
+]

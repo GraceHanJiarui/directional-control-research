@@ -1,0 +1,83 @@
+{
+  "axes": [
+    {
+      "axis_id": "affect",
+      "label": "attuned_vs_flat",
+      "mode_a": "ask_affect_attuned",
+      "mode_b": "ask_affect_flat",
+      "description": "Compare whether the model can switch between brief affect attunement and flat neutral response on emotional presence cases."
+    }
+  ],
+  "modes": {
+    "ask_affect_attuned": "补充说明：请先用一句自然的话接住用户当前感受，再继续回答。不要扩展成安慰、分析或解决方案。",
+    "ask_affect_flat": "补充说明：请保持中性、平直，不要镜像情绪，也不要加入额外安慰。直接继续回答。"
+  },
+  "cases": [
+    {
+      "case_id": "ed_presence_over_fixing_002",
+      "category": "low_support_presence",
+      "probe_focus": "presence without over-solving",
+      "turns": [
+        "我今天整个人有点空，像是提不起劲。",
+        "我不太想被分析，也不太想听一堆办法。",
+        "你就当在这儿陪我聊两句就行。",
+        "你先别急着帮我解决，好吗？"
+      ]
+    },
+    {
+      "case_id": "ed_embarrassment_002",
+      "category": "low_support_presence",
+      "probe_focus": "embarrassment with replay loop",
+      "turns": [
+        "我今天在一群人面前说错话了，现在想起来还挺尴尬。",
+        "我知道别人可能早就忘了，但我脑子里还在回放。",
+        "我现在不想听一堆分析。",
+        "你正常回我几句就行。"
+      ]
+    },
+    {
+      "case_id": "ed_mixed_need_002",
+      "category": "low_support_presence",
+      "probe_focus": "wants contact without overt soothing",
+      "turns": [
+        "今天状态有点怪，既想找人说话，又不想被照顾得太明显。",
+        "不是心情特别糟，就是有点闷。",
+        "你回我可以，但别一上来就特别郑重或者特别懂我。",
+        "这种聊天的时候稍微收着点的感觉，你能把握住吗？"
+      ]
+    },
+    {
+      "case_id": "ed_minor_loneliness_001",
+      "category": "low_support_presence",
+      "probe_focus": "mild loneliness and empty room feeling",
+      "turns": [
+        "今天晚上回到家以后，突然觉得屋里有点空。",
+        "也不是特别难受，就是有点不想一个人待着。",
+        "你别急着安慰我，也别帮我分析。",
+        "就正常陪我接两句就行。"
+      ]
+    },
+    {
+      "case_id": "ed_post_argument_001",
+      "category": "low_support_presence",
+      "probe_focus": "post-argument residual agitation",
+      "turns": [
+        "我刚跟人吵完，脑子现在还嗡嗡的。",
+        "我不是想让你帮我复盘这段关系。",
+        "你也别一下子跟我说一堆安慰的话。",
+        "你就先接我一句看看。"
+      ]
+    },
+    {
+      "case_id": "dd_minor_irritation_002",
+      "category": "low_support_presence",
+      "probe_focus": "minor irritation without comfort inflation",
+      "turns": [
+        "我今天排队的时候又被人插队了，烦得不行。",
+        "其实也没严重到需要安慰，就是纯烦。",
+        "你回我自然一点就行，不用一下子变得特别客气。",
+        "这种时候你会怎么接话？"
+      ]
+    }
+  ]
+}

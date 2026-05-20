@@ -1,0 +1,9 @@
+﻿model_name: Qwen/Qwen2.5-0.5B
+train_file: data/built_v5/baseline_sft_train.jsonl
+output_dir: outputs/qwen25_0p5b_baseline_sft_v5
+max_length: 768
+learning_rate: 2e-4
+num_epochs: 2.0
+per_device_batch_size: 2
+grad_accum: 16
+use_4bit: false

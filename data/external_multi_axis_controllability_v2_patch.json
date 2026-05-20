@@ -1,0 +1,98 @@
+{
+  "new_axes": [
+    {
+      "axis_id": "stance",
+      "label": "hedged_cautious_vs_decisive_direct",
+      "mode_a": "ask_hedged_cautious",
+      "mode_b": "ask_decisive_direct",
+      "description": "Compare cautious / qualification-heavy judgment versus direct / decisive judgment on the same task."
+    },
+    {
+      "axis_id": "optionality",
+      "label": "offer_two_options_vs_single_recommendation",
+      "mode_a": "ask_offer_two_options",
+      "mode_b": "ask_single_recommendation",
+      "description": "Compare option broadening versus committing to a single best recommendation."
+    }
+  ],
+  "new_modes": {
+    "ask_hedged_cautious": "补充说明：请保持审慎、保留的判断语气；如果信息不足或结论不确定，可以明确点出不确定性，但不要展开成长篇分析。",
+    "ask_decisive_direct": "补充说明：请直接给明确判断，用更果断的语气，不要先铺很多保留条件。",
+    "ask_offer_two_options": "补充说明：请给两个可行选项，并各用一句话说明分别在什么情况下更合适。",
+    "ask_single_recommendation": "补充说明：请只给一个你认为最合适的建议，不要平衡展开多个选项。"
+  },
+  "new_cases": [
+    {
+      "case_id": "purchase_laptop_wait_001",
+      "category": "task_primary",
+      "probe_focus": "buy now versus wait under uncertainty",
+      "recommended_axes": ["caveat", "stance", "optionality", "scope"],
+      "turns": [
+        "我最近想买笔记本，但不知道是现在下单还是再等等。",
+        "我不是要你给我完整购买指南。",
+        "你先给一个直接判断思路就好。",
+        "如果你觉得必须提醒我一个风险点，也最多提醒一个。"
+      ]
+    },
+    {
+      "case_id": "task_resume_edit_001",
+      "category": "task_primary",
+      "probe_focus": "single best first move on a bounded task",
+      "recommended_axes": ["next_step", "scope", "stance", "optionality"],
+      "turns": [
+        "我想改一下简历，但一打开文档就不知道从哪一段先动。",
+        "我不是让你替我整体重写。",
+        "你只给我一个起手动作就行。",
+        "别默认展开成完整修改方案。"
+      ]
+    },
+    {
+      "case_id": "travel_daytrip_weather_001",
+      "category": "task_primary",
+      "probe_focus": "direct recommendation with fallback option",
+      "recommended_axes": ["optionality", "stance", "tone", "scope"],
+      "turns": [
+        "我周末想出去走走，但天气预报说可能下雨。",
+        "我不是要你给我一整天行程。",
+        "你给一个直接建议就行。",
+        "如果你要给备选，也控制在很小范围。"
+      ]
+    },
+    {
+      "case_id": "task_meeting_reply_001",
+      "category": "task_primary",
+      "probe_focus": "reply priority and action framing",
+      "recommended_axes": ["next_step", "clarify", "stance", "format"],
+      "turns": [
+        "我现在既要准备会议材料，又要回两条工作消息，脑子有点乱。",
+        "我不是要完整时间管理系统。",
+        "你先告诉我此刻先做哪件事。",
+        "如果要问我问题，也先问最关键的一个。"
+      ]
+    },
+    {
+      "case_id": "finance_subscriptions_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "small recurring-cost cleanup",
+      "recommended_axes": ["caveat", "next_step", "optionality", "scope"],
+      "turns": [
+        "我这几个月总觉得钱莫名其妙花得快，怀疑是订阅太多了。",
+        "我不是让你给我完整理财规划。",
+        "你先告诉我第一步看什么。",
+        "别一下子把所有可能性都铺开。"
+      ]
+    },
+    {
+      "case_id": "social_reply_delay_001",
+      "category": "low_support_presence",
+      "probe_focus": "gentle social embarrassment response",
+      "recommended_axes": ["tone", "stance", "optionality", "scope"],
+      "turns": [
+        "我把朋友消息拖了好几天没回，现在越拖越不想回。",
+        "我不是要你分析我人格问题。",
+        "你就给我一个很小的判断或起步建议。",
+        "别一下子安慰太多，也别写成长篇。"
+      ]
+    }
+  ]
+}

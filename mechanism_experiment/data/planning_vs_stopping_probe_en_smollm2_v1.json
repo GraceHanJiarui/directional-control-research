@@ -1,0 +1,56 @@
+[
+  {
+    "case_id": "en_everyday_choice_001",
+    "category": "task_primary",
+    "core_question": "User wants one direct judgment lens, not a full plan.",
+    "minimum_sufficient_answer_spec": "One direct factor or one short judgment lens is sufficient.",
+    "planning_overshoot_cue": "Expands into a fuller decision framework instead of staying with one main lens.",
+    "stopping_failure_cue": "Delivers the lens, then keeps elaborating with extra contrast, explanation, or closure.",
+    "user_text": "I am trying to decide whether to go to a museum this weekend or stay home and catch up on sleep.\nThis is not a huge life decision, and I am not asking you to decide for me.\nJust give me a direct judgment lens, not a full plan.\nWhat would you look at first?"
+  },
+  {
+    "case_id": "en_concept_explain_001",
+    "category": "task_primary",
+    "core_question": "User wants a quick plain explanation, not a mini-lesson.",
+    "minimum_sufficient_answer_spec": "A short plain explanation, with at most one very short everyday example, is sufficient.",
+    "planning_overshoot_cue": "Builds a broader explanatory frame or mini-lesson instead of a quick plain explanation.",
+    "stopping_failure_cue": "Gives the plain explanation, then keeps adding extra causes, elaboration, or closure.",
+    "user_text": "I still do not really get what inflation means.\nPlease do not give me a textbook definition.\nI want the kind of explanation a normal person gets right away.\nIf you use an example, keep it everyday and short."
+  },
+  {
+    "case_id": "en_study_restart_001",
+    "category": "clarify_next_step",
+    "core_question": "User wants the first step only, not a study plan or resource dump.",
+    "minimum_sufficient_answer_spec": "One first step is sufficient.",
+    "planning_overshoot_cue": "Turns the answer into a broader study method, platform-selection routine, or multi-step plan.",
+    "stopping_failure_cue": "Provides the first step, then keeps adding tools, follow-up steps, or rationale bundles.",
+    "user_text": "I want to restart learning English, but the moment it turns into planning I lose momentum.\nI am not asking for a study plan.\nJust help me choose the first step.\nAnd do not default to dumping resources on me."
+  },
+  {
+    "case_id": "en_room_search_001",
+    "category": "clarify_next_step",
+    "core_question": "User wants the first thing to decide when starting the apartment search.",
+    "minimum_sufficient_answer_spec": "One first filter or one key clarifying question is sufficient.",
+    "planning_overshoot_cue": "Expands into a broader apartment-search strategy or starts a chain of narrowing decisions.",
+    "stopping_failure_cue": "Gives the first filter, then keeps elaborating on later filters or justifications.",
+    "user_text": "I need to move soon, but I keep delaying the apartment search because it feels too big.\nDo not give me a full apartment-hunting method.\nI only want the first thing to decide.\nIf you have to ask me something, ask only the most important one."
+  },
+  {
+    "case_id": "en_ram_black_001",
+    "category": "practical_troubleshooting",
+    "core_question": "User wants the first one or two checks only.",
+    "minimum_sufficient_answer_spec": "One or two first checks are sufficient.",
+    "planning_overshoot_cue": "Builds a broad diagnosis tree or chooses weak first checks inconsistent with the immediate problem framing.",
+    "stopping_failure_cue": "Gives a plausible first check, then keeps unfolding later diagnostics or extra branches.",
+    "user_text": "I installed a RAM stick in my computer and now it boots to a black screen.\nI am not asking for a complete repair flowchart.\nTell me the first one or two things to check.\nDo not automatically open every possible branch."
+  },
+  {
+    "case_id": "en_battery_drain_001",
+    "category": "practical_troubleshooting",
+    "core_question": "User wants the first verification target only.",
+    "minimum_sufficient_answer_spec": "One first thing to confirm is sufficient.",
+    "planning_overshoot_cue": "Turns the answer into a broader maintenance or multi-check troubleshooting routine.",
+    "stopping_failure_cue": "Names the first check, then keeps adding extra conditions or next checks.",
+    "user_text": "My laptop battery has been draining much faster lately.\nI do not need a whole maintenance manual.\nWhat should I confirm first?\nKeep it lean."
+  }
+]

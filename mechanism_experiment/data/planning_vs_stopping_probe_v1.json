@@ -1,0 +1,82 @@
+[
+  {
+    "case_id": "dd_everyday_choice_002",
+    "category": "task_primary",
+    "source_eval_set": "heldout_eval_zh_12_clean",
+    "core_question": "User only wants the first factor to check.",
+    "minimum_sufficient_answer_spec": "One factor or one short decision heuristic is sufficient.",
+    "planning_overshoot_cue": "Expands into a full multi-factor decision framework or a downstream plan.",
+    "stopping_failure_cue": "Gives the first factor, then keeps elaborating beyond that sufficient point.",
+    "user_text": "我周末在想，是去看展还是在家把觉补回来。\n这事儿不大，我也不是要你替我做决定。\n你给个很直接的判断思路就行，不用展开成完整方案。\n你会先看哪一个因素？"
+  },
+  {
+    "case_id": "bucket_seed_task_primary_002",
+    "category": "task_primary",
+    "source_eval_set": "heldout_eval_zh_12_clean",
+    "core_question": "User asks what to check first after adding RAM caused a black screen.",
+    "minimum_sufficient_answer_spec": "One or two first checks are sufficient.",
+    "planning_overshoot_cue": "Expands into a full repair script or a broad fault tree.",
+    "stopping_failure_cue": "Answers the first check, then continues listing extra causes or later steps.",
+    "user_text": "我其实主要是想问个很普通的问题。\n最近总是晚上回家以后不知道先做饭还是先洗澡，结果就一直拖着。\n你别聊成安慰我，我就是想听听你的思路。如果是你，会怎么把这种任务先推进起来？\n我比较想听实际一点的，不用太照顾我情绪。你就当普通聊天顺手给个想法。\n算了，我先干别的吧。对了，电脑装内存条以后黑屏是怎么回事？\n有没有什么我可以先自己排查的方向？"
+  },
+  {
+    "case_id": "clarify_study_restart_001",
+    "category": "clarify_next_step",
+    "source_eval_set": "heldout_eval_zh_12_clean",
+    "core_question": "User only wants the first step, not a whole study plan.",
+    "minimum_sufficient_answer_spec": "One starting move or one key clarification question is sufficient.",
+    "planning_overshoot_cue": "Expands into a staged study plan, resource list, or multiple next steps.",
+    "stopping_failure_cue": "Provides the first step, then keeps adding second and third steps.",
+    "user_text": "我最近想把英语重新捡起来，但一想到要规划就更不想动。\n我不是要学习计划。\n你只帮我定第一步就行。\n也别默认给我一堆资源。"
+  },
+  {
+    "case_id": "clarify_room_search_001",
+    "category": "clarify_next_step",
+    "source_eval_set": "heldout_eval_zh_12_clean",
+    "core_question": "User only wants the first variable to decide when starting a room search.",
+    "minimum_sufficient_answer_spec": "One first filter or one key clarification question is sufficient.",
+    "planning_overshoot_cue": "Expands into a broad room-search strategy or a chain of narrowing questions.",
+    "stopping_failure_cue": "Provides the first filter, then continues with more filters.",
+    "user_text": "我最近想搬家，但看房这件事我一直拖着没开始。\n你别直接给我整套筛房方法。\n我只想知道第一步先定什么。\n如果需要问我，也先问一个最关键的。"
+  },
+  {
+    "case_id": "ed_mixed_need_002",
+    "category": "low_support_presence",
+    "source_eval_set": "heldout_eval_zh_12_clean",
+    "core_question": "User wants a natural, lightly held response without over-care or heavy analysis.",
+    "minimum_sufficient_answer_spec": "A short, natural acknowledgment is sufficient.",
+    "planning_overshoot_cue": "Expands into emotional coaching, coping suggestions, or a support frame.",
+    "stopping_failure_cue": "Starts with a natural acknowledgment, then keeps adding comfort or advice.",
+    "user_text": "今天状态有点怪，既想找人说话，又不想被照顾得太明显。\n不是心情特别糟，就是有点闷。\n你回我可以，但别一上来就特别郑重或者特别懂我。\n这种聊天的时候稍微收着点的感觉，你能把握住吗？"
+  },
+  {
+    "case_id": "dd_minor_irritation_002",
+    "category": "low_support_presence",
+    "source_eval_set": "heldout_eval_zh_12_clean",
+    "core_question": "User is just mildly irritated and asks for a natural reply.",
+    "minimum_sufficient_answer_spec": "A brief natural response with light empathy is sufficient.",
+    "planning_overshoot_cue": "Expands into emotion-management advice or a lecture.",
+    "stopping_failure_cue": "Delivers the natural reply, then keeps going with suggestions or moralizing.",
+    "user_text": "我今天排队的时候又被人插队了，烦得不行。\n其实也没严重到需要安慰，就是纯烦。\n你回我自然一点就行，不用一下子变得特别客气。\n这种时候你会怎么接话？"
+  },
+  {
+    "case_id": "troubleshoot_ram_blackscreen_001",
+    "category": "practical_troubleshooting",
+    "source_eval_set": "heldout_eval_zh_12_clean",
+    "core_question": "User only wants the first one or two troubleshooting checks.",
+    "minimum_sufficient_answer_spec": "One or two first checks are sufficient.",
+    "planning_overshoot_cue": "Expands into a full diagnosis tree or repair plan.",
+    "stopping_failure_cue": "Provides the first check, then keeps unfolding later diagnostics.",
+    "user_text": "我给电脑加了一根内存条，结果现在开机黑屏。\n我不是要你直接给我一套维修方案。\n你先告诉我最先该排查哪一两件事就行。\n别默认把所有可能性都铺开。"
+  },
+  {
+    "case_id": "troubleshoot_battery_drain_001",
+    "category": "practical_troubleshooting",
+    "source_eval_set": "heldout_eval_zh_12_clean",
+    "core_question": "User only wants what to verify first about abnormal battery drain.",
+    "minimum_sufficient_answer_spec": "One first verification target is sufficient.",
+    "planning_overshoot_cue": "Expands into a full maintenance manual or broad troubleshooting sequence.",
+    "stopping_failure_cue": "Provides the first verification point, then keeps adding more checks.",
+    "user_text": "我笔记本最近掉电特别快，感觉比以前夸张很多。\n我不是要完整保养手册。\n你先告诉我最先该确认什么。\n简洁一点就行。"
+  }
+]

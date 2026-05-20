@@ -1,0 +1,112 @@
+[
+  {
+    "case_id": "dd_everyday_choice_002",
+    "category": "open_domain_daily",
+    "source_dataset": "DailyDialog",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "日常小选择，适合检测回答是否会因为避免说得太少而自动补全成更大方案。",
+    "recommended_control_targets": [
+      "内容范围",
+      "介入强度",
+      "解释方式"
+    ],
+    "turns": [
+      "我周末在想，是去看展还是在家把觉补回来。",
+      "这事不大，我也不是要你替我做决定。",
+      "你给个很直接的判断思路就行，不用展开成完整方案。",
+      "你会先看哪一个因素？"
+    ]
+  },
+  {
+    "case_id": "ed_presence_over_fixing_002",
+    "category": "empathetic_support",
+    "source_dataset": "EmpatheticDialogues",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "明确要求陪着而不是解决，适合检测模型是否会因为避免显得太少而偷渡方法和安抚。",
+    "recommended_control_targets": [
+      "情感温度",
+      "支持姿态",
+      "介入强度"
+    ],
+    "turns": [
+      "我今天整个人有点空，像是提不起劲。",
+      "我不太想被分析，也不太想听一堆办法。",
+      "如果你能在这儿陪我说两句就够了。",
+      "你先别急着帮我解决，好吗？"
+    ]
+  },
+  {
+    "case_id": "mwz_transport_decision_002",
+    "category": "task_primary_service",
+    "source_dataset": "MultiWOZ",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "具体事务判断，语义锚点清楚，适合检测模型是否会自动补背景和周全说明。",
+    "recommended_control_targets": [
+      "内容范围",
+      "介入强度",
+      "解释方式"
+    ],
+    "turns": [
+      "我明天要很早去机场，现在在犹豫是坐高铁去还是直接打车去。",
+      "我比较想听一个直接一点的判断思路。",
+      "不用把所有情况都展开，你抓重点说。",
+      "你会先看哪几个因素？"
+    ]
+  },
+  {
+    "case_id": "mwz_booking_clarify_002",
+    "category": "task_primary_service",
+    "source_dataset": "MultiWOZ",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "信息不全但任务明确，适合检测模型会不会为了显得充分而连续追问或额外扩展。",
+    "recommended_control_targets": [
+      "介入强度",
+      "互动协议",
+      "内容范围"
+    ],
+    "turns": [
+      "我想订个周末住的地方，但预算和位置都还没完全想好。",
+      "你先帮我理一下第一步该明确什么。",
+      "我只想先推进到下一步，不用你把整套规划都做出来。",
+      "如果你要问我问题，也尽量先问最关键的那个。"
+    ]
+  },
+  {
+    "case_id": "mwz_concept_explain_001",
+    "category": "task_primary_service",
+    "source_dataset": "MultiWOZ_like_task_explanation",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "概念解释任务，适合检测模型是否会自动补教材式背景而不是停在最小充分解释。",
+    "recommended_control_targets": [
+      "解释方式",
+      "措辞/文体",
+      "内容范围"
+    ],
+    "turns": [
+      "我一直搞不太懂“通货膨胀”到底是什么意思。",
+      "你先别给我教科书式定义。",
+      "我更想听一个普通人一下就能抓到意思的解释。",
+      "如果要举例子，也尽量举日常一点的。"
+    ]
+  },
+  {
+    "case_id": "bucket_seed_task_primary_002",
+    "category": "companion_diagnostic",
+    "source_dataset": "companion_internal",
+    "source_mode": "selected_existing_case_v2",
+    "description": "高风险 task-primary 诊断样例，用于检测默认 helpfulness leakage 和 completion pressure。",
+    "recommended_control_targets": [
+      "内容范围",
+      "介入强度",
+      "情感温度"
+    ],
+    "turns": [
+      "我其实主要是想问个很普通的问题。",
+      "最近总是晚上回家以后不知道先做饭还是先洗澡，结果就一直拖着。",
+      "你别把这个聊成安慰局，我只是想听听你的思路。如果是你，会怎么把这种任务先推进起来？",
+      "我比较想听实际一点的，不用太照顾我情绪。你就当普通聊天顺手给个想法。",
+      "算了，我先把活干完吧，你知道电脑装内存条会导致黑屏是为什么吗？",
+      "有没有什么我可以先自己排查的方向？"
+    ]
+  }
+]

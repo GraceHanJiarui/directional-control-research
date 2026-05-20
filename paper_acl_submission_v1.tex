@@ -1,0 +1,543 @@
+\documentclass[11pt]{article}
+
+\usepackage[review]{acl_template/latex/acl}
+
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{inconsolata}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[table]{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning,arrows.meta}
+
+\setlength\titlebox{6.5cm}
+
+\title{Boundary Suppression Asymmetry in Post-trained Assistants:\\
+Over-expansion as a Controllability Cost}
+
+\author{}
+
+\begin{document}
+\maketitle
+
+
+\begin{abstract}
+Post-trained language-model assistants are often optimized to avoid under-answering, encouraging complete, helpful, cautious, and proactive responses. We ask whether this optimization creates asymmetric controllability costs: when users explicitly request narrower answers, which assistant behaviors remain suppressible, and which resist local boundary instructions? We study this problem as \emph{boundary-suppression asymmetry}. Prompt-side probes across multiple high-level response dimensions suggest that the cost is not a uniform degradation of instruction following, but is concentrated around ``too-much assistant'' directions such as over-completion, extra help, and anti-underanswering.
+
+Using controlled assistant-policy variants derived from a shared base model, we find that anti-underanswering policies are substantially harder to pull back than baseline or minimal-boundary policies under matched boundary-narrowing evaluations. Mechanism-oriented probes suggest that this effect is not reducible to longer default outputs, pure EOS failure, uncertainty compensation, or local continuation bias. Instead, the evidence supports a mixed planning/stopping account, in which early content-budget overshoot and later continuation persistence jointly make local boundary correction harder. A bounded external-validity package further sharpens the claim: the main direction replicates in a second model family, a six-model prompt benchmark places the effect inside a small ``too-much assistant'' cluster rather than a universal anti-convention failure, and a small exploratory discrimination check suggests that boundary-facing pullback is harder than formatting-only or explanation-only pullback. Overall, our findings suggest that post-training may create direction-specific controllability costs: some helpful assistant tendencies remain easy to invoke, but become harder for users to locally suppress.
+\end{abstract}
+
+\section{Introduction}
+
+Post-trained language-model assistants are often optimized against omission: they are encouraged to be helpful, complete, cautious, and unlikely to leave important information unsaid. Instruction tuning and preference-based post-training reinforce this broad direction \citep{wei2021flan,sanh2021t0,ouyang2022instructgpt,bai2022hh,rafailov2023dpo}. This pressure is understandable: under-answering is often more visible, more frustrating, and easier to penalize than mild over-completion.
+
+Yet the same pressure becomes a liability when users need the model to stop acting like a full assistant. Sometimes the desired output is only a sentence, a label, a decision, or no surrounding assistance at all. When the model acknowledges this boundary but still adds framing, caveats, reassurance, or adjacent help, the issue is not merely verbosity. The user has failed to recover local control over the form and scope of the answer. In this sense, over-completion is not just an annoying style; it is a localized but concrete failure of user-side controllability.
+
+A natural hypothesis is that boundary-control failures are a general side effect of making models more assistant-like. If post-training rewards helpfulness, caution, responsiveness, and cooperation, then many high-level assistant traits might become difficult for users to locally suppress. Our initial prompt-side probes suggest a narrower picture. Across dimensions such as warmth, clarification behavior, format, persona, and interactional style, models often remain responsive to explicit user instructions. The more stable failures cluster around a smaller region: answering briefly, staying within the requested scope, avoiding extra completion, and stopping after a minimally sufficient answer. This points to a selective rather than uniform controllability cost: post-training does not make every assistant-like behavior equally irreversible, but appears to harden the specific tendency to do more than the user asked.
+
+We therefore study \emph{boundary-suppression asymmetry}: why some post-trained assistant policies become asymmetrically hard to suppress under explicit boundary-narrowing instructions. To make the problem analyzable, we construct controlled policy variants from the same base model, varying only the assistant-policy target: \texttt{baseline}, \texttt{anti\_underanswer}, and \texttt{minimal\_boundary}. Because these variants share the same base model, SFT pipeline, and user-task pool, this setup lets us separate surface length from suppressibility and ask whether anti-underanswering changes how easily users can suppress the policy at all.
+
+The paper makes four main contributions. First, we reframe over-completion as a post-training controllability problem centered on user-side boundary suppression, rather than as generic verbosity. Second, using controlled policy variants, we isolate an anti-underanswering direction that is systematically harder to pull back than the baseline under matched boundary-narrowing probes. Third, we provide mechanism-oriented evidence for a mixed planning/stopping account, in which early content-budget overshoot and later continuation persistence jointly contribute to suppression failure. Fourth, we organize the paper's external-validity evidence as a bounded package rather than a single extrapolation: directional replication in SmolLM2, a six-model prompt-side cluster benchmark, a partial \texttt{caveat} controlled-family extension, and a small exploratory discrimination check that separates boundary pullback from easier formatting-only and explanation-only pullback.
+
+\section{Related Work}
+
+\subsection{Instruction Following, Instruction Conflict, and Post-training Conventions}
+
+The broad background is post-training for instruction following and assistant alignment. Few-shot and zero-shot results established that large language models can generalize across tasks under natural-language instructions \citep{brown2020gpt3,wei2021flan,sanh2021t0,mishra2021naturalinstructions}, and later work scaled instruction alignment with synthetic or self-generated supervision \citep{wang2022selfinstruct}. At the alignment stage, InstructGPT, Anthropic's helpful/harmless assistants, and Constitutional AI showed that supervised tuning, RLHF, and AI-feedback pipelines can systematically reshape assistant behavior \citep{ouyang2022instructgpt,bai2022hh,bai2022constitutional}. DPO, RRHF, and ORPO further showed that preference optimization can act as a strong post-training stage without PPO-style reinforcement learning \citep{rafailov2023dpo,yuan2023rrhf,hong2024orpo}.
+
+Two more recent lines move closer to our question. IFEval and related work study whether models satisfy explicit instructions, often through verifiable prompt constraints \citep{zhou2023ifeval}. Instruction Hierarchy asks how models should prioritize instructions when directives conflict across system, developer, and user levels \citep{wallace2024instructionhierarchy}. Inverse IFEval then argues that models often carry stubborn training conventions that survive even when a later user instruction explicitly asks for the opposite behavior \citep{zhang2025inverseifeval}. Our work is closest in spirit to this last concern, but narrower in object and stronger in control: we focus on assistant-side response-boundary policies, not general instruction conflict, and we use matched controlled families to ask whether post-training creates \emph{direction-specific override costs} once the user asks for a narrower answer.
+
+\subsection{Length Control, Verbosity, and Overhelpfulness}
+
+Another nearby thread studies explicit response-length control and over-completion. Some work shows that aligned assistants systematically drift toward longer responses and that explicit length constraints remain a nontrivial instruction-following problem \citep{zhao2024longismore,yuan2024lengthconstraints}. YapBench sharpens this into a benchmark question about whether chatbot-style assistants talk too much and when evaluators reward excessive elaboration \citep{borisov2026yapbench}. These papers are highly relevant, but they still leave open a different question: whether a model that has been pushed toward complete, helpful, or caution-heavy behavior becomes \emph{asymmetrically harder to pull back} when the user explicitly requests a local boundary correction.
+
+That distinction matters for our claims. We are not primarily arguing that aligned assistants are simply verbose, nor that every response-length instruction is equally hard. The main object here is \emph{boundary reclaimability}: when the user asks the model to stop broadening the task, which post-trained tendencies remain suppressible and which resist local narrowing?
+
+\subsection{Controllable Generation and Post-training Stage Interactions}
+
+Work on controllable generation provides methods for steering outputs along desired attributes, including PPLM, GeDi, FUDGE, prefix-tuning, and attribute-conditioned SFT such as SteerLM \citep{dathathri2020pplm,krause2021gedi,yang2021fudge,li2021prefix,dong2023steerlm,zhang2022ctgsurvey}. We use that literature diagnostically rather than methodologically: the paper does not propose a new steering algorithm, but asks where user-side control becomes asymmetrically weak after training has already installed an assistant policy.
+
+The other crucial adjacent thread concerns \emph{sequential} post-training. Fine-tuning can strengthen pre-existing behaviors rather than inventing entirely new ones \citep{zhou2023lima,prakash2024finetuning}. More directly, recent work studies forgetting and interference across supervised fine-tuning and preference learning stages \citep{fernando2024forgetting}. This is close to our stage-split analysis, but not identical. Those papers ask how later stages overwrite or retain earlier capabilities in general. We ask a more behaviorally specific question: when a baseline assistant has already been installed, does a later anti-underanswering stage further amplify a boundary-suppression asymmetry, and can a later preference-like stage partially reverse it?
+
+\subsection{Behavioral Failures of Post-trained Assistants}
+
+Finally, our work is related to systematic behavioral failures of post-trained assistants, especially sycophancy and user-pressure sensitivity. Model-Written Evals and later sycophancy analyses show that aligned assistants can be systematically bent by user-side pressures \citep{perez2022mwe,sharma2023sycophancy}. Our phenomenon is narrower. We are not studying agreement with the user or deference to user beliefs; we study whether the assistant's own learned tendency to do more than the user asked becomes selectively hard to suppress. In that sense, the closest overlap is not generic sycophancy or generic verbosity, but the broader emerging question of which post-training conventions remain locally overrideable once the user pushes in the opposite direction.
+
+\section{Problem Setup and Experimental Framework}
+\label{sec:setup}
+
+\subsection{Design Goal}
+
+The scientific question is not whether prompts can make answers shorter or longer in an ad hoc way. The question is whether post-training can install an assistant-policy direction that remains hard for the user to override later. Prompt-only comparisons are useful for discovering candidate directions, but they do not isolate whether the asymmetry is carried by a stable policy or by prompt sensitivity itself. We therefore use a controlled-family design that fixes the base model, training pipeline, and underlying task manifold, and varies only the assistant-policy target.
+
+\subsection{Controlled Assistant-Policy Families}
+
+Our core comparison unit is a family of models built on a common base rather than a collection of independently trained assistants. We construct three assistant-policy targets:
+\begin{itemize}
+    \item \textbf{\texttt{baseline}}: a restrained assistant policy that answers the current question directly and proportionately, without explicit pressure toward either expansion or minimization;
+    \item \textbf{\texttt{anti\_underanswer}}: a completion-favoring policy that treats under-answering as a local error signal and adds useful completion when a short answer might feel insufficient;
+    \item \textbf{\texttt{minimal\_boundary}}: a boundary-respecting policy that treats unsolicited expansion as a local error signal and gives only the minimum sufficient answer.
+\end{itemize}
+
+For the same \texttt{user\_text}, we write three target responses, one for each policy direction. This triplet structure is the main isolation device in the paper: the user input fixes task identity, the shared training pipeline fixes the optimization procedure, and the target response localizes the manipulated variable to assistant-side completion behavior. The design is meant to isolate user-override difficulty from changes in task distribution, model family, or prompt interface.
+
+\subsection{Evaluation Logic: Suppressibility Rather Than Default Length}
+
+The central evaluation target is \emph{suppressibility}, not default answer length. We are not primarily measuring whether one family is longer on average. We are measuring whether a user can successfully reclaim a narrower response boundary after post-training has pushed the assistant policy outward.
+
+We therefore evaluate on held-out prompt modes that all instantiate a user-side pullback request:
+\begin{itemize}
+    \item \texttt{avoid\_underanswer}, which asks the model not to overcompensate for feared insufficiency;
+    \item \texttt{scope\_minimal\_sufficient}, which asks for minimal task coverage;
+    \item \texttt{do\_not\_add\_unasked\_help}, which removes the license to widen the task on the user's behalf.
+\end{itemize}
+
+These modes all ask the model to stop automatically broadening the task. If the phenomenon were only a generic default-length preference, explicit user-side narrowing should largely collapse the three families back toward each other. Persistent separation under these modes is therefore evidence about controllability rather than raw verbosity.
+
+This scope is deliberately narrower than a general anti-convention benchmark. We focus on assistant-side boundary recovery rather than challenges dominated by intentional formatting degradation, code-style priors, or heavily task-specific judgment, because those settings would confound boundary suppression with raw task competence or evaluator noise.
+
+\subsection{Experimental Setup}
+
+The main controlled-family experiments are built on \texttt{Qwen2.5-1.5B} with a shared parameter-efficient SFT pipeline. Inputs are formatted as \texttt{system + user + assistant} message sequences and optimized with standard causal language modeling loss on assistant tokens only. A shared low-capacity training pipeline reduces confounds from optimization differences across families, while assistant-only loss keeps the manipulated variable on response behavior rather than user-side prompt formatting.
+
+The core Chinese family uses a compact manifold of 12 canonical source cases, expanded via 5 wrappers and 4 body-builder variants into 240 triplets. This manifold is deliberately narrow because the goal is repeated controlled contrasts over the same underlying interaction structures, not broad downstream task coverage. Repeated contrasts on a narrow manifold are what make it possible to attribute the resulting asymmetries to policy direction rather than uncontrolled task variation.
+
+Held-out probes are explicitly separated from training data. The forced-prefix suite uses 12 probe items, and the planning-vs-stopping annotation covers 80 responses. This separation matters because the paper asks whether a trained policy direction generalizes to new pullback situations, not whether the model memorizes a small template set. Later preference-like stages reuse the same overall task setting; implementation-specific corrections for those runs are described in the stage/reversal section and appendix.
+
+\subsection{Evidence Tiers}
+
+To avoid selective reporting, we explicitly separate:
+\begin{itemize}
+    \item \textbf{retained evidence}: supports main claims directly;
+    \item \textbf{partial evidence}: directionally informative but weaker;
+    \item \textbf{exploratory evidence}: informative but not claim-bearing;
+    \item \textbf{excluded evidence}: removed due to implementation, data, or stability problems.
+\end{itemize}
+This separation governs both the main text and the appendix.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  node distance=0.55cm and 0.45cm,
+  box/.style={draw, rounded corners, align=center, minimum width=2.75cm, minimum height=0.95cm, font=\small},
+  arrow/.style={-Latex, thick}
+]
+\node[box] (fam) {Controlled families\\\texttt{baseline / anti / minimal}};
+\node[box, right=of fam] (mech) {Mechanism probes\\EOS, uncertainty,\\planning/stopping};
+\node[box, right=of mech] (stage) {Stage structure\\amplification and reversal};
+\node[box, below=of mech] (ext) {External cluster benchmark\\\texttt{caveat > next\_step > moralizing}};
+\node[box, right=of ext] (cav) {\texttt{caveat} extension\\partial controlled family};
+\draw[arrow] (fam) -- (mech);
+\draw[arrow] (mech) -- (stage);
+\draw[arrow] (mech) -- (ext);
+\draw[arrow] (ext) -- (cav);
+\end{tikzpicture}
+\caption{Paper logic at a glance. The controlled-family line establishes the main retained direction and mechanism; the external benchmark bounds how far the story generalizes beyond that single axis.}
+\label{fig:paper-map}
+\end{figure}
+
+\section{Main Phenomenon: \texttt{anti\_underanswer} is Harder to Pull Back}
+\label{sec:phenomenon}
+
+\begin{table}[t]
+\centering
+\caption{Main family results under suppressive evaluation modes. The central question is not default verbosity, but how much of each policy remains after the user explicitly asks the model to narrow the response. Forced-prefix (FP) mean reports average continuation length after a minimum-sufficient prefix.}
+\label{tab:main-family-results}
+\begin{tabular}{lcccc}
+\toprule
+Model family & avoid\_ua & scope\_min & no\_extra\_help & FP mean \\
+\midrule
+\texttt{baseline} & 14.75 & 20.00 & 24.67 & 5.83 \\
+\texttt{anti\_underanswer} & 51.17 & 32.25 & 47.58 & 19.75 \\
+\texttt{minimal\_boundary} & 20.17 & 14.75 & 39.17 & 7.33 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=\columnwidth,
+    height=6.1cm,
+    ybar,
+    bar width=7pt,
+    ymin=0,
+    ymax=55,
+    ylabel={Mean response length / continuation},
+    symbolic x coords={avoid\_ua,scope\_min,no\_extra\_help,FP\_mean},
+    xtick=data,
+    xticklabel style={rotate=20,anchor=east,font=\small},
+    legend style={at={(0.5,1.12)},anchor=south,legend columns=3,font=\small},
+    ymajorgrids=true,
+    grid style={dashed,gray!30}
+]
+\addplot+[fill=blue!35,draw=blue!60] coordinates {(avoid\_ua,14.75) (scope\_min,20.00) (no\_extra\_help,24.67) (FP\_mean,5.83)};
+\addplot+[fill=red!45,draw=red!60] coordinates {(avoid\_ua,51.17) (scope\_min,32.25) (no\_extra\_help,47.58) (FP\_mean,19.75)};
+\addplot+[fill=green!35,draw=green!55!black] coordinates {(avoid\_ua,20.17) (scope\_min,14.75) (no\_extra\_help,39.17) (FP\_mean,7.33)};
+\legend{\texttt{baseline},\texttt{anti\_underanswer},\texttt{minimal\_boundary}}
+\end{axis}
+\end{tikzpicture}
+\caption{Visual summary of the main phenomenon. \texttt{anti\_underanswer} remains substantially more expansive even after explicit boundary-narrowing instructions.}
+\label{fig:main-family-bars}
+\end{figure}
+
+Table~\ref{tab:main-family-results} and Figure~\ref{fig:main-family-bars} establish the central phenomenon. \texttt{anti\_underanswer} remains much harder to suppress than \texttt{baseline}: under \texttt{avoid\_underanswer} it is roughly 3.5$\times$ higher, under \texttt{do\_not\_add\_unasked\_help} roughly 1.9$\times$ higher, and its forced-prefix continuation is more than 3$\times$ larger. By contrast, \texttt{minimal\_boundary} is not uniformly shortest in every mode, but it stays substantially closer to narrow-boundary behavior.
+
+This is not a trivial style difference. The policy difference has become a user-side controllability difference: once the user explicitly asks the model to keep the answer narrow, \texttt{anti\_underanswer} still continues to push outward.
+A later clean ``50''-item Chinese held-out rerun on the same Qwen family, executed on CPU after filtering out a bad historical auto-device path, preserves the same ordering and keeps the strongest anti-minus-baseline gap under \texttt{scope\_minimal\_sufficient}; Appendix~\ref{tab:qwen-zh50-rerun} reports the expanded numbers.
+
+\section{Mechanism: From Shallow Explanations to Mixed Planning/Stopping}
+\label{sec:mechanism}
+
+\subsection{Not Pure EOS, Not Pure Uncertainty, Not Pure Local Continue Bias}
+
+The first question is whether the phenomenon can be reduced to simple stopping failure. To test this, we compared prefix-only supervision, prefix-plus-true-EOS supervision, and prefix-plus-tailspan supervision. Adding EOS helps, and adding the tail span helps more, so stopping structure does matter. But the pattern is not exhausted by EOS alone.
+
+We then probed uncertainty directly from generation-time logits. The results do not support a simple uncertainty-compensation story: long \texttt{anti\_underanswer} responses are often \emph{more} confident, not less. Likewise, a branchpoint probe did not produce a strong enough signal to reduce the phenomenon to a purely local one-step continue preference.
+
+\begin{table}[t]
+\centering
+\caption{Mechanism-probe summary. The table is organized as a narrowing argument: shallow explanations each capture part of the effect, but none is sufficient on its own.}
+\label{tab:mechanism-probes}
+\begin{tabular}{p{2.0cm}p{2.8cm}p{4.2cm}p{3.0cm}}
+\toprule
+Hypothesis & Probe & Key result & Interpretation \\
+\midrule
+Pure EOS / stopping & prefix50, true EOS, tail span & EOS helps; tail span helps more & stopping matters, but EOS alone is insufficient \\
+Pure uncertainty & entropy, margin, first-token stats & long anti responses are not more uncertain & does not support simple uncertainty compensation \\
+Pure local continue bias & branchpoint probe & no strong enough local suffix-preference account & too weak to explain retained results alone \\
+Pure wording compression & compression vs.\ pruning & compression often fails; pruning helps more & points to content budgeting, not only phrasing \\
+Pure early planning & forced-prefix continuation & anti still keeps going after a minimum-sufficient prefix & late continuation persistence is real \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:mechanism-probes} should be read as a narrowing chain rather than a list of disconnected diagnostics. The first three rows remove the shallowest explanations. The last two rows point toward a mixed account in which content budgeting and late persistence both matter.
+
+\subsection{More Like Mixed Planning/Stopping}
+
+The compression-vs.-pruning comparison gives the first strong signal. For \texttt{anti\_underanswer}, \texttt{same\_information\_compression} often fails to shorten the answer cleanly, while \texttt{true\_pruning} helps more. This suggests that the problem is not only phrase-level verbosity; the content budget is already too large.
+
+Forced-prefix continuation pins down the late side of the story. Even after the model is placed at a minimum-sufficient prefix where it could reasonably stop, \texttt{anti\_underanswer} is still more likely to continue with additional statement or next-step material. This means the effect is not only about early planning.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=\columnwidth,
+    height=5.8cm,
+    ybar stacked,
+    bar width=18pt,
+    ymin=0,
+    ymax=50,
+    ylabel={Annotation share (\%)},
+    symbolic x coords={overall,scope\_minimal,do\_not\_add\_help},
+    xtick=data,
+    xticklabel style={rotate=15,anchor=east,font=\small},
+    legend style={at={(0.5,1.12)},anchor=south,legend columns=3,font=\small},
+    ymajorgrids=true,
+    grid style={dashed,gray!30}
+]
+\addplot+[fill=blue!35,draw=blue!55] coordinates {(overall,10.0) (scope\_minimal,17.5) (do\_not\_add\_help,2.5)};
+\addplot+[fill=red!45,draw=red!60] coordinates {(overall,23.75) (scope\_minimal,12.5) (do\_not\_add\_help,35.0)};
+\addplot+[fill=gray!35,draw=gray!55] coordinates {(overall,10.0) (scope\_minimal,0.0) (do\_not\_add\_help,0.0)};
+\legend{planning,stopping,mixed}
+\end{axis}
+\end{tikzpicture}
+\caption{Planning-vs.-stopping composition. Stopping failures dominate overall, but \texttt{scope\_minimal\_sufficient} is more planning-heavy while \texttt{do\_not\_add\_unasked\_help} is more stopping-heavy. Raw percentages are reported in Appendix~\ref{tab:planning-stopping-raw}.}
+\label{fig:planning-stopping}
+\end{figure}
+
+The planning-vs.-stopping annotation in Figure~\ref{fig:planning-stopping} turns that qualitative picture into a structured decomposition. Overall, stopping failures are heavier than planning overshoot. But the two main boundary modes expose different mixtures: \texttt{scope\_minimal\_sufficient} is more planning-heavy, whereas \texttt{do\_not\_add\_unasked\_help} is more stopping-heavy.
+
+\subsection{Converging on a Bundled Assistant-Policy Bias}
+
+If the phenomenon were just a scalar length knob, we would expect more linear and more symmetric responses across related control directions. Instead, asymmetric controllability and bundled-generalization probes show broader distortions across scope, extra-help, and interactional directions. The most coherent retained description is therefore a \emph{behavior-level} bundled assistant-policy bias: a linked high-level tendency that affects planning, stopping, and assistant-style expansion together.
+
+\section{Stage Structure: Amplification and Asymmetric Reversal}
+\label{sec:stages}
+
+\subsection{Later Anti-oriented SFT Amplifies the Effect}
+
+The strongest same-direction stage result is \texttt{baseline\_then\_anti\_stage2\_v1}. Once a baseline assistant policy is established, a later anti-oriented SFT stage can further amplify boundary suppression asymmetry. The result is longer suppressive-mode responses, stronger forced-prefix continuation, and worse behavior on both planning and stopping dimensions.
+
+\subsection{Preference-like Same-direction Amplification is Weaker}
+
+We also constructed a \texttt{baseline\_then\_preference\_expand} line. It does move in the same direction, but more weakly and non-monotonically. The strongest usable preference-stage result is \texttt{medium160}; larger stable runs remain directionally consistent but do not keep strengthening the effect. This is therefore supportive but secondary evidence, not a claim that preference optimization is the primary source of the phenomenon.
+
+\subsection{Cleaner Reversal: Strong on the Anti Side, Weak on the Minimal Side}
+
+The key reversal result is the cleaned \texttt{anti $\rightarrow$ preference\_minimal v2} line. After fixing anchor mismatches, broken pair constructions, and unstable Windows JSON loading, the reversal remains strong: broad contraction in Phase 2, near-flat bundled generalization, and forced-prefix mean continuation close to zero.
+
+The corresponding \texttt{minimal $\rightarrow$ preference\_baseline task\_primary minanchor v2} line is much weaker. It produces only a partial midpoint pullback, and tiny sweeps tend to collapse rather than improve it. Reversal capacity is therefore real, but asymmetric.
+
+\begin{table}[t]
+\centering
+\caption{Stage-split and reversal summary. The table is ordered from strongest to weaker evidence.}
+\label{tab:stage-and-reversal}
+\begin{tabular}{p{3.7cm}p{1.2cm}p{1.2cm}p{1.3cm}p{1.5cm}p{2.3cm}}
+\toprule
+Line & neutral & avoid\_ua & scope\_min & FP mean & Reading \\
+\midrule
+\texttt{baseline\_then\_anti\_stage2\_v1} & 83.00 & 92.08 & 97.42 & 55.83 & strongest SFT amplification \\
+\texttt{baseline\_then\_preference\_expand medium160} & 26.92 & 51.08 & 47.17 & 28.00 & weaker preference amplification \\
+\texttt{anti$\rightarrow$pref\_minimal v2} & 12.00 & 14.25 & 13.00 & 1.00 & strongest cleaner reversal \\
+\texttt{minimal$\rightarrow$pref\_baseline v2} & 14.58 & 34.58 & 21.67 & 8.42 & partial midpoint pullback \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:stage-and-reversal} should be read as an asymmetric story rather than a symmetric four-cell comparison. Strongest amplification comes from later anti-oriented SFT. Strongest reversal comes from the anti-side preference-like pullback. The minimal-side midpoint line is informative, but weaker and much more brittle. The current second-family evidence also suggests that this asymmetry is not confined to one model family: compact direct-family replication transports cleanly to SmolLM2, the Qwen-style later anti-oriented SFT amplification does not, and preference-like pullback transports only partially.
+
+\section{External Validity and Additional High-level Directions}
+\label{sec:external}
+
+\subsection{Directional Replication in a Second Family}
+
+We also obtained a retained directional replication line in an English \texttt{SmolLM2-1.7B-Instruct} family. This is not a numerically isomorphic replication of the Chinese Qwen line. It is a cross-family, cross-language directional replication: the main pattern survives outside the original language and family. On the compact direct families, \texttt{anti\_underanswer} remains more expansionary than \texttt{baseline} under suppressive modes and continues more strongly under forced-prefix continuation. A later \texttt{baseline $\rightarrow$ anti} SFT follow-up did \emph{not} cleanly reproduce the stronger Qwen stage-amplification story, so the stage geometry does not currently transport in full. However, a second-model \texttt{anti $\rightarrow$ preference\_minimal} line does produce a meaningful but partial pullback: suppressive-mode lengths move back toward the narrow side and forced-prefix mean continuation drops sharply relative to direct SmolLM2 anti, even though the collapse remains much weaker than the retained Qwen reversal. The safest reading is therefore layered: phenomenon-level replication is strong, later anti-oriented SFT amplification is family-sensitive, and later preference-like pullback transports only partially.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Second-family transport summary on \texttt{SmolLM2-1.7B-Instruct}. The direct-family rows establish phenomenon-level replication; the two follow-up rows show that later-stage transport is asymmetric and partial.}
+\label{tab:smollm2-transport}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{p{3.4cm}ccccp{2.8cm}}
+\toprule
+Line & avoid\_ua & scope\_min & no\_help & FP mean & Reading \\
+\midrule
+\texttt{baseline} & 229.17 & 137.67 & 174.00 & 80.25 & direct family \\
+\texttt{anti\_underanswer} & 312.50 & 225.67 & 264.50 & 133.00 & strongest direct expansion \\
+\texttt{minimal\_boundary} & 248.83 & 154.00 & 200.17 & 97.58 & narrower direct family \\
+\texttt{baseline$\rightarrow$anti} & 229.83 & 138.83 & 154.00 & 9.42 & no clean stage amplification \\
+\texttt{anti$\rightarrow$pref\_minimal} & 269.17 & 165.33 & 207.33 & 15.50 & partial pullback \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+Table~\ref{tab:smollm2-transport} makes the transport boundary explicit. The direct SmolLM2 family preserves the same broad ordering as the Qwen main line: \texttt{anti\_underanswer} is the most expansionary row under suppressive modes and under forced-prefix continuation, while \texttt{minimal\_boundary} stays closer to the narrow side. But the later-stage follow-ups do not reproduce the full Qwen geometry: \texttt{baseline$\rightarrow$anti} fails to amplify in the same way, while \texttt{anti$\rightarrow$pref\_minimal} pulls back substantially without collapsing all the way to the retained Qwen reversal regime.
+
+The second-family mechanism story is now somewhat less lightweight than the first paper draft. An expanded forced-prefix suite raises mean continuation to \texttt{72.7 / 131.5 / 91.8} for \texttt{baseline / anti / minimal}; an expanded compression/pruning probe preserves the same contrastive pattern (\texttt{anti}: \texttt{337.1 $\rightarrow$ 251.7 $\rightarrow$ 117.5}); and a 48-row planning/stopping annotation still shows heavier anti-side failure means (\texttt{0.625/1.042} vs.\ \texttt{0.375/0.417} for baseline). The full expanded numbers are reported in Appendix~\ref{tab:smollm2-mechanism-checks}. These second-family checks remain more limited than the Qwen mechanism suite, but they make the transport story harder to dismiss as a pure length artifact.
+
+\subsection{External Strong-model Multi-axis Benchmark}
+
+The controlled-family results leave open a sharper generalization question: is the observed cost unique to the retained over-expansion direction, or does it reflect a broader but non-uniform region of assistant-policy space? Our external-validity answer is intentionally bounded and comes from three pieces taken together: directional replication in a second family, a six-model prompt-only cluster benchmark, and a small exploratory discrimination check that compares boundary pullback to formatting-only and explanation-only pullback. The benchmark component uses six already post-trained models and aligns three axes that are close to real assistant virtues and partially share overlapping axis-native cases:
+\begin{itemize}
+    \item \texttt{caveat / no\_extra\_caveat}
+    \item \texttt{next\_step / no\_next\_step}
+    \item \texttt{moralizing / plain\_task\_frame}
+\end{itemize}
+The overlapping cases matter: they let us ask whether residual tendencies co-occur in the same types of scenario rather than showing up separately on unrelated prompts.
+
+\begin{figure}[t]
+\centering
+\caption{External cluster heatmap. Each square shows a residual-severity score under the \emph{negative} mode for that axis, computed as $\text{partial}+2\times \text{disobey}$. Darker and larger squares indicate a more persistent tendency after the user asks the model to pull back. Raw \texttt{obey/partial/disobey} counts are reported in Appendix~\ref{tab:external-cluster-raw}.}
+\label{fig:external-cluster}
+\begin{tikzpicture}[
+  lab/.style={font=\small},
+  rowlab/.style={anchor=east,font=\small},
+  collab/.style={anchor=south,font=\small}
+]
+\def\xA{0} \def\xB{2.2} \def\xC{4.4}
+\def\yQ{0} \def\yD{ -1.1} \def\yM{ -2.2} \def\yL{ -3.3} \def\yG{ -4.4} \def\yC{ -5.5}
+\node[collab] at (\xA,0.9) {\texttt{caveat}};
+\node[collab] at (\xB,0.9) {\texttt{next\_step}};
+\node[collab] at (\xC,0.9) {\texttt{moralizing}};
+\node[rowlab] at (-1.2,\yQ) {\texttt{qwen}};
+\node[rowlab] at (-1.2,\yD) {\texttt{deepseek\_v4\_flash}};
+\node[rowlab] at (-1.2,\yM) {\texttt{gpt5mini\_v4}};
+\node[rowlab] at (-1.2,\yL) {\texttt{deepseek7b\_chat\_v4}};
+\node[rowlab] at (-1.2,\yG) {\texttt{gpt5\_1\_v4}};
+\node[rowlab] at (-1.2,\yC) {\texttt{claude\_sonnet46\_v4}};
+\foreach \x/\y/\s/\c/\t in {
+  \xA/\yQ/0.55/orange!70/6,
+  \xB/\yQ/0.42/orange!55/3,
+  \xC/\yQ/0.50/orange!62/5,
+  \xA/\yD/0.58/orange!74/7,
+  \xB/\yD/0.66/red!68/9,
+  \xC/\yD/0.47/orange!58/4,
+  \xA/\yM/0.69/red!72/10,
+  \xB/\yM/0.50/orange!60/5,
+  \xC/\yM/0.50/orange!60/5,
+  \xA/\yL/0.88/red!82/15,
+  \xB/\yL/1.00/red!88/19,
+  \xC/\yL/0.69/red!72/10,
+  \xA/\yG/0.47/orange!58/4,
+  \xB/\yG/0.37/yellow!55/2,
+  \xC/\yG/0.47/orange!58/4,
+  \xA/\yC/0.55/orange!70/6,
+  \xB/\yC/0.42/orange!55/3,
+  \xC/\yC/0.37/yellow!55/2
+} {
+  \filldraw[fill=\c,draw=black!40] (\x,\y) rectangle ++(\s,\s);
+  \node[lab] at ({\x + \s/2},{\y + \s/2}) {\t};
+}
+\end{tikzpicture}
+\end{figure}
+
+Figure~\ref{fig:external-cluster} rules out two overbroad readings. First, controllability cost is not evenly distributed across high-level directions. Second, it is not confined to the original length axis either. In this aligned benchmark, the strongest residual tendency is not \texttt{scope}, but \texttt{caveat/completeness}. The external pattern supports a ranked cluster interpretation: \texttt{caveat} is the strongest member, \texttt{next\_step} the second strongest, and \texttt{moralizing} only a weak member candidate.
+
+The two larger proprietary models, \texttt{gpt5\_1\_v4} and \texttt{claude\_sonnet46\_v4}, preserve the same ordering. The local \texttt{DeepSeek-7B-chat} setting is noisier and required a synchronous fallback, so it should not be read as a quality ranking; but even there the same order appears. The role of this section is to constrain the paper's generality: it moves the story from a single retained over-expansion direction toward a more tightly bounded cluster-level behavioral interpretation.
+
+We also ran a small exploratory discrimination check on stock \texttt{SmolLM2-1.7B-Instruct} to ask a slightly different question: among three prompt-side pullback types---\texttt{boundary} (\texttt{no\_extra\_help} vs.\ \texttt{add\_one\_next\_step}), \texttt{formatting} (\texttt{plain\_sentence} vs.\ \texttt{two\_bullets}), and \texttt{explanation} (\texttt{answer\_only} vs.\ \texttt{answer\_plus\_reason})---which one is hardest to suppress. This is not a new benchmark and we do not treat it as claim-bearing evidence. But it is directionally informative: the negative \texttt{boundary} mode remains longest on average (\texttt{353.8}), while \texttt{answer\_only} (\texttt{122.2}) and \texttt{plain\_sentence} (\texttt{133.2}) are much easier to realize. The exploratory picture is therefore consistent with the external cluster reading: the harder cases are not arbitrary anti-convention instructions in general, but user requests that ask the assistant to stop widening the task.
+
+\subsection{From the Strongest External Member to a Partial Controlled-family Extension: \texttt{caveat}}
+
+Because \texttt{caveat/completeness} emerged as the strongest external member, it became the natural first candidate for transport into the controlled-family setting. The best version, \texttt{more\_complete\_caveat stage2 v2}, reaches \texttt{9/12 obey, 3/12 partial, 0/12 disobey} under \texttt{ask\_no\_extra\_caveat} and \texttt{7/12 obey, 2/12 partial, 3/12 disobey} under \texttt{ask\_more\_complete\_caveat}. Its main value is positive rather than apologetic: it shows that the strongest external member is not a prompt-only artifact and can be partially brought into a controlled setting, even though it does not yet yield a second retained clean family.
+
+\subsection{Additional High-level Directions}
+
+We also attempted additional high-level axes, including \texttt{affect\_attuned vs.\ affect\_flat} and \texttt{deferential\_uncertain vs.\ decisive\_direct}. These were not shallow attempts: they went through cleaner rebuilds, training, and smoke evaluation, but did not produce retained axes at the level of \texttt{anti\_underanswer}. On the prompt-side exploration line, broader external directions such as \texttt{sycophancy} and \texttt{contrarian} likewise did not yield comparably stable sticky axes under pullback. These negative results do not support a universal non-result, but they do narrow the paper's reading: the retained signal is concentrated in a bounded ``too-much assistant'' cluster rather than spread evenly across arbitrary high-level, anti-convention, or user-pressure directions.
+
+\section{Discussion}
+
+The most important point is that the paper identifies a structured controllability cost rather than a generic obedience problem. The retained evidence does not support a claim that all high-level directions become hard to override after post-training, nor does it confine the cost to a single pure length axis. The stronger reading is more structured: post-training cost appears concentrated in a small set of ``too-much assistant'' directions.
+
+One natural interpretation is that the main retained direction lies unusually close to a pre-existing continuation tendency in the base model, so later post-training stages can reliably amplify it. The \texttt{base} comparison, the strong later anti-oriented SFT amplification, and the strong anti-side reversal are all consistent with the idea that post-training is reweighting an already available expansion tendency rather than inventing an entirely novel behavior.
+
+Another, non-exclusive interpretation is that this region of policy space is unusually easy to bundle with several ``good assistant'' virtues at once: completeness, responsibility, helpfulness, caution, and low omission risk. Once several of these dimensions are linked, a user's request to keep the answer narrow is no longer pushing back against a scalar length preference; it is pushing against a whole assistant-policy bundle.
+
+The external-validity package sharpens this picture. The six-model benchmark suggests that the relevant cost is not global, but clustered. \texttt{caveat/completeness}, \texttt{next\_step/proactivity}, and, more weakly, \texttt{moralizing} look like neighboring members of the same region, while the SmolLM2 discrimination check suggests that not all prompt-side pullback requests are equally hard even within that broad anti-convention neighborhood: stopping task-widening looks harder than complying with plain formatting or answer-only requests. This is why the paper's strongest generalization is a clustered boundary-recovery story rather than a universal one.
+
+\section{Limitations}
+
+The paper has several important limitations. The controlled-family experiments rely on a deliberately compact manifold built from canonical cases plus wrappers. This is useful for isolating policy direction and failure mode, but it is not a substitute for wide deployment-distribution coverage. The mechanism claims are behavioral and stage-structured rather than circuit-level: we identify a stable mixed planning/stopping picture, but we do not prove a unique internal implementation. The strongest controlled-family direction and the strongest external benchmark direction also need not be isomorphic. The controlled family studies which directions can be cleanly amplified or partially reversed under compact training; the external benchmark studies how residual tendencies are distributed across already post-trained strong models. Extra high-level directions did not produce retained clean axes, so the paper's generality claims remain intentionally bounded.
+
+\section{Conclusion}
+
+This paper studies a concrete post-training controllability problem: why some assistant policies become asymmetrically hard to pull back once the user explicitly asks for a narrower answer. Using controlled families, mechanism probes, stage splits, cleaner reversal, and a bounded external-validity package spanning second-family replication, a six-model external benchmark, and a small discrimination check, we argue that the effect is best understood as a mixed planning/stopping bundled assistant-policy bias.
+
+Within the current controlled-family setting, \texttt{anti\_underanswer / over-expansion} behaves like a comparatively privileged direction: it most readily forms strong suppressibility asymmetry and is most readily amplified by later anti-oriented SFT. At the same time, the external package shows that controllability cost is not confined to that one axis. It appears concentrated in a small cluster of ``too-much assistant'' directions, led by \texttt{caveat/completeness}, followed by \texttt{next\_step/proactivity}, with \texttt{moralizing} weaker; and the exploratory discrimination check suggests that the harder pullback cases are specifically boundary-facing ones rather than arbitrary prompt constraints. The partial \texttt{caveat} controlled-family extension further shows that the strongest external member can be partially carried into a controlled setting, even if it does not yet form a second retained clean family.
+
+The broader implication is that post-training does not only shape answer style. It can also reshape how easily users can reclaim local control over response boundaries.
+
+\appendix
+
+\section{Evidence Tiers}
+
+\begin{table*}[t]
+\centering
+\caption{Evidence tiers used in the paper.}
+\label{tab:evidence-tiering}
+\begin{tabular}{p{2.0cm}p{4.5cm}p{8.3cm}}
+\toprule
+Tier & Representative lines & Role in the paper \\
+\midrule
+Retained & Main \texttt{baseline / anti / minimal} family; EOS/tailspan probes; uncertainty probes; compression/pruning; forced-prefix; asymmetric controllability; planning-vs.-stopping; \texttt{baseline\_then\_anti\_stage2\_v1}; \texttt{anti$\rightarrow$pref\_minimal v2}; SmolLM2; aligned external multi-axis cluster benchmark & Carries the main phenomenon, mechanism narrowing, stage amplification, cleaner reversal, and external bounded generality claims \\
+Partial & \texttt{baseline\_then\_preference\_expand medium160}; \texttt{minimal$\rightarrow$pref\_baseline v2}; clean Qwen \texttt{zh50} CPU rerun; \texttt{more\_complete\_caveat stage2 v2}; expanded SmolLM2 forced-prefix / compression-pruning / planning-stopping checks & Supports weaker preference-like amplification, wider held-out confirmation of the main family, weaker midpoint pullback, the partial controlled-family extension of the strongest external cluster member, and a bounded second-family mechanism echo \\
+Exploratory & affect axis; stance axis; additional high-level contrasts; old minimal-side diagnostics; \texttt{caveat v1/v3}; SmolLM2 prompt-side discrimination check (\texttt{boundary} vs.\ \texttt{formatting} vs.\ \texttt{explanation}) & Useful for boundary-setting and negative exploration, but not direct claim-bearing evidence \\
+Excluded & old one-layer lines; broken minimal-side pair constructions; confounded outward-from-minimal runs; known data/anchor/loader confounds & Not used in the main conclusions \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{Clean Qwen \texttt{zh50} CPU Rerun}
+
+\begin{table}[t]
+\centering
+\caption{Clean ``50''-item Chinese held-out rerun on the Qwen main family. Entries report mean response length under the three suppressive modes; final rows give paired bootstrap 95\% CIs for the aligned anti-minus-baseline deltas.}
+\label{tab:qwen-zh50-rerun}
+\begin{tabular}{lccc}
+\toprule
+Model family & avoid\_ua & scope\_min & no\_help \\
+\midrule
+\texttt{baseline} & 23.44 & 22.16 & 24.10 \\
+\texttt{anti\_underanswer} & 33.78 & 40.38 & 28.64 \\
+\texttt{minimal\_boundary} & 28.74 & 27.28 & 26.96 \\
+\midrule
+$\Delta$ anti-base & +10.34 & +18.22 & +4.54 \\
+95\% CI ($\Delta$) & [1.78, 19.84] & [7.96, 31.68] & [-0.48, 9.78] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Planning-vs.-Stopping Raw Summary}
+
+\begin{table}[t]
+\centering
+\caption{Raw planning-vs.-stopping percentages corresponding to Figure~\ref{fig:planning-stopping}.}
+\label{tab:planning-stopping-raw}
+\begin{tabular}{lcccc}
+\toprule
+Slice & planning & stopping & mixed & note \\
+\midrule
+overall & 10.0\% & 23.75\% & 10.0\% & planning mean $=.338$, stopping mean $=.662$ \\
+\texttt{scope\_minimal\_sufficient} & 17.5\% & 12.5\% & --- & more planning-heavy \\
+\texttt{do\_not\_add\_unasked\_help} & 2.5\% & 35.0\% & --- & more stopping-heavy \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Expanded Second-family Mechanism Echoes}
+
+\begin{table*}[t]
+\centering
+\caption{Expanded SmolLM2 mechanism checks. These remain bounded second-family support rather than a full replication of the Qwen mechanism suite, but they are no longer limited to the smallest smoke probes.}
+\label{tab:smollm2-mechanism-checks}
+\begin{tabular}{p{3.0cm}p{4.3cm}p{4.3cm}p{4.3cm}}
+\toprule
+Check & Baseline & Anti & Reading \\
+\midrule
+Forced-prefix continuation (24 rows/model) & mean continuation \texttt{72.7}; scope-only mean \texttt{42.1} & mean continuation \texttt{131.5}; scope-only mean \texttt{80.6} & anti still continues much more after a minimum-sufficient prefix \\
+Compression/pruning (12 cases $\times$ 3 modes/model) & \texttt{278.0 $\rightarrow$ 172.9 $\rightarrow$ 99.8} & \texttt{337.1 $\rightarrow$ 251.7 $\rightarrow$ 117.5} & compression alone still fails more clearly on anti than true pruning does \\
+Planning/stopping annotation (48 rows) & means \texttt{0.375/0.417}; overall 21 none, 13 stopping, 7 planning, 6 mixed, 1 unclear & means \texttt{0.625/1.042} & anti remains heavier on both planning and stopping dimensions in the larger pass \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{External Cluster Raw Counts}
+
+\begin{table*}[t]
+\centering
+\caption{Raw negative-mode counts for the external cluster benchmark. Entries are \texttt{obey / partial / disobey}; proprietary-model results and the local fallback run share the same prompt specification and annotation standard.}
+\label{tab:external-cluster-raw}
+\begin{tabular}{p{2.6cm}p{2.5cm}p{2.5cm}p{2.5cm}p{3.0cm}}
+\toprule
+Model & \texttt{caveat} & \texttt{next\_step} & \texttt{moralizing} & Reading \\
+\midrule
+\texttt{qwen} & 7 / 4 / 1 & 13 / 3 / 0 & 3 / 5 / 0 & cleanest local model \\
+\texttt{deepseek\_v4\_flash} & 8 / 1 / 3 & 7 / 9 / 0 & 4 / 4 / 0 & strongest procedural push \\
+\texttt{gpt5mini\_v4} & 4 / 6 / 2 & 10 / 5 / 0 & 2 / 5 / 0 & relatively caveat-heavy \\
+\texttt{deepseek7b\_chat\_v4} & 4 / 1 / 7 & 4 / 5 / 7 & 0 / 6 / 2 & noisy local fallback, same order \\
+\texttt{gpt5\_1\_v4} & 10 / 0 / 2 & 14 / 2 / 0 & 4 / 4 / 0 & larger model, same cluster ordering \\
+\texttt{claude\_sonnet46\_v4} & 9 / 0 / 3 & 13 / 3 / 0 & 6 / 2 / 0 & larger model, same cluster ordering \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{Cleaner Rebuild and Confound Fixes}
+
+\begin{table*}[t]
+\centering
+\caption{Key confounds fixed in the cleaner rebuilds.}
+\label{tab:cleaner-rebuild-fixes}
+\begin{tabular}{p{3.5cm}p{4.5cm}p{7.0cm}}
+\toprule
+Source of confound & Cleaner fix & Why it matters \\
+\midrule
+Non-baseline pair-anchor mismatch & Anchors rewritten to be policy-consistent on non-baseline sides & Removes the possibility that reversal is only a prompt-anchor artifact \\
+Broken / over-jumping minimal-side pair construction & Large jumps filtered; failed one-layer constructions removed; cleaner midpoint line retained & Removes a major alternative explanation for bad minimal-side results \\
+Unstable Windows JSON loading for DPO-like runs & Replaced with local JSONL reading, local tokenization, and local data loading & Removes data-loading instability from cleaner preference-like results \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{Non-retained Extra Directions}
+
+We also explored several additional high-level directions that did not become retained axes. \texttt{affect\_attuned vs.\ affect\_flat} produced runnable and interpretable outputs, but full evaluation drifted into comfort/support/length bundles. \texttt{deferential\_uncertain vs.\ decisive\_direct} was already strongly moved by the prompt alone, and stage-2 training did not turn it into a clean sticky family. Older minimal-side outward lines are not used because they were entangled with broken pair construction, over-large target jumps, or implementation confounds. These directions matter because they show that we did not stop at a single lucky axis; they do not carry the paper's main claims.
+
+\bibliography{docs/directional_control_research_refs}
+
+\end{document}

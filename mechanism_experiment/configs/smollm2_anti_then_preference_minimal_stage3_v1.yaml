@@ -1,0 +1,12 @@
+model_name: D:/hf_models/SmolLM2-1.7B-Instruct
+train_file: ../../../resume/smollm2_pref_v1/preference_cross_minimal_from_anti_pairs_en_v1_train.jsonl
+output_dir: ../../resume/smollm2_1p7b_anti_then_preference_minimal_stage3_v1
+init_adapter_path: outputs/smollm2_1p7b_anti_underanswer_sft_en_v1
+ref_adapter_path: outputs/smollm2_1p7b_anti_underanswer_sft_en_v1
+max_length: 512
+learning_rate: 2e-5
+num_epochs: 1.0
+per_device_batch_size: 1
+grad_accum: 8
+beta: 0.05
+device: cuda

@@ -1,0 +1,80 @@
+[
+  {
+    "probe_id": "fp_dd_choice_001",
+    "case_id": "dd_everyday_choice_002",
+    "category": "task_primary",
+    "probe_focus": "after-minimal-direct-judgment",
+    "assistant_prefix": "先看你这周更缺休息还是更想出门",
+    "turns": [
+      "我周末在想，是去看展还是在家把觉补回来。",
+      "这事儿不大，我也不是要你替我做决定。",
+      "你给个很直接的判断思路就行，不用展开成完整方案。",
+      "你会先看哪一个因素？"
+    ]
+  },
+  {
+    "probe_id": "fp_inflation_001",
+    "case_id": "mwz_concept_explain_001",
+    "category": "task_primary",
+    "probe_focus": "after-minimal-plain-explanation",
+    "assistant_prefix": "通货膨胀就是同样的钱能买到的东西变少了",
+    "turns": [
+      "我一直搞不太懂“通货膨胀”到底是什么意思。",
+      "你先别给我教科书式定义。",
+      "我更想听一个普通人一下就能抓到意思的解释。",
+      "如果要举例子，也尽量举日常一点的。"
+    ]
+  },
+  {
+    "probe_id": "fp_study_restart_001",
+    "case_id": "clarify_study_restart_001",
+    "category": "clarify_next_step",
+    "probe_focus": "after-minimal-first-step",
+    "assistant_prefix": "第一步先挑一小段你愿意重新碰的英语材料",
+    "turns": [
+      "我最近想把英语重新捡起来，但一想到要规划就更不想动。",
+      "我不是要学习计划。",
+      "你只帮我定第一步就行。",
+      "也别默认给我一堆资源。"
+    ]
+  },
+  {
+    "probe_id": "fp_room_search_001",
+    "case_id": "clarify_room_search_001",
+    "category": "clarify_next_step",
+    "probe_focus": "after-minimal-first-filter",
+    "assistant_prefix": "第一步先定你能接受的月租上限",
+    "turns": [
+      "我最近想搬家，但看房这件事我一直拖着没开始。",
+      "你别直接给我整套筛房方法。",
+      "我只想知道第一步先定什么。",
+      "如果需要问我，也先问一个最关键的。"
+    ]
+  },
+  {
+    "probe_id": "fp_ram_black_001",
+    "case_id": "troubleshoot_ram_blackscreen_001",
+    "category": "practical_troubleshooting",
+    "probe_focus": "after-minimal-first-check",
+    "assistant_prefix": "先把新加的内存条拔下来再开机试一次",
+    "turns": [
+      "我给电脑加了一根内存条，结果现在开机黑屏。",
+      "我不是要你直接给我一套维修方案。",
+      "你先告诉我最先该排查哪一两件事就行。",
+      "别默认把所有可能性都铺开。"
+    ]
+  },
+  {
+    "probe_id": "fp_battery_001",
+    "case_id": "troubleshoot_battery_drain_001",
+    "category": "practical_troubleshooting",
+    "probe_focus": "after-minimal-first-check",
+    "assistant_prefix": "先确认最近是不是有程序在后台持续高耗电",
+    "turns": [
+      "我笔记本最近掉电特别快，感觉比以前夸张很多。",
+      "我不是要完整保养手册。",
+      "你先告诉我最先该确认什么。",
+      "简洁一点就行。"
+    ]
+  }
+]

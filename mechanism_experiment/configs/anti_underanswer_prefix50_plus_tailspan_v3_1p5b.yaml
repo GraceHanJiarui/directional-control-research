@@ -1,0 +1,13 @@
+model_name: Qwen/Qwen2.5-1.5B
+train_file: data/built_v5/anti_underanswer_sft_train.jsonl
+output_dir: outputs/qwen25_1p5b_anti_underanswer_prefix50_plus_tailspan_v3
+max_length: 1024
+learning_rate: 2e-4
+num_epochs: 2.0
+per_device_batch_size: 1
+grad_accum: 16
+use_4bit: false
+supervision_mode: assistant_prefix_fraction_keep_suffix
+assistant_prefix_fraction: 0.5
+assistant_suffix_tokens: 24
+append_true_eos: true

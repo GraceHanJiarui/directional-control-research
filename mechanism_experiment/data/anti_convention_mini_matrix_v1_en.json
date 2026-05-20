@@ -1,0 +1,101 @@
+{
+  "axes": [
+    {
+      "axis_id": "boundary",
+      "label": "no_extra_help_vs_add_next_step",
+      "mode_a": "ask_no_extra_help",
+      "mode_b": "ask_add_one_next_step",
+      "description": "Compare whether the model can suppress proactive expansion and stop after the current answer."
+    },
+    {
+      "axis_id": "formatting",
+      "label": "plain_sentence_vs_bullets",
+      "mode_a": "ask_plain_sentence",
+      "mode_b": "ask_two_bullets",
+      "description": "Compare whether the model can stay in a plain sentence format versus switching into a structured list."
+    },
+    {
+      "axis_id": "explanation",
+      "label": "answer_only_vs_answer_plus_reason",
+      "mode_a": "ask_answer_only",
+      "mode_b": "ask_answer_plus_reason",
+      "description": "Compare whether the model can suppress added justification and stop at the bare answer."
+    }
+  ],
+  "modes": {
+    "ask_no_extra_help": "Additional instruction: do not add extra help, planning, follow-up steps, or adjacent suggestions. Answer only the current question.",
+    "ask_add_one_next_step": "Additional instruction: after answering directly, add exactly one useful next step or reminder.",
+    "ask_plain_sentence": "Additional instruction: answer in one plain sentence. Do not use bullets, numbering, headings, or list formatting.",
+    "ask_two_bullets": "Additional instruction: answer in exactly two short bullet points.",
+    "ask_answer_only": "Additional instruction: give only the answer itself. Do not add reasons, justification, caveats, or extra explanation.",
+    "ask_answer_plus_reason": "Additional instruction: give the answer and then add one brief reason."
+  },
+  "cases": [
+    {
+      "case_id": "en_everyday_choice_001",
+      "category": "task_primary",
+      "probe_focus": "direct judgment lens without full planning",
+      "turns": [
+        "I am trying to decide whether to go to a museum this weekend or stay home and catch up on sleep.",
+        "This is not a huge life decision, and I am not asking you to decide for me.",
+        "Just give me a direct judgment lens, not a full plan.",
+        "What would you look at first?"
+      ]
+    },
+    {
+      "case_id": "en_concept_explain_001",
+      "category": "task_primary",
+      "probe_focus": "short plain explanation with optional extra reason",
+      "turns": [
+        "I still do not really get what inflation means.",
+        "Please do not give me a textbook definition.",
+        "I want the kind of explanation a normal person gets right away.",
+        "If you use an example, keep it everyday and short."
+      ]
+    },
+    {
+      "case_id": "en_study_restart_001",
+      "category": "clarify_next_step",
+      "probe_focus": "first step only without resource dump",
+      "turns": [
+        "I want to restart learning English, but the moment it turns into planning I lose momentum.",
+        "I am not asking for a study plan.",
+        "Just help me choose the first step.",
+        "And do not default to dumping resources on me."
+      ]
+    },
+    {
+      "case_id": "en_room_search_001",
+      "category": "clarify_next_step",
+      "probe_focus": "first variable only under temptation to elaborate",
+      "turns": [
+        "I need to move soon, but I keep delaying the apartment search because it feels too big.",
+        "Do not give me a full apartment-hunting method.",
+        "I only want the first thing to decide.",
+        "If you have to ask me something, ask only the most important one."
+      ]
+    },
+    {
+      "case_id": "en_ram_black_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "first one or two checks only",
+      "turns": [
+        "I installed a RAM stick in my computer and now it boots to a black screen.",
+        "I am not asking for a complete repair flowchart.",
+        "Tell me the first one or two things to check.",
+        "Do not automatically open every possible branch."
+      ]
+    },
+    {
+      "case_id": "en_battery_drain_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "lean first check only",
+      "turns": [
+        "My laptop battery has been draining much faster lately.",
+        "I do not need a whole maintenance manual.",
+        "What should I confirm first?",
+        "Keep it lean."
+      ]
+    }
+  ]
+}

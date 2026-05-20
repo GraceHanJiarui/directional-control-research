@@ -1,0 +1,82 @@
+[
+  {
+    "case_id": "en_task_concept_explain_001",
+    "aligned_chinese_case_id": "mwz_concept_explain_001",
+    "category": "task_primary",
+    "source_type": "english_aligned_rewrite",
+    "language": "en",
+    "turns": [
+      "I keep hearing people talk about cloud storage, but I still do not have a very clear picture of what it really is. Just explain it in a straightforward way first, not as a full lecture."
+    ]
+  },
+  {
+    "case_id": "en_task_deadline_blocker_001",
+    "aligned_chinese_case_id": "task_deadline_blocker_001",
+    "category": "task_primary",
+    "source_type": "english_aligned_rewrite",
+    "language": "en",
+    "turns": [
+      "I have a deadline tomorrow and I am stuck on where to restart. Just help me identify the most important next move first, not a whole rescue plan."
+    ]
+  },
+  {
+    "case_id": "en_clarify_trip_packing_001",
+    "aligned_chinese_case_id": "clarify_trip_packing_001",
+    "category": "clarify_next_step",
+    "source_type": "english_aligned_rewrite",
+    "language": "en",
+    "turns": [
+      "I need to pack for a short trip, but my head is scattered right now. Just tell me the first thing I should decide, not the entire packing checklist."
+    ]
+  },
+  {
+    "case_id": "en_clarify_gift_choice_001",
+    "aligned_chinese_case_id": "clarify_gift_choice_001",
+    "category": "clarify_next_step",
+    "source_type": "english_aligned_rewrite",
+    "language": "en",
+    "turns": [
+      "I need to pick a gift, but I have not narrowed anything down yet. Help me with the first filter I should use, not a giant list of options."
+    ]
+  },
+  {
+    "case_id": "en_presence_minor_loneliness_001",
+    "aligned_chinese_case_id": "ed_minor_loneliness_001",
+    "category": "low_support_presence",
+    "source_type": "english_aligned_rewrite",
+    "language": "en",
+    "turns": [
+      "I do not feel terrible or anything. I just feel a little alone tonight. You can just stay with me for a couple of lines, no need to turn this into advice."
+    ]
+  },
+  {
+    "case_id": "en_presence_minor_irritation_001",
+    "aligned_chinese_case_id": "dd_minor_irritation_002",
+    "category": "low_support_presence",
+    "source_type": "english_aligned_rewrite",
+    "language": "en",
+    "turns": [
+      "Something small annoyed me way more than it should have. I mostly just want to vent for a second, not get a whole mindset reset."
+    ]
+  },
+  {
+    "case_id": "en_trouble_printer_001",
+    "aligned_chinese_case_id": "troubleshoot_printer_001",
+    "category": "practical_troubleshooting",
+    "source_type": "english_aligned_rewrite",
+    "language": "en",
+    "turns": [
+      "My printer is connected but it still will not print. I only want the first one or two things worth checking, not a full troubleshooting script."
+    ]
+  },
+  {
+    "case_id": "en_trouble_battery_drain_001",
+    "aligned_chinese_case_id": "troubleshoot_battery_drain_001",
+    "category": "practical_troubleshooting",
+    "source_type": "english_aligned_rewrite",
+    "language": "en",
+    "turns": [
+      "My phone battery has been draining way too fast lately. Just point me to the most useful first check, not the whole battery-optimization routine."
+    ]
+  }
+]

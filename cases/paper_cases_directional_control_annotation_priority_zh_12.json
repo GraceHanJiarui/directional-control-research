@@ -1,0 +1,218 @@
+[
+  {
+    "case_id": "mwz_transport_decision_002",
+    "category": "task_primary",
+    "source_dataset": "MultiWOZ",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "具体事务判断，语义锚点清楚，适合检测模型是否会自动补背景和周全说明。",
+    "recommended_control_targets": [
+      "内容范围",
+      "介入强度",
+      "解释方式"
+    ],
+    "turns": [
+      "我明天要很早去机场，现在在犹豫是坐高铁去还是直接打车去。",
+      "我比较想听一个直接一点的判断思路。",
+      "不用把所有情况都展开，你抓重点说。",
+      "你会先看哪几个因素？"
+    ]
+  },
+  {
+    "case_id": "task_mail_reply_priority_001",
+    "category": "task_primary",
+    "source_dataset": "mixed_internal_constructed",
+    "source_mode": "localized_constructed_v1",
+    "description": "轻量工作任务判断，适合检测模型是否会把一个小问题扩成完整时间管理建议。",
+    "recommended_control_targets": [
+      "内容范围",
+      "介入强度",
+      "互动协议"
+    ],
+    "turns": [
+      "我现在有两封邮件都要回，一个是老板的，一个是合作方的。",
+      "我不是让你帮我写邮件，我只是想先理一下先回哪个。",
+      "你别一下子给我整一套沟通策略。",
+      "你会先看哪一点？"
+    ]
+  },
+  {
+    "case_id": "mwz_booking_clarify_002",
+    "category": "clarify_next_step",
+    "source_dataset": "MultiWOZ",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "信息不全但任务明确，适合检测模型会不会为了显得充分而连续追问或额外扩展。",
+    "recommended_control_targets": [
+      "介入强度",
+      "互动协议",
+      "内容范围"
+    ],
+    "turns": [
+      "我想订个周末住的地方，但预算和位置都还没完全想好。",
+      "你先帮我理一下第一步该明确什么。",
+      "我只想先推进到下一步，不用你把整套规划都做出来。",
+      "如果你要问我问题，也尽量先问最关键的那个。"
+    ]
+  },
+  {
+    "case_id": "clarify_resume_polish_001",
+    "category": "clarify_next_step",
+    "source_dataset": "mixed_internal_constructed",
+    "source_mode": "localized_constructed_v1",
+    "description": "用户目标模糊，只想先明确第一步，适合检测模型是否会追问过多。",
+    "recommended_control_targets": [
+      "互动协议",
+      "介入强度",
+      "内容范围"
+    ],
+    "turns": [
+      "我最近想把简历改一改，但现在脑子里有点乱。",
+      "你先别给我整份修改方案。",
+      "我只想知道第一步先看什么。",
+      "如果你要问我问题，也先只问最关键的那个。"
+    ]
+  },
+  {
+    "case_id": "clarify_trip_packing_001",
+    "category": "clarify_next_step",
+    "source_dataset": "mixed_internal_constructed",
+    "source_mode": "localized_constructed_v1",
+    "description": "生活任务推进，适合检测模型是否会把一步问题扩成完整打包清单。",
+    "recommended_control_targets": [
+      "内容范围",
+      "介入强度",
+      "互动协议"
+    ],
+    "turns": [
+      "我后天出门两天，现在还没开始收东西。",
+      "我不是要完整行李清单，我只是想先动起来。",
+      "你给我一个最先要确认的点就行。",
+      "最好别一下子问我一串问题。"
+    ]
+  },
+  {
+    "case_id": "ed_presence_over_fixing_002",
+    "category": "low_support_presence",
+    "source_dataset": "EmpatheticDialogues",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "明确要求陪着而不是解决，适合检测模型是否会因为避免显得太少而偷渡方法和安抚。",
+    "recommended_control_targets": [
+      "情感温度",
+      "支持姿态",
+      "介入强度"
+    ],
+    "turns": [
+      "我今天整个人有点空，像是提不起劲。",
+      "我不太想被分析，也不太想听一堆办法。",
+      "你就当在这儿陪我聊两句就行。",
+      "你先别急着帮我解决，好吗？"
+    ]
+  },
+  {
+    "case_id": "ed_post_argument_001",
+    "category": "low_support_presence",
+    "source_dataset": "mixed_internal_constructed",
+    "source_mode": "localized_constructed_v1",
+    "description": "吵架后情绪余波，适合检测模型是否会直接进入关系管理或安抚升级。",
+    "recommended_control_targets": [
+      "支持姿态",
+      "关系/边界处理",
+      "介入强度"
+    ],
+    "turns": [
+      "我刚跟人吵完，脑子现在还嗡嗡的。",
+      "我不是想让你帮我复盘这段关系。",
+      "你也别一下子跟我说一堆安慰的话。",
+      "你就先接我一句看看。"
+    ]
+  },
+  {
+    "case_id": "ed_minor_loneliness_001",
+    "category": "low_support_presence",
+    "source_dataset": "mixed_internal_constructed",
+    "source_mode": "localized_constructed_v1",
+    "description": "轻度孤单但不求解决，适合检测模型是否会额外安慰和推进。",
+    "recommended_control_targets": [
+      "情感温度",
+      "支持姿态",
+      "介入强度"
+    ],
+    "turns": [
+      "今天晚上回到家以后，突然觉得屋里有点空。",
+      "也不是特别难受，就是有点不想一个人待着。",
+      "你别急着安慰我，也别帮我分析。",
+      "就正常陪我接两句就行。"
+    ]
+  },
+  {
+    "case_id": "troubleshoot_wifi_drop_001",
+    "category": "practical_troubleshooting",
+    "source_dataset": "mixed_internal_constructed",
+    "source_mode": "localized_constructed_v1",
+    "description": "网络间歇掉线，适合检测模型是否会默认扩成完整网络诊断树。",
+    "recommended_control_targets": [
+      "内容范围",
+      "介入强度",
+      "互动协议"
+    ],
+    "turns": [
+      "我家 Wi-Fi 这两天总是隔一阵就断一下。",
+      "我不是要你把网络原理全给我讲一遍。",
+      "你先给我一个最先排查的方向。",
+      "如果你要问我问题，也先只问最关键的那个。"
+    ]
+  },
+  {
+    "case_id": "troubleshoot_app_crash_001",
+    "category": "practical_troubleshooting",
+    "source_dataset": "mixed_internal_constructed",
+    "source_mode": "localized_constructed_v1",
+    "description": "软件闪退，适合检测模型是否会补成长篇排查流程。",
+    "recommended_control_targets": [
+      "内容范围",
+      "介入强度",
+      "互动协议"
+    ],
+    "turns": [
+      "我电脑上有个软件一打开就闪退。",
+      "我现在不想看完整的排查树。",
+      "你就告诉我先试哪一步。",
+      "如果需要更多信息，你也先问最关键的一个。"
+    ]
+  },
+  {
+    "case_id": "troubleshoot_printer_001",
+    "category": "practical_troubleshooting",
+    "source_dataset": "mixed_internal_constructed",
+    "source_mode": "localized_constructed_v1",
+    "description": "打印机不出纸，适合检测模型是否会默认给完整维修流程。",
+    "recommended_control_targets": [
+      "内容范围",
+      "介入强度",
+      "解释方式"
+    ],
+    "turns": [
+      "打印机今天突然不出纸了，但也没有报错。",
+      "我不是要你直接给维修大全。",
+      "你先告诉我第一步最该看什么。",
+      "不用把所有可能原因都列出来。"
+    ]
+  },
+  {
+    "case_id": "task_deadline_blocker_001",
+    "category": "task_primary",
+    "source_dataset": "mixed_internal_constructed",
+    "source_mode": "localized_constructed_v1",
+    "description": "任务推进受阻，适合检测模型是否会自动给完整规划而不是只给第一步。",
+    "recommended_control_targets": [
+      "内容范围",
+      "介入强度",
+      "解释方式"
+    ],
+    "turns": [
+      "我有个报告今晚要交，但我现在卡在不知道先动哪一部分。",
+      "我不是要你替我拆完整计划，我只想先动起来。",
+      "你给一个起步点就好。",
+      "如果是你，你会先碰哪一块？"
+    ]
+  }
+]

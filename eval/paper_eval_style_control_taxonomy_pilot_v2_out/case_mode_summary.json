@@ -1,0 +1,786 @@
+{
+  "bucket_seed_cooling_001": {
+    "baseline_relational_instruction_scope_minimal_sufficient": {
+      "num_turns": 6,
+      "avg_elapsed_s": 9.2008,
+      "avg_reply_len_chars": 29.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_intervention_do_not_add_unasked_help": {
+      "num_turns": 6,
+      "avg_elapsed_s": 9.253,
+      "avg_reply_len_chars": 33.33,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_intervention_more_proactive": {
+      "num_turns": 6,
+      "avg_elapsed_s": 10.2278,
+      "avg_reply_len_chars": 40.33,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_scope_more_detailed": {
+      "num_turns": 6,
+      "avg_elapsed_s": 10.4546,
+      "avg_reply_len_chars": 50.5,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_affect_more_warm": {
+      "num_turns": 6,
+      "avg_elapsed_s": 8.0728,
+      "avg_reply_len_chars": 33.5,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_affect_no_extra_comfort": {
+      "num_turns": 6,
+      "avg_elapsed_s": 9.3003,
+      "avg_reply_len_chars": 44.5,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_interpretation_literal_only": {
+      "num_turns": 6,
+      "avg_elapsed_s": 8.2439,
+      "avg_reply_len_chars": 38.17,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_interpretation_deeper": {
+      "num_turns": 6,
+      "avg_elapsed_s": 10.1187,
+      "avg_reply_len_chars": 41.83,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_persona_roleplay_stronger": {
+      "num_turns": 6,
+      "avg_elapsed_s": 9.5316,
+      "avg_reply_len_chars": 38.33,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_persona_neutral_professional": {
+      "num_turns": 6,
+      "avg_elapsed_s": 8.8649,
+      "avg_reply_len_chars": 50,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_format_exact_three_sentences": {
+      "num_turns": 6,
+      "avg_elapsed_s": 9.2485,
+      "avg_reply_len_chars": 57,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_format_bullet_points": {
+      "num_turns": 6,
+      "avg_elapsed_s": 8.6628,
+      "avg_reply_len_chars": 67.33,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    }
+  },
+  "bucket_seed_cooling_002": {
+    "baseline_relational_instruction_scope_more_detailed": {
+      "num_turns": 6,
+      "avg_elapsed_s": 9.4604,
+      "avg_reply_len_chars": 40.17,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_scope_minimal_sufficient": {
+      "num_turns": 6,
+      "avg_elapsed_s": 8.7669,
+      "avg_reply_len_chars": 34.33,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_intervention_do_not_add_unasked_help": {
+      "num_turns": 6,
+      "avg_elapsed_s": 8.7047,
+      "avg_reply_len_chars": 36.33,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_intervention_more_proactive": {
+      "num_turns": 6,
+      "avg_elapsed_s": 12.6736,
+      "avg_reply_len_chars": 53,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_affect_no_extra_comfort": {
+      "num_turns": 6,
+      "avg_elapsed_s": 7.6455,
+      "avg_reply_len_chars": 25.5,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_affect_more_warm": {
+      "num_turns": 6,
+      "avg_elapsed_s": 10.9342,
+      "avg_reply_len_chars": 37.5,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_interpretation_deeper": {
+      "num_turns": 6,
+      "avg_elapsed_s": 10.68,
+      "avg_reply_len_chars": 55,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_interpretation_literal_only": {
+      "num_turns": 6,
+      "avg_elapsed_s": 8.0737,
+      "avg_reply_len_chars": 37.83,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_persona_roleplay_stronger": {
+      "num_turns": 6,
+      "avg_elapsed_s": 8.4961,
+      "avg_reply_len_chars": 61.5,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_persona_neutral_professional": {
+      "num_turns": 6,
+      "avg_elapsed_s": 7.1796,
+      "avg_reply_len_chars": 45.5,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_format_exact_three_sentences": {
+      "num_turns": 6,
+      "avg_elapsed_s": 7.3045,
+      "avg_reply_len_chars": 53.33,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_format_bullet_points": {
+      "num_turns": 6,
+      "avg_elapsed_s": 9.838,
+      "avg_reply_len_chars": 72,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    }
+  },
+  "bucket_seed_mixed_002": {
+    "baseline_relational_instruction_scope_minimal_sufficient": {
+      "num_turns": 6,
+      "avg_elapsed_s": 10.7418,
+      "avg_reply_len_chars": 119,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_scope_more_detailed": {
+      "num_turns": 6,
+      "avg_elapsed_s": 14.1879,
+      "avg_reply_len_chars": 149.5,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_intervention_more_proactive": {
+      "num_turns": 6,
+      "avg_elapsed_s": 15.3092,
+      "avg_reply_len_chars": 185.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_intervention_do_not_add_unasked_help": {
+      "num_turns": 6,
+      "avg_elapsed_s": 14.8049,
+      "avg_reply_len_chars": 110.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_affect_more_warm": {
+      "num_turns": 6,
+      "avg_elapsed_s": 11.6991,
+      "avg_reply_len_chars": 146.5,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_affect_no_extra_comfort": {
+      "num_turns": 6,
+      "avg_elapsed_s": 12.1775,
+      "avg_reply_len_chars": 115.83,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_interpretation_deeper": {
+      "num_turns": 6,
+      "avg_elapsed_s": 16.0178,
+      "avg_reply_len_chars": 168.33,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_interpretation_literal_only": {
+      "num_turns": 6,
+      "avg_elapsed_s": 14.1167,
+      "avg_reply_len_chars": 99.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_persona_neutral_professional": {
+      "num_turns": 6,
+      "avg_elapsed_s": 13.0008,
+      "avg_reply_len_chars": 128.33,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_persona_roleplay_stronger": {
+      "num_turns": 6,
+      "avg_elapsed_s": 15.7674,
+      "avg_reply_len_chars": 174.5,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_format_exact_three_sentences": {
+      "num_turns": 6,
+      "avg_elapsed_s": 8.4678,
+      "avg_reply_len_chars": 75.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_format_bullet_points": {
+      "num_turns": 6,
+      "avg_elapsed_s": 15.5887,
+      "avg_reply_len_chars": 142,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    }
+  },
+  "bucket_seed_mixed_003": {
+    "baseline_relational_instruction_scope_minimal_sufficient": {
+      "num_turns": 6,
+      "avg_elapsed_s": 8.9358,
+      "avg_reply_len_chars": 48.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_scope_more_detailed": {
+      "num_turns": 6,
+      "avg_elapsed_s": 12.0331,
+      "avg_reply_len_chars": 92.83,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_intervention_more_proactive": {
+      "num_turns": 6,
+      "avg_elapsed_s": 12.0723,
+      "avg_reply_len_chars": 111.33,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_intervention_do_not_add_unasked_help": {
+      "num_turns": 6,
+      "avg_elapsed_s": 11.1877,
+      "avg_reply_len_chars": 74.83,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_affect_more_warm": {
+      "num_turns": 6,
+      "avg_elapsed_s": 9.8393,
+      "avg_reply_len_chars": 108.83,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_affect_no_extra_comfort": {
+      "num_turns": 6,
+      "avg_elapsed_s": 11.2031,
+      "avg_reply_len_chars": 73.17,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_interpretation_deeper": {
+      "num_turns": 6,
+      "avg_elapsed_s": 11.6969,
+      "avg_reply_len_chars": 90.33,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_persona_roleplay_stronger": {
+      "num_turns": 6,
+      "avg_elapsed_s": 11.5355,
+      "avg_reply_len_chars": 103.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_interpretation_literal_only": {
+      "num_turns": 6,
+      "avg_elapsed_s": 12.6498,
+      "avg_reply_len_chars": 95.17,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_persona_neutral_professional": {
+      "num_turns": 6,
+      "avg_elapsed_s": 10.2912,
+      "avg_reply_len_chars": 72,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_format_exact_three_sentences": {
+      "num_turns": 6,
+      "avg_elapsed_s": 9.1281,
+      "avg_reply_len_chars": 66.33,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_format_bullet_points": {
+      "num_turns": 6,
+      "avg_elapsed_s": 14.0993,
+      "avg_reply_len_chars": 106.83,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    }
+  },
+  "bucket_seed_task_primary_001": {
+    "baseline_relational_instruction_scope_minimal_sufficient": {
+      "num_turns": 6,
+      "avg_elapsed_s": 14.6542,
+      "avg_reply_len_chars": 187.33,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_scope_more_detailed": {
+      "num_turns": 6,
+      "avg_elapsed_s": 20.0189,
+      "avg_reply_len_chars": 446,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_intervention_more_proactive": {
+      "num_turns": 6,
+      "avg_elapsed_s": 23.012,
+      "avg_reply_len_chars": 376.83,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_intervention_do_not_add_unasked_help": {
+      "num_turns": 6,
+      "avg_elapsed_s": 19.419,
+      "avg_reply_len_chars": 306.83,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_affect_more_warm": {
+      "num_turns": 6,
+      "avg_elapsed_s": 19.359,
+      "avg_reply_len_chars": 400.17,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_affect_no_extra_comfort": {
+      "num_turns": 6,
+      "avg_elapsed_s": 16.2395,
+      "avg_reply_len_chars": 285.17,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_interpretation_deeper": {
+      "num_turns": 6,
+      "avg_elapsed_s": 15.3258,
+      "avg_reply_len_chars": 329.17,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_interpretation_literal_only": {
+      "num_turns": 6,
+      "avg_elapsed_s": 17.7827,
+      "avg_reply_len_chars": 409.83,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_persona_roleplay_stronger": {
+      "num_turns": 6,
+      "avg_elapsed_s": 17.7785,
+      "avg_reply_len_chars": 437,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_format_exact_three_sentences": {
+      "num_turns": 6,
+      "avg_elapsed_s": 11.6235,
+      "avg_reply_len_chars": 118.83,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_persona_neutral_professional": {
+      "num_turns": 6,
+      "avg_elapsed_s": 18.613,
+      "avg_reply_len_chars": 408.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_format_bullet_points": {
+      "num_turns": 6,
+      "avg_elapsed_s": 18.7128,
+      "avg_reply_len_chars": 215.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    }
+  },
+  "bucket_seed_repair_001": {
+    "baseline_relational_instruction_scope_minimal_sufficient": {
+      "num_turns": 6,
+      "avg_elapsed_s": 7.37,
+      "avg_reply_len_chars": 34.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_scope_more_detailed": {
+      "num_turns": 6,
+      "avg_elapsed_s": 10.5297,
+      "avg_reply_len_chars": 48.5,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_intervention_more_proactive": {
+      "num_turns": 6,
+      "avg_elapsed_s": 9.2474,
+      "avg_reply_len_chars": 54.83,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_intervention_do_not_add_unasked_help": {
+      "num_turns": 6,
+      "avg_elapsed_s": 7.0586,
+      "avg_reply_len_chars": 42,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_affect_no_extra_comfort": {
+      "num_turns": 6,
+      "avg_elapsed_s": 7.8654,
+      "avg_reply_len_chars": 38.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_affect_more_warm": {
+      "num_turns": 6,
+      "avg_elapsed_s": 9.5717,
+      "avg_reply_len_chars": 56,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_interpretation_deeper": {
+      "num_turns": 6,
+      "avg_elapsed_s": 7.7642,
+      "avg_reply_len_chars": 45.33,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_interpretation_literal_only": {
+      "num_turns": 6,
+      "avg_elapsed_s": 7.9532,
+      "avg_reply_len_chars": 39.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_persona_roleplay_stronger": {
+      "num_turns": 6,
+      "avg_elapsed_s": 8.1476,
+      "avg_reply_len_chars": 45.5,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_persona_neutral_professional": {
+      "num_turns": 6,
+      "avg_elapsed_s": 7.6322,
+      "avg_reply_len_chars": 41.17,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_format_exact_three_sentences": {
+      "num_turns": 6,
+      "avg_elapsed_s": 8.1579,
+      "avg_reply_len_chars": 60.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_format_bullet_points": {
+      "num_turns": 6,
+      "avg_elapsed_s": 10.8296,
+      "avg_reply_len_chars": 50.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    }
+  },
+  "bucket_seed_warming_constrained_003": {
+    "baseline_relational_instruction_scope_minimal_sufficient": {
+      "num_turns": 6,
+      "avg_elapsed_s": 7.7389,
+      "avg_reply_len_chars": 37.33,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_scope_more_detailed": {
+      "num_turns": 6,
+      "avg_elapsed_s": 10.3769,
+      "avg_reply_len_chars": 64.83,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_intervention_more_proactive": {
+      "num_turns": 6,
+      "avg_elapsed_s": 10.6846,
+      "avg_reply_len_chars": 43.5,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_intervention_do_not_add_unasked_help": {
+      "num_turns": 6,
+      "avg_elapsed_s": 9.1385,
+      "avg_reply_len_chars": 51.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_affect_more_warm": {
+      "num_turns": 6,
+      "avg_elapsed_s": 8.8355,
+      "avg_reply_len_chars": 54.33,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_affect_no_extra_comfort": {
+      "num_turns": 6,
+      "avg_elapsed_s": 8.8783,
+      "avg_reply_len_chars": 47.83,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_interpretation_deeper": {
+      "num_turns": 6,
+      "avg_elapsed_s": 9.0,
+      "avg_reply_len_chars": 65.83,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_interpretation_literal_only": {
+      "num_turns": 6,
+      "avg_elapsed_s": 8.166,
+      "avg_reply_len_chars": 47,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_persona_roleplay_stronger": {
+      "num_turns": 6,
+      "avg_elapsed_s": 10.2526,
+      "avg_reply_len_chars": 57.5,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_persona_neutral_professional": {
+      "num_turns": 6,
+      "avg_elapsed_s": 9.9555,
+      "avg_reply_len_chars": 50.5,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_format_exact_three_sentences": {
+      "num_turns": 6,
+      "avg_elapsed_s": 8.8947,
+      "avg_reply_len_chars": 58.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_format_bullet_points": {
+      "num_turns": 6,
+      "avg_elapsed_s": 11.2906,
+      "avg_reply_len_chars": 55.83,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    }
+  },
+  "bucket_seed_high_distress_001": {
+    "baseline_relational_instruction_scope_minimal_sufficient": {
+      "num_turns": 6,
+      "avg_elapsed_s": 11.6654,
+      "avg_reply_len_chars": 82.5,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_scope_more_detailed": {
+      "num_turns": 6,
+      "avg_elapsed_s": 14.0302,
+      "avg_reply_len_chars": 147.17,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_intervention_more_proactive": {
+      "num_turns": 6,
+      "avg_elapsed_s": 12.6813,
+      "avg_reply_len_chars": 99,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_intervention_do_not_add_unasked_help": {
+      "num_turns": 6,
+      "avg_elapsed_s": 10.6149,
+      "avg_reply_len_chars": 88.5,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_affect_no_extra_comfort": {
+      "num_turns": 6,
+      "avg_elapsed_s": 12.3226,
+      "avg_reply_len_chars": 74,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_affect_more_warm": {
+      "num_turns": 6,
+      "avg_elapsed_s": 13.9223,
+      "avg_reply_len_chars": 100.33,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_interpretation_deeper": {
+      "num_turns": 6,
+      "avg_elapsed_s": 11.6638,
+      "avg_reply_len_chars": 100.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_interpretation_literal_only": {
+      "num_turns": 6,
+      "avg_elapsed_s": 12.2525,
+      "avg_reply_len_chars": 109,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_persona_roleplay_stronger": {
+      "num_turns": 6,
+      "avg_elapsed_s": 11.128,
+      "avg_reply_len_chars": 98.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_format_exact_three_sentences": {
+      "num_turns": 6,
+      "avg_elapsed_s": 8.3931,
+      "avg_reply_len_chars": 67.33,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_persona_neutral_professional": {
+      "num_turns": 6,
+      "avg_elapsed_s": 12.3918,
+      "avg_reply_len_chars": 109.67,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    },
+    "baseline_relational_instruction_format_bullet_points": {
+      "num_turns": 6,
+      "avg_elapsed_s": 15.3713,
+      "avg_reply_len_chars": 110.5,
+      "boundary_turns": 0,
+      "boundary_violation_turns": 0,
+      "boundary_violation_rate": null
+    }
+  }
+}

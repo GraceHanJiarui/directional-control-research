@@ -1,0 +1,66 @@
+{
+  "baseline_relational_instruction_anti_expansion": {
+    "num_turns": 48,
+    "avg_elapsed_s": 10.6869,
+    "avg_reply_len_chars": 80.1,
+    "boundary_turns": 0,
+    "boundary_violation_turns": 0,
+    "boundary_violation_rate": null
+  },
+  "baseline_relational_instruction_stronger": {
+    "num_turns": 48,
+    "avg_elapsed_s": 11.6571,
+    "avg_reply_len_chars": 100.06,
+    "boundary_turns": 0,
+    "boundary_violation_turns": 0,
+    "boundary_violation_rate": null
+  },
+  "baseline_relational_instruction_demo_compact_anti_expansion": {
+    "num_turns": 48,
+    "avg_elapsed_s": 10.3929,
+    "avg_reply_len_chars": 74.79,
+    "boundary_turns": 0,
+    "boundary_violation_turns": 0,
+    "boundary_violation_rate": null
+  },
+  "baseline_relational_instruction_demo_compact": {
+    "num_turns": 48,
+    "avg_elapsed_s": 11.688,
+    "avg_reply_len_chars": 82.46,
+    "boundary_turns": 0,
+    "boundary_violation_turns": 0,
+    "boundary_violation_rate": null
+  },
+  "baseline_relational_instruction_paraphrase_a": {
+    "num_turns": 48,
+    "avg_elapsed_s": 12.0541,
+    "avg_reply_len_chars": 91.35,
+    "boundary_turns": 0,
+    "boundary_violation_turns": 0,
+    "boundary_violation_rate": null
+  },
+  "baseline_relational_instruction_paraphrase_c": {
+    "num_turns": 48,
+    "avg_elapsed_s": 11.4075,
+    "avg_reply_len_chars": 81.46,
+    "boundary_turns": 0,
+    "boundary_violation_turns": 0,
+    "boundary_violation_rate": null
+  },
+  "baseline_relational_instruction_paraphrase_b": {
+    "num_turns": 48,
+    "avg_elapsed_s": 11.9976,
+    "avg_reply_len_chars": 97.62,
+    "boundary_turns": 0,
+    "boundary_violation_turns": 0,
+    "boundary_violation_rate": null
+  },
+  "explicit_rel_state_projected_h7_pfitpoly2": {
+    "num_turns": 48,
+    "avg_elapsed_s": 27.4339,
+    "avg_reply_len_chars": 71.6,
+    "boundary_turns": 0,
+    "boundary_violation_turns": 0,
+    "boundary_violation_rate": null
+  }
+}

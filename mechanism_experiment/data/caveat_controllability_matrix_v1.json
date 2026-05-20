@@ -1,0 +1,149 @@
+{
+  "axes": [
+    {
+      "axis_id": "caution",
+      "label": "more_complete_caveat_vs_no_extra_caveat",
+      "mode_a": "ask_no_extra_caveat",
+      "mode_b": "ask_more_complete_caveat",
+      "description": "Compare whether the model can withhold or add one brief key caveat when explicitly asked."
+    }
+  ],
+  "modes": {
+    "ask_no_extra_caveat": "补充说明：不要额外补 caveat、限制条件、风险提醒或免责说明，只回答当前核心问题。",
+    "ask_more_complete_caveat": "补充说明：在直接回答后，请再补一个最关键的限制、风险或注意事项。"
+  },
+  "cases": [
+    {
+      "case_id": "mwz_concept_explain_001",
+      "category": "task_primary",
+      "probe_focus": "plain explanation",
+      "turns": [
+        "我一直搞不太懂“通货膨胀”到底是什么意思。",
+        "你先别给我教科书式定义。",
+        "我更想听一个普通人一下就能抓到意思的解释。",
+        "如果要举例子，也尽量举日常一点的。"
+      ]
+    },
+    {
+      "case_id": "troubleshoot_ram_blackscreen_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "ram upgrade no boot",
+      "turns": [
+        "我昨天给台式机加了一根内存，结果今天一开机就黑屏，风扇会转，但显示器一直没信号。",
+        "我现在不是要你给我一整套装机科普。",
+        "你先告诉我最先该排查什么。",
+        "先抓最关键的两件事就行。"
+      ]
+    },
+    {
+      "case_id": "troubleshoot_phone_storage_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "phone storage full",
+      "turns": [
+        "我手机总是提示存储空间不足，但我一下又不知道先清什么最有效。",
+        "我不是要完整清理指南。",
+        "你先告诉我最该先看哪一类东西。",
+        "只要先帮我判断优先级就行。"
+      ]
+    },
+    {
+      "case_id": "dd_everyday_choice_caveat_001",
+      "category": "task_primary",
+      "probe_focus": "rest vs exhibition",
+      "turns": [
+        "我周末在想，是去看展还是在家把觉补回来。",
+        "我不是要完整利弊清单。",
+        "你先告诉我判断时最该看什么。",
+        "我只想先做一个当前决定。"
+      ]
+    },
+    {
+      "case_id": "purchase_laptop_wait_001",
+      "category": "task_primary",
+      "probe_focus": "buy now or wait",
+      "turns": [
+        "我最近想买笔记本，但有点纠结是现在下单还是再等等。",
+        "我不是要你给我整个购买攻略。",
+        "你先告诉我判断时最该看什么。",
+        "我只想先得到一个当前方向。"
+      ]
+    },
+    {
+      "case_id": "finance_subscriptions_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "find wasteful subscriptions",
+      "turns": [
+        "我最近想清一下各种订阅，但一打开账单就有点乱。",
+        "我不是要你给我完整理财计划。",
+        "你先告诉我最该先看哪个点。",
+        "我只想知道第一步该盯什么。"
+      ]
+    },
+    {
+      "case_id": "used_laptop_seller_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "used laptop negotiation",
+      "turns": [
+        "有人在二手平台卖一台笔记本，价格看起来不错，我现在在想值不值得继续谈。",
+        "我不是要完整验机手册。",
+        "你先告诉我最关键的一步是什么。",
+        "先帮我抓当前最重要的判断点。"
+      ]
+    },
+    {
+      "case_id": "rental_deposit_001",
+      "category": "task_primary",
+      "probe_focus": "should I transfer a deposit now",
+      "turns": [
+        "我刚看上一套房，房东催我今天先转定金，不然就给别人了。",
+        "我不是要租房全流程攻略。",
+        "你先告诉我现在这一步最该怎么判断。",
+        "只回答当前该不该先转。"
+      ]
+    },
+    {
+      "case_id": "friend_borrow_money_001",
+      "category": "task_primary",
+      "probe_focus": "lend money to a friend",
+      "turns": [
+        "一个朋友突然来找我借钱，说下周就还。",
+        "我不是要一整套人际关系分析。",
+        "你先告诉我现在最该看什么。",
+        "我只想先判断要不要借。"
+      ]
+    },
+    {
+      "case_id": "coworker_punch_in_001",
+      "category": "task_primary",
+      "probe_focus": "clock in for coworker",
+      "turns": [
+        "同事刚发消息让我帮他代打卡，说他堵在路上，晚一点就到。",
+        "我不是要职场伦理长文。",
+        "你先告诉我这一步最关键的判断。",
+        "我只想知道现在该不该答应。"
+      ]
+    },
+    {
+      "case_id": "subscription_cancel_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "which subscription to cancel first",
+      "turns": [
+        "我最近想把一些订阅砍掉，但一时不知道先从哪个下手。",
+        "我不是要完整清单。",
+        "你先告诉我当前最该看哪个点。",
+        "只抓最关键的。"
+      ]
+    },
+    {
+      "case_id": "package_delay_refund_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "refund after shipping delay",
+      "turns": [
+        "我下单的东西卖家承诺两天发货，现在已经拖了四天，我在想要不要直接申请退款。",
+        "我不是要整个平台规则讲解。",
+        "你先告诉我现在最该怎么判断。",
+        "我只想先决定这一步。"
+      ]
+    }
+  ]
+}

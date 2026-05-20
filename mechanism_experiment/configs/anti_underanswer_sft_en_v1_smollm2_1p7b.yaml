@@ -1,0 +1,9 @@
+model_name: HuggingFaceTB/SmolLM2-1.7B-Instruct
+train_file: data/built_en_v2/anti_underanswer_sft_en_v2_train.jsonl
+output_dir: outputs/smollm2_1p7b_anti_underanswer_sft_en_v1
+max_length: 768
+learning_rate: 2e-4
+num_epochs: 2.0
+per_device_batch_size: 2
+grad_accum: 16
+use_4bit: false

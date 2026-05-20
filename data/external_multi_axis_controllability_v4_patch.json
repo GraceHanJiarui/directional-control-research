@@ -1,0 +1,112 @@
+{
+  "new_cases": [
+    {
+      "case_id": "used_laptop_seller_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "bounded purchase judgment with optional caution and follow-up",
+      "recommended_axes": ["caveat", "next_step", "scope"],
+      "turns": [
+        "我在二手平台看中一台笔记本，对方说成色很好、价格也不高。",
+        "我现在不是要完整验机手册。",
+        "你先告诉我这个交易值不值得往下谈。",
+        "如果你想提醒我风险或下一步，也尽量只提一个最关键的。"
+      ]
+    },
+    {
+      "case_id": "rental_deposit_001",
+      "category": "task_primary",
+      "probe_focus": "deposit decision under mild uncertainty",
+      "recommended_axes": ["caveat", "next_step", "optionality"],
+      "turns": [
+        "房东让我先转一笔定金把房子留住，我现在有点犹豫要不要先转。",
+        "我不是要整套租房避坑指南。",
+        "你先给我一个当前判断。",
+        "如果要补提醒或下一步，也只补最关键的一点。"
+      ]
+    },
+    {
+      "case_id": "friend_borrow_money_001",
+      "category": "task_primary",
+      "probe_focus": "social decision that can drift into moralizing or caution",
+      "recommended_axes": ["moralizing", "caveat", "scope"],
+      "turns": [
+        "一个朋友临时来找我借钱，说下周就还，我现在犹豫要不要借。",
+        "我不是要听大道理，也不是要完整人际关系分析。",
+        "你先给我一个当前判断。",
+        "别默认展开成长篇教育，也别顺手铺太多附加条件。"
+      ]
+    },
+    {
+      "case_id": "coworker_punch_in_001",
+      "category": "task_primary",
+      "probe_focus": "normative workplace request with optional caution layer",
+      "recommended_axes": ["moralizing", "caveat", "scope"],
+      "turns": [
+        "同事让我明早顺手帮他打个卡，说就这一次，我现在在想要不要答应。",
+        "我不是要完整职场伦理课。",
+        "你先给我一个当前判断。",
+        "如果要补提醒，也只补一个最关键的风险点。"
+      ]
+    },
+    {
+      "case_id": "roommate_dirty_dishes_001",
+      "category": "task_primary",
+      "probe_focus": "minor conflict response with possible moralizing residue",
+      "recommended_axes": ["moralizing", "next_step", "tone"],
+      "turns": [
+        "室友这周已经连续几次把脏碗放着不洗，我现在要不要今天就提出来？",
+        "我不是要整套室友相处哲学。",
+        "你先给我一个直接判断或很小的动作建议。",
+        "不要顺手写成长篇说教。"
+      ]
+    },
+    {
+      "case_id": "apology_text_after_argument_001",
+      "category": "task_primary",
+      "probe_focus": "repair action with bounded next-step pressure",
+      "recommended_axes": ["next_step", "moralizing", "tone"],
+      "turns": [
+        "我昨天和朋友说话有点冲，现在在想要不要先发个消息缓一下。",
+        "我不是要完整道歉模板。",
+        "你先告诉我当前要不要发，以及如果要动的话第一步是什么。",
+        "别把回答拉成长篇道德教育。"
+      ]
+    },
+    {
+      "case_id": "subscription_cancel_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "small recurring-cost cleanup with temptation to over-advise",
+      "recommended_axes": ["next_step", "caveat", "scope"],
+      "turns": [
+        "我发现自己同时开着好几个订阅服务，但一时不知道先取消哪一个最值。",
+        "我不是要完整个人理财规划。",
+        "你先给我一个当前最该看的点。",
+        "如果要补 caveat 或下一步，也请控制在一个。"
+      ]
+    },
+    {
+      "case_id": "team_credit_followup_001",
+      "category": "task_primary",
+      "probe_focus": "workplace follow-up without moral lecture",
+      "recommended_axes": ["moralizing", "next_step", "stance"],
+      "turns": [
+        "我之前提过的一个想法被同事拿去直接对外说了，我现在在想要不要跟进说清楚。",
+        "我不是要完整职场做人课。",
+        "你先给我一个当前判断。",
+        "如果要补下一步，也只说一个最关键动作。"
+      ]
+    },
+    {
+      "case_id": "package_delay_refund_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "customer-service decision with optional caution and action push",
+      "recommended_axes": ["caveat", "next_step", "scope"],
+      "turns": [
+        "我买的东西已经延迟发货好几天了，我现在要不要直接申请退款？",
+        "我不是要完整售后维权手册。",
+        "你先给我一个直接判断。",
+        "如果你要补 caveat 或下一步，只补最关键的一条。"
+      ]
+    }
+  ]
+}

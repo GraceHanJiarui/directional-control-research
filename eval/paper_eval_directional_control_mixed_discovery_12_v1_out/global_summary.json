@@ -1,0 +1,50 @@
+{
+  "baseline_relational_instruction_scope_minimal_sufficient": {
+    "num_turns": 54,
+    "avg_elapsed_s": 6.9997,
+    "avg_reply_len_chars": 55.02,
+    "boundary_turns": 0,
+    "boundary_violation_turns": 0,
+    "boundary_violation_rate": null
+  },
+  "baseline_relational_instruction_intervention_do_not_add_unasked_help": {
+    "num_turns": 54,
+    "avg_elapsed_s": 7.8428,
+    "avg_reply_len_chars": 115.04,
+    "boundary_turns": 0,
+    "boundary_violation_turns": 0,
+    "boundary_violation_rate": null
+  },
+  "baseline_relational_instruction_intervention_more_proactive": {
+    "num_turns": 54,
+    "avg_elapsed_s": 10.3028,
+    "avg_reply_len_chars": 192.33,
+    "boundary_turns": 0,
+    "boundary_violation_turns": 0,
+    "boundary_violation_rate": null
+  },
+  "baseline_relational_instruction_scope_more_detailed": {
+    "num_turns": 54,
+    "avg_elapsed_s": 10.2976,
+    "avg_reply_len_chars": 212.61,
+    "boundary_turns": 0,
+    "boundary_violation_turns": 0,
+    "boundary_violation_rate": null
+  },
+  "baseline_relational_instruction_affect_more_warm": {
+    "num_turns": 54,
+    "avg_elapsed_s": 9.6213,
+    "avg_reply_len_chars": 174.31,
+    "boundary_turns": 0,
+    "boundary_violation_turns": 0,
+    "boundary_violation_rate": null
+  },
+  "baseline_relational_instruction_affect_no_extra_comfort": {
+    "num_turns": 54,
+    "avg_elapsed_s": 8.488,
+    "avg_reply_len_chars": 117.39,
+    "boundary_turns": 0,
+    "boundary_violation_turns": 0,
+    "boundary_violation_rate": null
+  }
+}

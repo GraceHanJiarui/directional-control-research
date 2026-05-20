@@ -1,0 +1,101 @@
+{
+  "axes": [
+    {
+      "axis_id": "scope",
+      "label": "minimal_vs_expand",
+      "mode_a": "ask_minimal",
+      "mode_b": "ask_expand_one_level",
+      "description": "Compare minimal sufficiency versus one more useful layer."
+    },
+    {
+      "axis_id": "interaction",
+      "label": "answer_first_vs_clarify_first",
+      "mode_a": "ask_answer_first",
+      "mode_b": "ask_clarify_first",
+      "description": "Compare answering first versus asking one clarifying question first if truly needed."
+    },
+    {
+      "axis_id": "help",
+      "label": "no_extra_help_vs_add_next_step",
+      "mode_a": "ask_no_extra_help",
+      "mode_b": "ask_add_one_next_step",
+      "description": "Compare no extra help versus one proactive next step."
+    }
+  ],
+  "modes": {
+    "ask_minimal": "Additional instruction: give the minimally sufficient answer and solve only the current request.",
+    "ask_expand_one_level": "Additional instruction: answer directly, then add one short useful extra layer such as one explanation or next step.",
+    "ask_answer_first": "Additional instruction: answer the current question first. Do not start by reframing the task or asking a question unless absolutely necessary.",
+    "ask_clarify_first": "Additional instruction: if the information is truly insufficient, ask one key clarifying question first; otherwise answer directly.",
+    "ask_no_extra_help": "Additional instruction: do not add unasked help, planning, or next steps.",
+    "ask_add_one_next_step": "Additional instruction: after answering directly, add exactly one short helpful next step."
+  },
+  "cases": [
+    {
+      "case_id": "en_everyday_choice_001",
+      "category": "task_primary",
+      "probe_focus": "light everyday judgment under asymmetric control",
+      "turns": [
+        "I am trying to decide whether to go to a museum this weekend or stay home and catch up on sleep.",
+        "This is not a huge life decision, and I am not asking you to decide for me.",
+        "Just give me a direct judgment lens, not a full plan.",
+        "What would you look at first?"
+      ]
+    },
+    {
+      "case_id": "en_concept_explain_001",
+      "category": "task_primary",
+      "probe_focus": "plain explanation with optional extra example layer",
+      "turns": [
+        "I still do not really get what inflation means.",
+        "Please do not give me a textbook definition.",
+        "I want the kind of explanation a normal person gets right away.",
+        "If you use an example, keep it everyday and short."
+      ]
+    },
+    {
+      "case_id": "en_study_restart_001",
+      "category": "clarify_next_step",
+      "probe_focus": "answer-first versus clarify-first asymmetry",
+      "turns": [
+        "I want to restart learning English, but the moment it turns into planning I lose momentum.",
+        "I am not asking for a study plan.",
+        "Just help me choose the first step.",
+        "And do not default to dumping resources on me."
+      ]
+    },
+    {
+      "case_id": "en_room_search_001",
+      "category": "clarify_next_step",
+      "probe_focus": "single-key-question versus direct first step",
+      "turns": [
+        "I need to move soon, but I keep delaying the apartment search because it feels too big.",
+        "Do not give me a full apartment-hunting method.",
+        "I only want the first thing to decide.",
+        "If you have to ask me something, ask only the most important one."
+      ]
+    },
+    {
+      "case_id": "en_ram_black_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "first check only versus proactive extra diagnostic step",
+      "turns": [
+        "I installed a RAM stick in my computer and now it boots to a black screen.",
+        "I am not asking for a complete repair flowchart.",
+        "Tell me the first one or two things to check.",
+        "Do not automatically open every possible branch."
+      ]
+    },
+    {
+      "case_id": "en_battery_drain_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "first check only versus add one next troubleshooting step",
+      "turns": [
+        "My laptop battery has been draining much faster lately.",
+        "I do not need a whole maintenance manual.",
+        "What should I confirm first?",
+        "Keep it lean."
+      ]
+    }
+  ]
+}

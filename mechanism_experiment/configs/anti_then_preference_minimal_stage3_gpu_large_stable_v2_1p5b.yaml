@@ -1,0 +1,12 @@
+model_name: Qwen/Qwen2.5-1.5B
+train_file: ../../../resume/cleaner_pref_v2/preference_cross_minimal_from_anti_pairs_v2_train.jsonl
+output_dir: ../../resume/qwen25_1p5b_anti_then_preference_minimal_stage3_gpu_large_stable_v2
+init_adapter_path: outputs/qwen25_1p5b_anti_underanswer_sft_v5
+ref_adapter_path: outputs/qwen25_1p5b_anti_underanswer_sft_v5
+max_length: 512
+learning_rate: 2e-5
+num_epochs: 0.5
+per_device_batch_size: 1
+grad_accum: 8
+beta: 0.05
+device: cuda

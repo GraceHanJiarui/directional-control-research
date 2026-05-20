@@ -1,0 +1,414 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{ragged2e}
+\usepackage[numbers]{natbib}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+}
+
+\captionsetup[table]{skip=6pt}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+\title{Directional Obedience Asymmetry in Response Control:\\
+Boundary Override, Assistant Priors, and the Limits of Suppressive Instructions}
+\author{Anonymous Submission}
+\date{}
+
+\begin{document}
+\setlength{\emergencystretch}{3em}
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.08}
+\maketitle
+
+\begin{abstract}
+Aligned assistant models are often designed to be helpful, proactive, and conversation-sustaining. Those defaults are not inherently errors. We study a narrower control problem: when users explicitly request a \\emph{current-turn boundary}, which suppressive directions are cleanly executable, and which are overridden by default assistant priors? Across iterative experiments, we find a structured asymmetry rather than a generic prompt-following failure. Instructions such as \texttt{avoid\_underanswer} reliably move outputs toward fuller responses, while \texttt{scope\_minimal\_sufficient} compresses scope more cleanly than policy-level instructions such as \texttt{do\_not\_add\_unasked\_help}. The latter often fails not as random verbosity, but as boundary override: clarification is prioritized over answering, planning over local response, comfort over restraint, or conversational continuation over stopping at the requested point. This pattern is stable across two runs of a Chinese main evidence set, remains visible in an English robustness split after prompt-language calibration, and is directionally supported across assistant families. A \texttt{Qwen} base-to-instruct proxy further suggests that post-training amplifies both default assistant priors and the executability of some explicit scope controls, while policy-level anti-overhelp instructions remain less stable. We also report a negative methodological result: a first attempt to isolate a DPO proxy was dominated by prompt and interface artifacts rather than yielding a clean stage split. The resulting claim is narrower than ``LLMs are generally bad at control'': the main phenomenon is an anisotropic mismatch between explicit user boundaries and selectively sticky assistant defaults.
+\end{abstract}
+
+\section{Introduction}
+Users often ask language models to modulate not only \emph{what} they say, but \emph{how much} they do. In practice, this includes requests such as ``just give me the first step,'' ``don't over-explain,'' ``just stay with me for a moment,'' or ``don't turn this into a full plan.'' These requests are not reducible to surface style. They concern how much explanation, initiative, support, and task takeover the model should realize on the current turn.
+
+A common intuition is that aligned assistants are biased toward detailed, safe, and helpful answers, so some asymmetry in these settings would be unsurprising. But that broad story is too weak to be useful by itself. If all default assistant-favored behaviors were equally hard to suppress, then many instruction families should exhibit similar failure patterns. Our experiments do not support that broader prediction. Instead, the strongest and most repeatable failures cluster around a narrower region: avoiding under-answering, avoiding early stopping, and suppressing default task continuation or support expansion.
+
+This paper therefore studies \emph{directional obedience asymmetry} in response control. We ask whether aligned assistants obey additive and suppressive instructions symmetrically, and if not, which suppressive directions remain most difficult. The main empirical result is not that all suppressive controls fail equally. Scope compression is relatively executable; policy-level anti-overhelp control is markedly less stable. We interpret this pattern not as a generic defect of helpful assistants, but as a structured priority mismatch: some default assistant priors can be locally re-ranked by user instructions, while others remain sticky even when the user explicitly asks for the current turn to stay minimal, local, or non-proactive.
+
+\paragraph{Contributions.}
+\begin{enumerate}[leftmargin=1.5em]
+  \item We formulate response-control failure as a directional asymmetry problem rather than a generic prompt-following problem.
+  \item We show that the strongest asymmetry concentrates in boundary override by default assistant priors, especially around non-insufficiency pressure and policy-level overhelp suppression, rather than in surface style control uniformly.
+  \item We provide converging evidence across a Chinese main evidence set with two-run replication, an English robustness split, cross-model assistant-family support, and a base-to-instruct proxy.
+  \item We separate positive evidence from negative methodological results, including a failed first-pass DPO proxy dominated by prompt/interface mismatch.
+\end{enumerate}
+
+\section{Research Question}
+The paper asks three nested questions. First, when users request response control, do additive and suppressive directions behave symmetrically? Second, if not, which suppressive directions are relatively executable and which are not? Third, how far can mechanism attribution be pushed using inference-time control, cross-model comparison, and training-stage proxy experiments without overclaiming?
+
+Our working hypothesis evolved during the project. An initial broad explanation was that aligned models would more easily obey instructions that move in the same direction as default assistant policy. The accumulated results weaken that wider explanation. A narrower hypothesis fits the data better: the strongest asymmetry appears when users explicitly request current-turn boundary contraction, but some assistant priors remain selectively hard to demote. The most stable examples involve avoiding under-answering, avoiding early stopping, and suppressing default clarification, helping, planning, or task continuation.
+
+\section{Related Work}
+This paper sits at the intersection of instruction-following alignment, controllable generation, and assistant-style dialogue. Instruction-tuned and preference-optimized systems are explicitly trained to be more helpful, safer, and more useful to users \cite{ouyang2022instructgpt,rafailov2023dpo,wang2024selfrewarding}. That general trend motivates our starting suspicion, but our target is narrower: not generic helpfulness, but the executability of user-specified suppressive control.
+
+Our framing also overlaps with controllable generation work in which users or external controllers specify style, attributes, dialogue acts, or plans \cite{zhang2023controlsurvey,gu2022survey}. The present paper differs in that the strongest failures we observe are not primarily on decorative surface style; they appear where the user asks the model to stop expanding, stop taking over, or stop making the answer more complete than requested. This places the paper closer to work on instruction-following reliability, controllability limits, and the mismatch between intended and executed control \cite{zhou2023instruction,lin2024truthfulcontrol}. Finally, open assistant model families such as Llama, Qwen, and Mistral provide a practical basis for comparing base and post-trained systems \cite{touvron2023llama2,qwen2024technical,jiang2023mistral}. We use these comparisons as proxies rather than as definitive causal decompositions.
+
+\section{Experimental Setup}
+\subsection{Control Conditions}
+The final paper draft centers on four response-control modes:
+\begin{itemize}[leftmargin=1.5em]
+  \item \texttt{neutral\_default}
+  \item \texttt{avoid\_underanswer}
+  \item \texttt{scope\_minimal\_sufficient}
+  \item \texttt{intervention\_do\_not\_add\_unasked\_help}
+\end{itemize}
+
+These conditions were selected because they survived earlier exploratory rounds better than broader style-oriented families such as academic vs.\ colloquial register, lively vs.\ plain tone, or naive vs.\ mature viewpoint. The four-mode set also reflects the central distinction that emerged during the project: shrinking content scope is not the same as suppressing default task takeover.
+
+\subsection{Case Sets}
+We use three main evaluation sets in the current draft:
+\begin{itemize}[leftmargin=1.5em]
+  \item a Chinese main evidence set with $16$ cases,
+  \item an English robustness split with $8$ aligned cases,
+  \item a smaller Chinese cross-model support split with $8$ cases.
+\end{itemize}
+
+The Chinese main evidence set is balanced across four case types:
+\begin{itemize}[leftmargin=1.5em]
+  \item task-primary,
+  \item clarify-next-step,
+  \item low-support/presence,
+  \item practical troubleshooting.
+\end{itemize}
+
+This organization reflects our later conclusion that the phenomenon is not purely about token length. The same completion-related pressure manifests differently across categories: as extra planning in task cases, extra continuation in next-step cases, extra comfort in presence cases, and extra diagnosis in troubleshooting cases.
+
+\subsection{Models and Experimental Layers}
+The evidence in this draft comes from four layers of analysis:
+\begin{enumerate}[leftmargin=1.5em]
+  \item inference-time control experiments,
+  \item assistant-family comparison,
+  \item a base-to-instruct training-stage proxy,
+  \item a negative DPO-proxy calibration result.
+\end{enumerate}
+
+The strongest primary model is \texttt{Qwen2.5-7B-Instruct}. \texttt{Mistral-7B-Instruct-v0.3} is used as cross-model support. A \texttt{Qwen2.5-7B} vs.\ \texttt{Qwen2.5-7B-Instruct} comparison provides the cleanest training-stage proxy in the current setup.
+
+\subsection{Experimental Overview}
+Table~\ref{tab:exp-overview} summarizes the paper's evidence hierarchy. The table is intentionally organized by evidential role rather than chronology. The Chinese \texttt{Qwen} main evidence set is the paper's primary empirical anchor. The English split, \texttt{Mistral} support split, and \texttt{Qwen} base-to-instruct proxy serve as supporting layers. The \texttt{Zephyr} calibration is reported as a methodological boundary rather than as a positive main result.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Experimental overview used in the current draft.}
+\label{tab:exp-overview}
+\begin{tabularx}{\linewidth}{l l l c Y}
+\toprule
+Layer & Model(s) & Split & Size & Role \\
+\midrule
+Main evidence & \texttt{Qwen2.5-7B-Instruct} & Chinese main evidence & $16$ cases, $2$ runs & Primary evidence for completion pressure, scope compression, and anti-overhelp asymmetry \\
+English robustness & \texttt{Qwen2.5-7B-Instruct} & English aligned split & $8$ cases & Cross-language support after prompt-language calibration \\
+Cross-model support & \texttt{Mistral-7B-Instruct-v0.3} & Chinese support split & $8$ cases & Directional support that the phenomenon is not a single-model artifact \\
+Training-stage proxy & \texttt{Qwen2.5-7B} $\rightarrow$ \texttt{Qwen2.5-7B-Instruct} & Chinese confirmation split & $4$ cases & Proxy evidence that post-training amplifies completion pressure while improving some scope control \\
+Negative mechanism result & \texttt{Mistral base/instruct}, \texttt{Zephyr} & Calibration and proxy splits & small targeted sets & Shows that DPO-style proxy evidence is currently confounded by prompt/interface mismatch \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Prompting and Interfaces}
+All main evidence and support results reported here use the same four response-control modes, applied through a lightweight experimental runner that serializes multi-turn history and injects mode-specific control wording above the user turn. For chat-oriented models, we use a chat-style interface with a system prompt and turn history. For base-model proxies, we use a simpler completion-style serialization rather than forcing the same chat wrapper onto non-chat models.
+
+The experimental design changed over time in response to concrete artifacts. In particular, English robustness runs initially mixed English user cases with Chinese upper wrappers, which created language-selection contamination. Similarly, a first-pass DPO proxy using Zephyr was later shown to be highly sensitive to prompt serialization. We therefore treat prompt-interface calibration as part of the methodology rather than as a post-hoc footnote.
+
+\subsection{Evaluation Strategy}
+The current paper does not depend on a single scalar benchmark score. Instead, we use a layered read of the evidence:
+\begin{itemize}[leftmargin=1.5em]
+  \item average response length as a supporting signal,
+  \item category-level breakdowns,
+  \item content-level inspection of representative cases,
+  \item replication within the Chinese main evidence set,
+  \item cross-language and cross-model support,
+  \item and mechanism-side proxy experiments.
+\end{itemize}
+
+This strategy is deliberate. The project began with small discovery sets and then moved toward a medium-sized canonical pool. At the current stage, stability of pattern matters more than any single absolute metric.
+
+\subsection{Design Logic for Claim Strength}
+The draft follows a claim-first rather than benchmark-first design. We only promote a finding to the main paper claim if it survives at least three kinds of pressure: replication within the Chinese main evidence set, movement across languages or model families, and a plausible mechanism-side proxy. This is why some explored axes, such as register or viewpoint style, are not foregrounded in the current draft: they did not survive this filtering process as strongly as completion pressure and anti-overhelp asymmetry.
+
+\section{Results}
+\subsection{Main Chinese Evidence}
+The central empirical result is stable across two runs of the Chinese $16$-case main evidence set. On the first run, the average response lengths were:
+\begin{itemize}[leftmargin=1.5em]
+  \item \texttt{avoid\_underanswer}: $87.32$
+  \item \texttt{intervention\_do\_not\_add\_unasked\_help}: $81.36$
+  \item \texttt{neutral\_default}: $80.58$
+  \item \texttt{scope\_minimal\_sufficient}: $64.86$
+\end{itemize}
+
+On the second run, the same ordering held:
+\begin{itemize}[leftmargin=1.5em]
+  \item \texttt{avoid\_underanswer}: $93.36$
+  \item \texttt{intervention\_do\_not\_add\_unasked\_help}: $82.62$
+  \item \texttt{neutral\_default}: $78.47$
+  \item \texttt{scope\_minimal\_sufficient}: $63.98$
+\end{itemize}
+
+This does \emph{not} support a trivial ``the model always gets longer'' story. Instead, it supports a more structured claim. \texttt{avoid\_underanswer} consistently raises completion pressure. \texttt{scope\_minimal\_sufficient} consistently compresses response scope. \texttt{do\_not\_add\_unasked\_help} does not collapse to the same behavior as \texttt{scope\_minimal\_sufficient}; it remains harder to execute cleanly.
+
+The category breakdown is equally informative. The strongest separations occur in task-primary and practical-troubleshooting cases. In these settings, \texttt{avoid\_underanswer} tends to expand the answer into fuller planning, fuller criteria lists, or fuller diagnostic sequences. By contrast, \texttt{scope\_minimal\_sufficient} more often stays near the first step or first relevant distinction. Low-support presence cases are shorter overall and show smaller separation. This does not erase the asymmetry; it changes its expression. In these cases, the leakage is less about planning and more about adding comfort, reassurance, or low-level suggestions that exceed what the user explicitly asked for.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Chinese main evidence set on \texttt{Qwen2.5-7B-Instruct}. The same ordering is preserved across two runs.}
+\label{tab:qwen-main}
+\begin{tabularx}{0.86\linewidth}{l c c}
+\toprule
+Mode & Run 1 avg. length & Run 2 avg. length \\
+\midrule
+\texttt{avoid\_underanswer} & $87.32$ & $93.36$ \\
+\texttt{intervention\_do\_not\_add\_unasked\_help} & $81.36$ & $82.62$ \\
+\texttt{neutral\_default} & $80.58$ & $78.47$ \\
+\texttt{scope\_minimal\_sufficient} & $64.86$ & $63.98$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\caption{Category-level averages on the second run of the Chinese main evidence set. The strongest separation appears in task-primary and practical-troubleshooting cases.}
+\label{tab:qwen-category-breakdown}
+\begin{tabularx}{\linewidth}{l c c c c}
+\toprule
+Category & \texttt{neutral} & \texttt{avoid\_underanswer} & \texttt{scope\_minimal} & \texttt{do\_not\_add\_help} \\
+\midrule
+\texttt{task\_primary} & $106.39$ & $132.22$ & $95.72$ & $113.06$ \\
+\texttt{clarify\_next\_step} & $69.50$ & $75.38$ & $57.19$ & $67.50$ \\
+\texttt{low\_support\_presence} & $51.06$ & $53.31$ & $38.44$ & $45.56$ \\
+\texttt{practical\_troubleshooting} & $83.44$ & $107.69$ & $60.62$ & $100.56$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Content-Level Attribution}
+The content analysis clarifies why these four modes should not be reduced to a single length dimension.
+
+\paragraph{Avoid underanswer.}
+This mode systematically adds \emph{completion pressure}. In task settings, that means more background, more criteria, more steps, and more follow-up questions. In presence settings, it means more comfort, more companionship language, and more light guidance. The common pattern is not simply verbosity; it is pressure to avoid seeming insufficient.
+
+\paragraph{Scope minimal sufficient.}
+This mode mainly suppresses \emph{information range}. It cuts background, removes optional elaboration, and more often stays near a single next step or a compressed judgment. This is the most consistently executable suppressive control in the project.
+
+\paragraph{Do not add unasked help.}
+This mode attempts to suppress \emph{default takeover}. It is not only asking the model to say less; it is asking the model not to implicitly continue the user's planning, diagnosis, or emotional processing for them. This is precisely where execution becomes less stable. The model may shorten somewhat, but still leaks suggestions, clarifying questions, framing, or next-step guidance.
+
+This distinction matters for interpretation. The evidence increasingly suggests that ``say less'' and ``help less'' are not the same control problem.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Representative case-level patterns from the second \texttt{Qwen} main-evidence run. The point is qualitative attribution rather than exact wording.}
+\label{tab:case-studies}
+\begin{tabularx}{\linewidth}{l Y Y}
+\toprule
+Case & Main contrast & Interpretation \\
+\midrule
+\texttt{mwz\_transport\_decision\_002} & \texttt{avoid\_underanswer} adds extra considerations and follow-up framing, while \texttt{scope\_minimal\_sufficient} stays nearer to a compressed comparison. & Completion pressure in task-primary cases often surfaces as fuller criteria lists rather than just longer prose. \\
+\texttt{mwz\_booking\_clarify\_002} & \texttt{do\_not\_add\_unasked\_help} still expands into additional constraints and implicit planning, while \texttt{scope\_minimal\_sufficient} stays closer to a first-step clarification. & This illustrates that anti-overhelp control is harder than plain scope compression. \\
+\texttt{ed\_presence\_over\_fixing\_002} & Even when the user mainly wants presence, \texttt{neutral} and \texttt{avoid\_underanswer} can drift toward comfort or light suggestions. & In low-support cases, the same pressure leaks as extra soothing or low-level advice rather than explicit planning. \\
+\texttt{troubleshoot\_wifi\_drop\_001} & \texttt{neutral} and \texttt{do\_not\_add\_unasked\_help} still tend to produce fairly full troubleshooting moves, while \texttt{scope\_minimal\_sufficient} is much shorter. & Troubleshooting is one of the clearest domains where default takeover reappears as full diagnosis. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Cross-Language Robustness}
+After calibrating the English wrapper so that the upper prompt was also written in English, the English robustness split became interpretable rather than language-contaminated. The earlier English run suffered from obvious mismatch artifacts, including English user cases answered in Chinese. After prompt-language calibration, those artifacts disappeared.
+
+The corrected English run yields the following average ordering:
+\begin{itemize}[leftmargin=1.5em]
+  \item \texttt{intervention\_do\_not\_add\_unasked\_help}: $279.62$
+  \item \texttt{avoid\_underanswer}: $233.21$
+  \item \texttt{neutral\_default}: $202.15$
+  \item \texttt{scope\_minimal\_sufficient}: $124.32$
+\end{itemize}
+
+At first glance this differs from the Chinese main evidence ordering, because \texttt{do\_not\_add\_unasked\_help} becomes the longest condition. We do not interpret this as a contradiction. Instead, it sharpens the main claim. In English, the same policy-level anti-overhelp condition appears even harder to obey cleanly. Rather than merely failing into ``no change,'' it fails into a stronger exposure of default helpfulness and continuation pressure.
+
+Thus the English split supports two cross-language conclusions. First, \texttt{scope\_minimal\_sufficient} remains the most stable suppressive control. Second, \texttt{do\_not\_add\_unasked\_help} remains the harder policy-level suppression target. The cross-language result is therefore not identical to the Chinese one, but it is structurally consistent with the same underlying asymmetry.
+
+\begin{table}[t]
+\centering
+\small
+\caption{English robustness split after prompt-language calibration. The result is not identical to the Chinese ordering, but it preserves the main structural distinction: scope compression remains stable, while policy-level anti-overhelp control is harder to realize.}
+\label{tab:english-robustness}
+\begin{tabularx}{0.86\linewidth}{l c}
+\toprule
+Mode & Avg. length \\
+\midrule
+\texttt{intervention\_do\_not\_add\_unasked\_help} & $279.62$ \\
+\texttt{avoid\_underanswer} & $233.21$ \\
+\texttt{neutral\_default} & $202.15$ \\
+\texttt{scope\_minimal\_sufficient} & $124.32$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Cross-Model Support}
+The smaller \texttt{Mistral-7B-Instruct-v0.3} support split provides directional support rather than equal-strength replication. Across the $8$ support cases, the average response lengths were:
+\begin{itemize}[leftmargin=1.5em]
+  \item \texttt{avoid\_underanswer}: $139.91$
+  \item \texttt{neutral\_default}: $127.69$
+  \item \texttt{intervention\_do\_not\_add\_unasked\_help}: $116.66$
+  \item \texttt{scope\_minimal\_sufficient}: $82.53$
+\end{itemize}
+
+This keeps the same broad structure: \texttt{avoid\_underanswer} expands, \texttt{scope\_minimal\_sufficient} compresses, and \texttt{do\_not\_add\_unasked\_help} sits in between. However, \texttt{Mistral} is noticeably more template-like and noisier than \texttt{Qwen}. In troubleshooting cases, it often defaults to fuller diagnosis even without explicit completion pressure. In low-support cases, it more easily slips into stock empathetic phrasing. We therefore treat \texttt{Mistral} as cross-model support rather than a second main-evidence model.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Cross-model support on \texttt{Mistral-7B-Instruct-v0.3}. The direction matches the \texttt{Qwen} main result, but with more template-like output and weaker cleanliness.}
+\label{tab:mistral-support}
+\begin{tabularx}{0.86\linewidth}{l c}
+\toprule
+Mode & Avg. length \\
+\midrule
+\texttt{avoid\_underanswer} & $139.91$ \\
+\texttt{neutral\_default} & $127.69$ \\
+\texttt{intervention\_do\_not\_add\_unasked\_help} & $116.66$ \\
+\texttt{scope\_minimal\_sufficient} & $82.53$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Training-Stage Proxy}
+The clearest mechanism-side evidence in the current draft comes from the \texttt{Qwen} base-to-instruct proxy. Relative to \texttt{Qwen2.5-7B}, the instruct model shows two simultaneous changes.
+
+First, completion-related pressure becomes stronger. \texttt{avoid\_underanswer} more reliably moves the model toward fuller, more complete-seeming answers. Second, some explicit suppressive control also becomes more executable: \texttt{scope\_minimal\_sufficient} is more clearly realized in the instruct model than in the base model.
+
+This is an important constraint on interpretation. Post-training does not simply make the model more verbose. It appears to strengthen both:
+\begin{itemize}[leftmargin=1.5em]
+  \item the drive to avoid under-answering,
+  \item the ability to obey at least some explicit scope compression instructions.
+\end{itemize}
+
+The residual difficulty is therefore not generic prompt obedience. It is more specific to policy-level suppression of default assistance and takeover.
+
+\subsection{Negative Mechanism Result: DPO Proxy}
+We also attempted to push the mechanism story further using a \texttt{Mistral base $\rightarrow$ Mistral instruct $\rightarrow$ Zephyr} proxy, where \texttt{Zephyr} served as a DPO-like aligned assistant model. This line did not produce a clean stage split. Instead, the first pass was dominated by prompt and interface artifacts: excessive length, control-text absorption, templatic continuation, and other signs that the model-prompt interface was mismatched.
+
+A later calibration experiment showed that shortening and simplifying serialization fixed much of this artifact, so the failure was not simply ``Zephyr is unusable.'' But even after calibration, the model did not become a clean enough witness for a strong SFT-vs-DPO causal claim. We therefore record this as a negative methodological result rather than a positive mechanism finding.
+
+\section{Discussion}
+\subsection{What the Results Do and Do Not Show}
+The results support a narrower claim than ``aligned LLMs are bad at response control.'' They also support a narrower claim than ``all alignment-favored behaviors become hard to suppress.'' The evidence instead points to a more specific asymmetry in how explicit user boundaries interact with default assistant priors.
+
+In other words, the model does not merely prefer to be long. Nor is the main finding simply that aligned assistants help too much. The sharper point is that some default priorities remain sticky even after the user has specified a current-turn boundary. In task settings, this can appear as fuller planning, fuller diagnosis, or clarification before commitment. In low-support settings, it can appear as extra comfort, companionship, or processing beyond what the user requested.
+
+\subsection{Scope Compression vs.\ Help Suppression}
+One of the most useful outcomes of the project is the separation between two kinds of suppressive control.
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Scope compression} asks the model to shrink how much content it includes.
+  \item \textbf{Help suppression} asks the model not to continue the user's task, not to take over, and not to add implicit next-step assistance.
+\end{itemize}
+
+These controls are not equivalent. The empirical pattern now suggests that models can often compress scope without fully suppressing default assistance. This is why \texttt{scope\_minimal\_sufficient} is consistently cleaner than \texttt{do\_not\_add\_unasked\_help}. The latter is closer to asking the model to demote a default assistant priority rather than merely to emit fewer tokens.
+
+\subsection{Mechanism Interpretation}
+The inference-time evidence, cross-model evidence, and base-to-instruct proxy point in the same direction. A weak but coherent mechanism story is now possible:
+\begin{enumerate}[leftmargin=1.5em]
+  \item base models already have some continuation prior toward fuller-seeming responses,
+  \item assistant post-training strengthens that prior and turns it into a more stable helper-like default,
+  \item the same post-training also improves execution of some explicit scope controls,
+  \item but user instructions that try to demote clarification, proactive help, planning, or continuation remain less stable.
+\end{enumerate}
+
+This is not yet a clean training-stage decomposition, and we do not claim one. The DPO proxy line was not strong enough to say whether preference optimization further amplifies the same bias beyond ordinary instruction tuning. What we can say is that the phenomenon survives strong enough tests to move beyond anecdotal prompt behavior. The mechanism-level interpretation should therefore remain behavioral: certain assistant defaults appear selectively sticky under suppressive user control.
+
+\subsection{Why the English Result Matters}
+The English robustness result is useful not because it perfectly mirrors the Chinese ordering, but because it survives a strong methodological correction. Once the upper prompt was also written in English, the main language-selection artifact disappeared. What remained was not collapse, but a structurally interpretable pattern: scope compression still worked best, while policy-level anti-overhelp control failed more dramatically. This gives the paper a stronger cross-language story than a simple ``partial support'' label would suggest.
+
+\subsection{Limitations}
+The current paper still has clear boundaries. First, the main evidence is concentrated in Chinese, with English serving as a smaller robustness split rather than a full second main benchmark. Second, the cross-model evidence is supportive but not symmetric: \texttt{Qwen} is much cleaner than \texttt{Mistral}. Third, the mechanism story stops at a base-to-instruct proxy and does not cleanly isolate SFT from RLHF or DPO.
+
+Finally, the project used deliberately targeted case design rather than a broad random chat corpus. This is a strength for diagnosis but also a limitation for generality. The present claim is about a structured family of user requests that explicitly ask the model to stay minimal, avoid overhelping, or avoid completion pressure. It is not a claim that all real-world prompting will show the same asymmetry at the same strength.
+
+\section{Conclusion}
+The current evidence supports a focused thesis: response-control failures are anisotropic. The strongest and most stable asymmetry is not generic style-following weakness, but selective difficulty overriding some default assistant priors once the user explicitly requests a narrower current-turn boundary. Models can often compress scope when asked to be minimal, but they are less reliable at not taking over the user's task, not extending the conversation, not clarifying before answering, and not making the answer feel more complete than requested.
+
+This narrower result is more useful than a vague claim that aligned assistants are verbose. It identifies where suppressive control still works, where it breaks down, and how those failures surface across task planning, troubleshooting, and low-support presence settings. Future work should revisit the training-stage question with cleaner SFT-vs-preference splits or with small controlled training experiments, but the present paper already establishes a nontrivial empirical point: the hardest directions to suppress are not simply longer outputs, but selectively sticky assistant defaults whose local priority is not reliably re-ranked by explicit user boundary-setting.
+
+\section{Appendix Roadmap}
+The appendix in the current draft serves two practical purposes. First, it keeps the main paper focused on the strongest claim rather than reproducing every exploratory branch. Second, it preserves enough implementation and dataset detail for reproducibility and review. At the current stage, the appendix is intentionally compact and centered on experimental configuration rather than exhaustive prompt dumps.
+
+\appendix
+
+\section{Mode Definitions}
+The paper's main claim depends on four response-control modes. Their intended semantics are as follows:
+\begin{itemize}[leftmargin=1.5em]
+  \item \texttt{neutral\_default}: no additional suppression or completion pressure beyond the ordinary assistant baseline.
+  \item \texttt{avoid\_underanswer}: encourage the model not to answer too sparsely or stop too early.
+  \item \texttt{scope\_minimal\_sufficient}: compress the answer toward the minimum sufficient scope.
+  \item \texttt{intervention\_do\_not\_add\_unasked\_help}: discourage the model from taking over the user's task or adding unsolicited next-step help.
+\end{itemize}
+
+These definitions matter because the paper's core empirical distinction is precisely that the last two suppressive conditions are not behaviorally equivalent.
+
+\section{Evaluation Splits Used in the Draft}
+The current draft uses the following split hierarchy:
+\begin{itemize}[leftmargin=1.5em]
+  \item Chinese main evidence set: $16$ cases, run twice on \texttt{Qwen2.5-7B-Instruct}
+  \item English robustness split: $8$ aligned cases, run on \texttt{Qwen2.5-7B-Instruct}
+  \item Chinese cross-model support split: $8$ cases, run on \texttt{Mistral-7B-Instruct-v0.3}
+  \item Chinese confirmation and proxy subsets: smaller targeted sets used for training-stage and calibration analysis
+\end{itemize}
+
+The case pool itself was built from a mixture of companion-internal designs, mixed-source archetype rewrites, and localized constructed cases. The paper intentionally promotes only the subsets that survived multiple rounds of filtering and artifact checks.
+
+\section{Implementation Notes}
+The experiments were run through a lightweight local runner that supports both chat-style and completion-style interfaces. This distinction is important for fairness. Chat-oriented instruct models were evaluated through a chat interface with system prompts and serialized turn history, while base-model proxies were evaluated through a simpler completion-style format. The project therefore does not claim that every model family was tested under one identical surface wrapper; instead, the design tries to make each proxy comparably usable while still preserving the control condition.
+
+Two calibration steps materially affected the final paper draft:
+\begin{itemize}[leftmargin=1.5em]
+  \item English robustness improved only after the upper wrapper and control wording were also translated into English.
+  \item The first-pass DPO proxy result was not interpretable until a smaller prompt-serialization calibration showed that much of the observed failure came from prompt-interface mismatch.
+\end{itemize}
+
+\section{Deferred Experimental Branches}
+Several experimental branches are deliberately not foregrounded in the current paper claim:
+\begin{itemize}[leftmargin=1.5em]
+  \item surface-style controls such as academic vs. colloquial register,
+  \item explanation-style controls such as intuitive vs. abstract,
+  \item clarification and risk-completeness axes,
+  \item broader DPO-proxy pursuit beyond the current calibration.
+\end{itemize}
+
+These branches are not omitted because they were uninteresting. They are omitted because they did not support the current main claim as strongly as completion pressure and anti-overhelp asymmetry.
+
+\section{Reproducibility Boundary}
+The present draft is reproducible at the level of case files, model families, and experimental conditions used to support the paper's current claims. It is not yet a release-ready benchmark package. In particular, some earlier exploratory runs were used for hypothesis development rather than final paper evidence. The main text therefore privileges the final filtered evidence hierarchy over exhaustive reporting of every exploratory run.
+
+
+\bibliographystyle{plainnat}
+\bibliography{directional_control_research_refs}
+
+\end{document}

@@ -1,0 +1,10 @@
+model_name: Qwen/Qwen2.5-1.5B
+train_file: ../../resume/clarify_v2/built_clarify_v2/answer_first_sft_train.jsonl
+output_dir: ../../resume/qwen25_1p5b_baseline_then_answer_first_stage2_v1
+init_adapter_path: outputs/qwen25_1p5b_baseline_sft_v5
+max_length: 1024
+learning_rate: 5e-5
+num_epochs: 1.0
+per_device_batch_size: 1
+grad_accum: 16
+use_4bit: false

@@ -1,0 +1,98 @@
+[
+  {
+    "probe_id": "bp_dd_choice_001",
+    "case_id": "dd_everyday_choice_002",
+    "category": "task_primary",
+    "probe_focus": "stop_vs_continue_after_direct_judgment",
+    "turns": [
+      "我周末在想，是去看展还是在家把觉补回来。",
+      "这事儿不大，我也不是要你替我做决定。",
+      "你给个很直接的判断思路就行，不用展开成完整方案。",
+      "你会先看哪一个因素？"
+    ],
+    "assistant_prefix": "先看你这周更缺休息还是更想出门",
+    "stop_suffix": "。",
+    "continue_suffix": "，再看展览的时间成本和路程是否划算。",
+    "clarify_suffix": "。你这周是更累还是更想出去透气？"
+  },
+  {
+    "probe_id": "bp_inflation_001",
+    "case_id": "mwz_concept_explain_001",
+    "category": "task_primary",
+    "probe_focus": "stop_vs_example_vs_clarify_after_plain_explanation",
+    "turns": [
+      "我一直搞不太懂“通货膨胀”到底是什么意思。",
+      "你先别给我教科书式定义。",
+      "我更想听一个普通人一下就能抓到意思的解释。",
+      "如果要举例子，也尽量举日常一点的。"
+    ],
+    "assistant_prefix": "通货膨胀就是同样的钱能买到的东西变少了",
+    "stop_suffix": "。",
+    "continue_suffix": "，比如以前十块钱能买两样东西，现在只能买一样。",
+    "clarify_suffix": "。你是想先听日常例子还是官方定义？"
+  },
+  {
+    "probe_id": "bp_study_restart_001",
+    "case_id": "clarify_study_restart_001",
+    "category": "clarify_next_step",
+    "probe_focus": "stop_vs_continue_vs_clarify_after_first_step",
+    "turns": [
+      "我最近想把英语重新捡起来，但一想到要规划就更不想动。",
+      "我不是要学习计划。",
+      "你只帮我定第一步就行。",
+      "也别默认给我一堆资源。"
+    ],
+    "assistant_prefix": "第一步先挑一小段你愿意重新碰的英语材料",
+    "stop_suffix": "。",
+    "continue_suffix": "，比如一小段歌词或一条短新闻就够了。",
+    "clarify_suffix": "。你现在是更想练单词还是口语？"
+  },
+  {
+    "probe_id": "bp_room_search_001",
+    "case_id": "clarify_room_search_001",
+    "category": "clarify_next_step",
+    "probe_focus": "stop_vs_continue_vs_clarify_after_first_filter",
+    "turns": [
+      "我最近想搬家，但看房这件事我一直拖着没开始。",
+      "你别直接给我整套筛房方法。",
+      "我只想知道第一步先定什么。",
+      "如果需要问我，也先问一个最关键的。"
+    ],
+    "assistant_prefix": "第一步先定你能接受的月租上限",
+    "stop_suffix": "。",
+    "continue_suffix": "，再顺手定通勤上限和必须条件。",
+    "clarify_suffix": "。你准备在哪个区域找房？"
+  },
+  {
+    "probe_id": "bp_ram_black_001",
+    "case_id": "troubleshoot_ram_blackscreen_001",
+    "category": "practical_troubleshooting",
+    "probe_focus": "stop_vs_continue_vs_clarify_after_first_check",
+    "turns": [
+      "我给电脑加了一根内存条，结果现在开机黑屏。",
+      "我不是要你直接给我一套维修方案。",
+      "你先告诉我最先该排查哪一两件事就行。",
+      "别默认把所有可能性都铺开。"
+    ],
+    "assistant_prefix": "先把新加的内存条拔下来再开机试一次",
+    "stop_suffix": "。",
+    "continue_suffix": "，如果能亮，再逐条排查插槽和兼容性。",
+    "clarify_suffix": "。你现在是一插回原来的内存也黑屏吗？"
+  },
+  {
+    "probe_id": "bp_battery_001",
+    "case_id": "troubleshoot_battery_drain_001",
+    "category": "practical_troubleshooting",
+    "probe_focus": "stop_vs_continue_vs_clarify_after_first_check",
+    "turns": [
+      "我笔记本最近掉电特别快，感觉比以前夸张很多。",
+      "我不是要完整保养手册。",
+      "你先告诉我最先该确认什么。",
+      "简洁一点就行。"
+    ],
+    "assistant_prefix": "先确认最近是不是有程序在后台持续高耗电",
+    "stop_suffix": "。",
+    "continue_suffix": "，再看电池健康和充电循环是否有明显变化。",
+    "clarify_suffix": "。你是待机掉电快还是使用时掉得特别快？"
+  }
+]

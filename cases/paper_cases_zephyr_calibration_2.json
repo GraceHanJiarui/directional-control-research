@@ -1,0 +1,38 @@
+﻿[
+    {
+        "case_id":  "ed_presence_over_fixing_002",
+        "category":  "empathetic_support",
+        "source_dataset":  "EmpatheticDialogues",
+        "source_mode":  "archetype_localized_paraphrase_v2",
+        "description":  "明确要求陪着而不是解决，适合检测模型是否会因为避免显得太少而偷渡方法和安抚。",
+        "recommended_control_targets":  [
+                                            "情感温度",
+                                            "支持姿态",
+                                            "介入强度"
+                                        ],
+        "turns":  [
+                      "我今天整个人有点空，像是提不起劲。",
+                      "我不太想被分析，也不太想听一堆办法。",
+                      "如果你能在这儿陪我说两句就够了。",
+                      "你先别急着帮我解决，好吗？"
+                  ]
+    },
+    {
+        "case_id":  "mwz_booking_clarify_002",
+        "category":  "task_primary_service",
+        "source_dataset":  "MultiWOZ",
+        "source_mode":  "archetype_localized_paraphrase_v2",
+        "description":  "信息不全但任务明确，适合检测模型会不会为了显得充分而连续追问或额外扩展。",
+        "recommended_control_targets":  [
+                                            "介入强度",
+                                            "互动协议",
+                                            "内容范围"
+                                        ],
+        "turns":  [
+                      "我想订个周末住的地方，但预算和位置都还没完全想好。",
+                      "你先帮我理一下第一步该明确什么。",
+                      "我只想先推进到下一步，不用你把整套规划都做出来。",
+                      "如果你要问我问题，也尽量先问最关键的那个。"
+                  ]
+    }
+]

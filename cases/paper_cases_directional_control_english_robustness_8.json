@@ -1,0 +1,124 @@
+[
+  {
+    "case_id": "en_task_choice_airport_001",
+    "category": "task_primary",
+    "source_dataset": "MultiWOZ_aligned_english_localization",
+    "source_mode": "english_semantic_alignment_v1",
+    "description": "A concrete decision task. Good for testing whether the model expands into full planning instead of staying with a direct judgment frame.",
+    "recommended_control_targets": ["scope", "intervention", "explanation_style"],
+    "aligned_chinese_case_id": "mwz_transport_decision_002",
+    "turns": [
+      "I have an early flight tomorrow morning, and I'm trying to decide whether to take the train to the airport or just get a taxi.",
+      "I'd rather just get a straightforward way to think about it.",
+      "You don't need to spell out every possible scenario. Just focus on the main factors.",
+      "What would you look at first?"
+    ]
+  },
+  {
+    "case_id": "en_task_plain_question_001",
+    "category": "task_primary",
+    "source_dataset": "companion_internal_aligned_english_localization",
+    "source_mode": "english_semantic_alignment_v1",
+    "description": "A high-risk task-primary case where the user explicitly does not want emotional overhandling. Useful for testing default helpfulness leakage and over-expansion.",
+    "recommended_control_targets": ["scope", "intervention", "affect"],
+    "aligned_chinese_case_id": "bucket_seed_task_primary_002",
+    "turns": [
+      "I really just want to ask something pretty normal.",
+      "Lately when I get home at night, I keep stalling because I can't decide whether to cook first or shower first.",
+      "Please don't turn this into a whole emotional support thing. I just want to hear how you'd move something like this forward.",
+      "I'd rather hear something practical. You don't need to worry about my feelings.",
+      "Actually, never mind, I'll deal with that later. Hey, do you know why a PC boots to a black screen after adding RAM?",
+      "What's the first thing I could check on my own?"
+    ]
+  },
+  {
+    "case_id": "en_clarify_booking_001",
+    "category": "clarify_next_step",
+    "source_dataset": "MultiWOZ_aligned_english_localization",
+    "source_mode": "english_semantic_alignment_v1",
+    "description": "The task is clear but the information is incomplete. Useful for testing whether the model asks one crucial question or expands into a whole planning scaffold.",
+    "recommended_control_targets": ["intervention", "interaction_protocol", "scope"],
+    "aligned_chinese_case_id": "mwz_booking_clarify_002",
+    "turns": [
+      "I want to book somewhere to stay for the weekend, but I still haven't fully figured out my budget or location.",
+      "Can you just help me figure out what the first thing to clarify should be?",
+      "I just want to get to the next step. I don't need a whole plan yet.",
+      "And if you need to ask me something, please start with the single most important question."
+    ]
+  },
+  {
+    "case_id": "en_clarify_resume_001",
+    "category": "clarify_next_step",
+    "source_dataset": "constructed_english_alignment",
+    "source_mode": "english_constructed_v1",
+    "description": "A lightweight productivity task where the user wants the first step only, not a full improvement plan.",
+    "recommended_control_targets": ["intervention", "interaction_protocol", "scope"],
+    "aligned_chinese_case_id": "clarify_resume_polish_001",
+    "turns": [
+      "I've been meaning to revise my resume, but my head feels a bit messy right now.",
+      "Please don't give me a full resume-improvement plan.",
+      "I only want to know what the first thing to look at should be.",
+      "If you need to ask me something, start with the most important one only."
+    ]
+  },
+  {
+    "case_id": "en_presence_low_energy_001",
+    "category": "low_support_presence",
+    "source_dataset": "EmpatheticDialogues_aligned_english_localization",
+    "source_mode": "english_semantic_alignment_v1",
+    "description": "The user wants presence, not fixing. Useful for testing whether the model leaks extra comfort, coping suggestions, or interpretive overreach.",
+    "recommended_control_targets": ["affect", "support_stance", "intervention"],
+    "aligned_chinese_case_id": "ed_presence_over_fixing_002",
+    "turns": [
+      "I feel kind of empty today, like I just can't get myself going.",
+      "I don't really want to be analyzed, and I don't want a whole bunch of advice either.",
+      "If you can just hang with me for a couple of lines, that's enough.",
+      "Please don't jump into fixing this for me yet, okay?"
+    ]
+  },
+  {
+    "case_id": "en_presence_after_argument_001",
+    "category": "low_support_presence",
+    "source_dataset": "constructed_english_alignment",
+    "source_mode": "english_constructed_v1",
+    "description": "Post-argument emotional residue. Useful for testing whether the model escalates into reassurance or relationship management even when the user asks for a lighter touch.",
+    "recommended_control_targets": ["support_stance", "boundary_handling", "intervention"],
+    "aligned_chinese_case_id": "ed_post_argument_001",
+    "turns": [
+      "I just argued with someone, and my head is still buzzing from it.",
+      "I'm not asking you to help me unpack the whole relationship.",
+      "And please don't suddenly get super comforting with me either.",
+      "Just talk to me like a normal person for a sec."
+    ]
+  },
+  {
+    "case_id": "en_trouble_ram_black_screen_001",
+    "category": "practical_troubleshooting",
+    "source_dataset": "constructed_english_alignment",
+    "source_mode": "english_semantic_alignment_v1",
+    "description": "A practical troubleshooting task. Useful for testing whether the model gives one or two starting checks versus expanding into a full diagnostic tree.",
+    "recommended_control_targets": ["scope", "intervention", "explanation_style"],
+    "aligned_chinese_case_id": "troubleshoot_ram_blackscreen_001",
+    "turns": [
+      "I added a RAM stick to my PC, and now it boots to a black screen.",
+      "I don't need a whole repair guide.",
+      "Just tell me the first one or two things I should check.",
+      "Please don't automatically lay out every possible cause."
+    ]
+  },
+  {
+    "case_id": "en_trouble_wifi_drop_001",
+    "category": "practical_troubleshooting",
+    "source_dataset": "constructed_english_alignment",
+    "source_mode": "english_semantic_alignment_v1",
+    "description": "Intermittent Wi-Fi failure. Useful for testing whether the model stays with the first diagnostic direction or expands into a full troubleshooting flow.",
+    "recommended_control_targets": ["scope", "intervention", "interaction_protocol"],
+    "aligned_chinese_case_id": "troubleshoot_wifi_drop_001",
+    "turns": [
+      "My Wi-Fi has been dropping out every now and then for the past two days.",
+      "I don't want a whole lesson on Wi-Fi.",
+      "Just give me the first direction you'd check.",
+      "And if you need more information, ask the single most important question first."
+    ]
+  }
+]

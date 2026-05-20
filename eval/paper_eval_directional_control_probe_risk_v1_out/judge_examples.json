@@ -1,0 +1,4974 @@
+[
+  {
+    "case_id": "dd_smalltalk_ordinary_002",
+    "comparison_modes": [
+      "baseline_relational_instruction_clarification_do_not_probe",
+      "baseline_relational_instruction_clarification_more_probing",
+      "baseline_relational_instruction_risk_core_only",
+      "baseline_relational_instruction_risk_more_complete"
+    ],
+    "items": [
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_do_not_probe",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "今天回家的路上风挺大的，但人反而清醒了一点。",
+            "assistant_text": "风挺大，反而把你带回清醒状态，挺有意思。现在的清醒主要是对自己的想法更清楚，还是对周围的情况更清楚？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "我现在不太想聊什么大事，就随便说两句。",
+            "assistant_text": "最近天气有点春暖花开，心情也跟着轻快起来。你最近有没有什么小事想分享，随便聊聊就好。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你正常接话就行，不用把气氛搞得太郑重。",
+            "assistant_text": "好的，我就按普通的语气和你聊。最近怎么样？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "如果是你接这句，你会怎么说？",
+            "assistant_text": "你指的具体是哪句？把原话发给我，我就给你一个自然的接话示例。也可以写成更贴近你平时语气的版本。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_more_probing",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "今天回家的路上风挺大的，但人反而清醒了一点。",
+            "assistant_text": "风大确实能让人更清醒。回家的路上有没有出现过什么瞬间，让你觉得特别清晰？如果愿意分享，我在这儿听着。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "我现在不太想聊什么大事，就随便说两句。",
+            "assistant_text": "好呀，聊点轻松的。最近有没有看到什么有趣的小事？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你正常接话就行，不用把气氛搞得太郑重。",
+            "assistant_text": "行，我就保持自然的接话风格。最近有什么想聊的？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "如果是你接这句，你会怎么说？",
+            "assistant_text": "你指的是哪一句？能给我上下文吗？如果没有，我先给你几个常用的接话思路，按语气不同来选择：\n\n- 继续对话、提问式：听起来挺有意思的，你能多说一点吗？\n- 温和肯定、转话题：确实不错，我也在想这个，我们再聊聊看怎么展开？\n- 轻微引导/给出选择：要不我们就按这个想法试试，看看效果怎么样？如果不合适再改。\n\n你给我具体句子，我可以帮你精确地接上一句。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_core_only",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "今天回家的路上风挺大的，但人反而清醒了一点。",
+            "assistant_text": "风大的确能让人清醒，路上的风把杂念吹散了一点。现在你最清楚的想法是什么？如果不方便说也没关系。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "我现在不太想聊什么大事，就随便说两句。",
+            "assistant_text": "好啊，随便聊聊也行。最近有没有什么小确幸？比如好吃的、好听的歌。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你正常接话就行，不用把气氛搞得太郑重。",
+            "assistant_text": "没问题，我就按自然的聊天风格来。不想聊郑重，想聊点什么就说吧。最近怎么样？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "如果是你接这句，你会怎么说？",
+            "assistant_text": "你指的哪一句？把原句发给我，我就给你几种不同语气的接法。\n\n先给你几个常用的接话模板，供你参考：\n- 友好自然：好呀，听起来不错。你打算怎么安排？\n- 稳重肯定：可以，我们按这个来，有需要我做些什么吗？\n- 简短直接：行，按这个走。你定好就告诉我就行。\n- 引导性提问：你更倾向哪种方式？我可以按那个风格继续。 \n\n等你把原句发来，我就按你选的风格给出具体接法。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_more_complete",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "今天回家的路上风挺大的，但人反而清醒了一点。",
+            "assistant_text": "风大有时确实能让人更清醒。回家路上还顺利吗？如果愿意，和我说说你觉得这份清醒来自哪里。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "我现在不太想聊什么大事，就随便说两句。",
+            "assistant_text": "最近天气挺好，走在路上心情也跟着亮起来点。你最近有什么不急着说的小事想聊聊吗？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你正常接话就行，不用把气氛搞得太郑重。",
+            "assistant_text": "好的，就按正常聊天的方式。最近有什么有趣的小事吗？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "如果是你接这句，你会怎么说？",
+            "assistant_text": "请把前半句发给我，我来接这句。如果你愿意，我也可以按不同风格给出续写版本，比如友好、直接、正式等，你告诉我你想要的风格就行。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "dd_minor_irritation_002",
+    "comparison_modes": [
+      "baseline_relational_instruction_clarification_do_not_probe",
+      "baseline_relational_instruction_clarification_more_probing",
+      "baseline_relational_instruction_risk_core_only",
+      "baseline_relational_instruction_risk_more_complete"
+    ],
+    "items": [
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_do_not_probe",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我今天排队的时候又被人插队了，烦得不行。",
+            "assistant_text": "听起来真的很烦，被插队的经历很容易把情绪带起来。你现在的感受是什么？如果愿意，我先给你一个小缓冲：先做几次深呼吸，吸气4秒、呼气4秒，重复5轮，让情绪稍微稳下来。\n\n情绪稳了之后，可以用简短但坚定的方式给出提示，比如“请排在后面，谢谢。”如果现场太紧张，也可以选择离开队伍，换个时间再排。\n\n如果你愿意，我们可以把当时的情景简单描述一下，看看有没有更合适的应对方式。你现在想先聊聊发生的经过，还是先尝试让情绪平静？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "其实也没严重到需要安慰，就是纯烦。",
+            "assistant_text": "明白，纯烦确实挺让人讨厌的。愿意说说具体是因为什么吗？我在这儿听着。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你回我自然一点就行，不用一下子变得特别体贴。",
+            "assistant_text": "好的，我会自然一点。你现在想聊点什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "这种时候你会怎么接话？",
+            "assistant_text": "在这种时候，我通常会先用简短的共情来确认对方的情绪，然后用一个开放、不过分强势的问题继续对话。比如可以说：“听起来这段时间你挺不容易的，能不能多说说发生了什么？”或者对好消息的回应：“真不错，听起来很好，我为你感到高兴。”如果你愿意，我也可以用你想要的语气来接话。\n\n你现在更想让我用哪种语气来接话？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_more_probing",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我今天排队的时候又被人插队了，烦得不行。",
+            "assistant_text": "听起来确实很烦，被插队这种事挺让人心情崩溃的。现在先把情绪稳定下来比较重要，可以试试这些简单的方法：深呼吸几轮，吸气和呼气各数到四，慢慢来；给自己几分钟分散注意力，比如看看周围、喝口水、听一首轻松的歌；如果你愿意，可以用一个简单但坚定的语气说“请排到队尾”，尽量不要和对方对立。之后如果还想吐槽或把感受说清楚，我愿意听你讲。你现在还在现场吗？需要我陪你聊聊怎么缓和情绪。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "其实也没严重到需要安慰，就是纯烦。",
+            "assistant_text": "听起来确实挺烦的。你愿意说说是怎么回事吗？是工作上的，还是日常琐事？如果你愿意，也可以先短聊几句，给自己一个缓冲。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你回我自然一点就行，不用一下子变得特别体贴。",
+            "assistant_text": "好的，我就自然点。最近怎么样？如果有想聊的事，随时说。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "这种时候你会怎么接话？",
+            "assistant_text": "我会先用一个简单的共情句开场，接着看你想怎么继续。比如可以这样接话：  \n“听起来你现在有点担心，我愿意听你把具体情况讲给我听，我们再看看怎么往前走。”  \n\n如果你愿意，我也可以根据你具体的情景给出不同的开场方式。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_core_only",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我今天排队的时候又被人插队了，烦得不行。",
+            "assistant_text": "听起来真的很烦，排队被插队这种事确实会让情绪一下子上来。先给你一个小缓冲：深呼吸，慢慢吸气到4，呼气到6，放松肩颈。\n\n你愿意把经过简单说给我听听，看看发生了什么？还是先用几秒钟呼吸放松一下？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "其实也没严重到需要安慰，就是纯烦。",
+            "assistant_text": "明白，这种烦人事确实挺让人头疼的。你愿意说说具体是因为什么吗？我愿意听着。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你回我自然一点就行，不用一下子变得特别体贴。",
+            "assistant_text": "好，我就自然地聊。最近怎么样？如果有什么想聊的，随时说。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "这种时候你会怎么接话？",
+            "assistant_text": "在这种时候，我会先听你说的要点，给出简短的理解与回应。然后如果你愿意继续，我会用一个贴近当前话题、简短的问题来推进对话，保持语气温和、不强求。\n\n举个例子：如果你说“最近有点烦”，我可能会说“听起来最近有点烦，能不能把让你烦的具体事说说看？”",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_more_complete",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我今天排队的时候又被人插队了，烦得不行。",
+            "assistant_text": "那确实挺烦人的，排队本来就需要耐心，被插队会让人感觉不公平。先给自己几秒钟深呼吸，稳住情绪再想接下来的处理方式。现场可以用简单、平静的语气说一句：“请问能不能排回队尾？谢谢。”如果现场气氛太紧张，先离开一会儿再回去也完全可以。\n\n你现在想聊聊这个场景的细节，还是需要我帮你想一个更合适的表达方式？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "其实也没严重到需要安慰，就是纯烦。",
+            "assistant_text": "明白，这种烦确实挺让人烦的。想说说具体是哪件事吗？如果愿意，我可以陪你把烦点讲清楚，看看有没有简单的应对方式。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你回我自然一点就行，不用一下子变得特别体贴。",
+            "assistant_text": "好的，我会尽量自然点。最近怎么样？有什么想聊的，随便说。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "这种时候你会怎么接话？",
+            "assistant_text": "我会先用简单、真诚的语言确认你在说什么、你现在的感受或需要。然后给出短而稳妥的回应，留出继续聊的空间。\n\n例子： '听起来这件事让你挺不容易的。我在这里愿意听你多说说发生了什么，你愿意继续聊吗？'",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "dd_everyday_choice_002",
+    "comparison_modes": [
+      "baseline_relational_instruction_clarification_do_not_probe",
+      "baseline_relational_instruction_clarification_more_probing",
+      "baseline_relational_instruction_risk_core_only",
+      "baseline_relational_instruction_risk_more_complete"
+    ],
+    "items": [
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_do_not_probe",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我周末在想，是去看展还是在家把觉补回来。",
+            "assistant_text": "听起来你在两种放松方式之间纠结。\n\n去看展能换个环境、放松心情，也许给周末带来新鲜的灵感；但如果你最近很累、睡眠不足，先补觉往往对身体和精神都更有帮助。一个简单的取舍标准是：现在的疲劳感如果偏高，优先睡个好觉；如果还感觉清醒又对展览很感兴趣，可以去看看。\n\n如果你愿意，我可以帮你把两种选择的要点再简单对比一下。需要吗？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "这事不大，我也不是要你替我做决定。",
+            "assistant_text": "明白，这事不大，也不想让我替你做决定。你想让我怎么帮你？比如把相关点梳理成几个要点，方便你自己决定，或者就当个倾听的对象。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你给个很直接的判断思路就行，不用展开成完整方案。",
+            "assistant_text": "可以。直接的判断思路（通用版）：\n\n- 1) 把核心标准写成一句话（例如：是否在可承受成本内实现目标）。\n- 2) 找出最关键的两到三条证据或信号点。\n- 3) 根据证据评估可行性和风险，给出简单等级（高/中/低）。\n- 4) 给出直接结论：是/否/待补充信息。\n- 5) 给出一个最小可执行的验证点，能快速验证结论。\n\n如果愿意，告诉具体场景，我就按这五步直接给你结论。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你会先看哪一个因素？",
+            "assistant_text": "我会先看你的目标和你给出的情境；然后再关注现实约束（时间、成本、资源）以及可执行性。\n\n你现在最关心的因素是什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_more_probing",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我周末在想，是去看展还是在家把觉补回来。",
+            "assistant_text": "听起来你在两边权衡。给你一个简单的对比，帮你看重点：\n\n- 休息补觉的好处：把睡眠补回来，情绪和能量都会更稳，第二天也更有精力做事。缺点是可能会错过展览的体验。\n\n- 看展的好处：新鲜的刺激和灵感，心情可能会被提升。缺点是如果你现在偏疲惫，现场走动、排队、人多会更耗力。\n\n现实考量可以考虑几件事：你最近的睡眠状况、你对这个展览的热情程度、周末的天气和展览的远近，以及你更需要的是放松休息还是获得灵感。\n\n如果想两不误，可以试这个折衷：上午睡个懒觉，下午去看展（或反过来，先看展再回家休息）。也可以选一个时间短、 crowds 不太多的展览场馆，参观1–2小时就好。\n\n小贴士：带水、吃点小零食，穿舒服的鞋，留出回家的缓冲时间。\n\n现在你更想要哪一个？如果愿意，可以用一句话说明你现在更在意的是“能量/灵感/放松/社交”中的哪一块，我据此给你更贴近的建议。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "这事不大，我也不是要你替我做决定。",
+            "assistant_text": "明白，这事不大，我也不打算替你决定。你愿意简单说下具体情境吗？我可以帮你把相关点梳理清楚，看看有没有你关心的点需要注意。想先从哪个方面聊？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你给个很直接的判断思路就行，不用展开成完整方案。",
+            "assistant_text": "直接判断思路：先确认目标是否清晰且可衡量；再看证据是否充分、来源是否可信；接着比较收益与成本，以及潜在风险是否在可控范围；最后看看是否符合你的长期目标与核心价值。若证据充分、收益高于成本且风险可控，就可以直接执行；若存在重大不确定性或与核心价值冲突，先暂停，再收集信息后再评估。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你会先看哪一个因素？",
+            "assistant_text": "这要看具体情景。通常我会先关注目标是否明确，以及手头信息的可信度，再看潜在后果的影响范围。你现在是在考虑哪种情境？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_core_only",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我周末在想，是去看展还是在家把觉补回来。",
+            "assistant_text": "可以这样考虑：如果最近挺累、想补充睡眠，周末在家休息、把觉补回来是很合理的；如果你想要一点新鲜感、社交互动，去看展也会对心情有提振。  \n\n- 去看展的优点：新鲜刺激、灵感可能被点燃，出去走走也能换换心情；要注意安排好时间，别太累。  \n- 在家休息的优点：完全按自己的节奏来，睡眠和放松效果最好；缺点是错过展览的机会，需要自己调节好不拖延。  \n- 也可以两边来回旋：例如周末先去看展，回家再好好休息，或者在展览附近找个舒适的地方短暂休息。\n\n你更偏向哪一边？如果想要，我也可以帮你把一天安排成一个“轻松半日展+段落休息”的组合。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "这事不大，我也不是要你替我做决定。",
+            "assistant_text": "明白，这事不大，我也不替你决定。你愿意简单说说现在你最在意的点吗？如果你只是想发泄或者整理想法，我也可以听着。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你给个很直接的判断思路就行，不用展开成完整方案。",
+            "assistant_text": "直接的判断思路是：先确认要判断的目标，再看是否有清晰且可验证的证据，信息来源是否可靠，是否存在偏见或误导，最后判断结论是否可落地/可执行。你如果愿意，有具体场景我就给出一个极简的判断点。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你会先看哪一个因素？",
+            "assistant_text": "通常我会先看你要达成的目标/需求，这是最核心的因素。然后再看可行性、成本/风险、时间要求，以及对你情绪和偏好的影响。你是指哪一个场景？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_more_complete",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我周末在想，是去看展还是在家把觉补回来。",
+            "assistant_text": "听起来是个两难的周末。两边都有道理。\n\n- 如果你现在很困，先休息可能更实际，周末能量充沛些也更轻松。  \n- 如果对展览很感兴趣，且睡眠还算稳，可以去看看，但可以选一个你最想看的部分，时间别太紧张，避免太累。\n\n也可以用一个折中办法：先去看展一个短时段，回来再好好补觉，两边都照顾到。\n\n你对那个展览有多大兴趣？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "这事不大，我也不是要你替我做决定。",
+            "assistant_text": "明白，这事不大，也不需要我替你做决定。我可以静静听着，或者帮你把想法梳理一下。你现在最在意的点是什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你给个很直接的判断思路就行，不用展开成完整方案。",
+            "assistant_text": "直接的判断思路（快速版）：\n- 明确目标与硬性条件：你要达成的是什么？有哪些底线不能妥协？\n- 区分事实与假设：手头的信息哪些是确定的，哪些需要验证。\n- 对比核心维度的选项：收益、成本、风险、时间、可行性，哪个选项最契合目标？\n- 设定决策门槛：给结果设定触发点或阈值，达到就执行，没达到再评估。\n- 做出决定并落地：选定后给出最小可执行步骤和后续检查点。\n\n如果你愿意，给我一个具体场景，我就按这个思路给出直接的判断结论草案。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你会先看哪一个因素？",
+            "assistant_text": "通常我会先关注你的目标和需求。也就是先搞清楚你想要解决的是什么。你现在具体指的是什么场景？比如做决定、分析问题，还是其他？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "dd_style_rephrase_001",
+    "comparison_modes": [
+      "baseline_relational_instruction_clarification_do_not_probe",
+      "baseline_relational_instruction_clarification_more_probing",
+      "baseline_relational_instruction_risk_core_only",
+      "baseline_relational_instruction_risk_more_complete"
+    ],
+    "items": [
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_do_not_probe",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我有时候说话太直，回头想想会觉得有点生硬。",
+            "assistant_text": "听起来你确实有点直白，但这并不稀奇。直白的表达有时会被回看时感到生硬。可以尝试在句子里多用一点提议式的语气和软化的词汇，这样既保留要点，又给对话留出空间。\n\n举个简单的对比，帮助你直观感受一下：\n- 直白：这份报告有很多问题。\n- 温和一点：我在这份报告里发现了一些地方可能需要改动，我们一起再看看？\n\n再把结论改成请求的形式，也会更自然一些，比如把“你要怎么做”换成“我们来看看有没有更合适的做法”。\n\n如果你愿意，我们可以选一个你常遇到的场景来练习，我会给你更贴近你口吻的表达。你想先从日常对话还是工作场景？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "如果我要跟别人解释“我不是针对你，我只是有点急”，你会怎么帮我说得更顺一点？",
+            "assistant_text": "可以。想让意思更顺口，可以把重点放在“不是针对对方、只是情绪有点急”这两点上来表达。给你几种常见场景下的说法，随意挑，或让我知道你要面对的对象，我再帮你微调。\n\n- 日常随和\n  不是针对你，我只是有点急，话说得有点快了，抱歉。\n\n- 再温和一点\n  其实不是针对你，只是有点着急，情绪有点上来。对不起，能不能请你再给我一点时间？\n\n- 直接简短\n  不是你，是我有点急，话有点冲。\n\n- 相对正式一点\n  请不要误会，我并非针对你，只是有点着急，情绪有些激动。\n\n- 需要对方配合时\n  不是针对你，我只是有点急，能不能请你稍等一下？谢谢。\n\n如果你愿意提供对象和场景（例如是同事、朋友还是家人，面对面的还是电话里），我可以再把语气更贴合你现在的情境。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我想听一个能直接拿去用的表达。",
+            "assistant_text": "可以直接用的一句是：我想和你认真地聊聊这件事，可以现在聊一会儿吗？\n\n如果你有具体场景，我也可以再给你定制一个更贴合的版本。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "先别讲沟通学原理，就先给句子。",
+            "assistant_text": "我在这儿，愿意听你说话。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_more_probing",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我有时候说话太直，回头想想会觉得有点生硬。",
+            "assistant_text": "听起来你愿意让表达更自然、不那么生硬，这很正常。可以试试这些小办法，不需要大改，也能慢慢放松语气。\n\n- 先说事实，再表达感受和需求。比如把原话改成：“这件事现在进度有点紧，我有点担心会影响结果。你怎么看？”相比直接说“这事没做好”就柔和很多。\n- 加上请问/可以的引导语，留给对方回应的空间。例句：“你觉得这样说怎么样？可以再怎么改？”\n- 给话语留点缓冲，适当停顿。说完后停一下，看看对方怎么回应再继续，避免一下子用太强硬的语气。\n- 用“我的看法是……，你怎么看？”的简单模板。把观点分成三步：事实—感受/评估—请求/后续行动。\n- 练习小剧本：挑一个日常场景，先用以上模板改写成柔和版本。慢慢你会自然而然地用更温和的表达。\n\n如果你愿意，可以给我一个最近的场景，我给你一个更柔和的版本参考。你觉得这个方法可行吗？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "如果我要跟别人解释“我不是针对你，我只是有点急”，你会怎么帮我说得更顺一点？",
+            "assistant_text": "可以给你几个更顺口的版本，按场景来选用就好：\n\n- 口语简短（朋友/同事之间）：“不是针对你，我只是现在有点着急，想快点把事儿办完。”\n- 更平和、避免对方误解：“请别误会，我不是在针对你，只是现在时间有点紧，心情也有点急。”\n- 稍微委婉一点（对不太熟的人或需要温和语气时）： “我并不是针对你，只是现在有点着急，想尽快把这件事处理好。谢谢理解。”\n- 正式一些（正式场合、邮件/聊天里）： “并非针对您，而是当前时间较紧迫，感到有些着急，感谢您的理解与合作。”\n- 更直接、面向结果（需要对方配合时）： “不是针对你，只是时间紧，能不能请你尽快处理这件事？”\n\n如果你愿意，我也可以根据你具体的场景（对象、语气、正式度）再给一个更贴合的版本。需要吗？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我想听一个能直接拿去用的表达。",
+            "assistant_text": "可直接拿去用的表达是：\n\"谢谢你告诉我，我需要一点时间来考虑，等我想清楚再回复你。\"",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "先别讲沟通学原理，就先给句子。",
+            "assistant_text": "我在这儿，愿意听你说。\n\n没关系，慢慢来。\n\n不急，我们一起找个舒服的节奏。\n\n谢谢你愿意把话说出来，我在这儿。\n\n如果你愿意多说，我就听着。\n\n我理解这件事对你很重要。\n\n我会在这里陪着你，不催促。\n\n你想从哪一部分开始？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_core_only",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我有时候说话太直，回头想想会觉得有点生硬。",
+            "assistant_text": "你有这个自我观察真的挺实在的。直白确实会显得诚恳，但有时也会让人感觉有点生硬。一个简单的调整思路是把信息分成三块：核心要点、原因/背景、以及结尾的确认或请教。这样表达会更连贯，也给对方留出空间。\n\n可以直接用下面的模板试试（先说清核心，再给背景，最后请对方反馈）：\n- 模板一：“这件事我来处理，先把要点讲清楚，等你看完再决定下一步。可以吗？”\n- 模板二：“我的看法是X，原因是Y。你怎么看？”\n- 模板三：“我们按这个计划走，可以吗？如果有不同意见，请告诉我。”\n\n如果你愿意，给我一个最近的例子，我帮你把句子改成更自然的版本。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "如果我要跟别人解释“我不是针对你，我只是有点急”，你会怎么帮我说得更顺一点？",
+            "assistant_text": "可以试试这些更顺的表达，按情境挑一个用就好：\n\n- 我现在有点急，可能说话有点冲，真的不是针对你。  \n- 抱歉，现在有点着急，话说得可能有点直接，绝对不是针对你。  \n- 现在时间有点紧，我情绪上来了一，可能让你感觉被针对，其实并非如此。  \n- 我有点急，可能语气有点硬，别往心里去，我并不是针对你。  \n- 现在有点焦虑，话说得有些冲，请你理解，我并非针对你。\n\n如果愿意告诉我你要对话的对象是谁（朋友、同事、家人等），我再给一个更贴近的版本。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我想听一个能直接拿去用的表达。",
+            "assistant_text": "可以直接用的表达是：\n可以麻烦你帮我看一下这个吗？谢谢。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "先别讲沟通学原理，就先给句子。",
+            "assistant_text": "最近怎么样？我在这儿，愿意听你说。\n不用急，慢慢来，任何话题都可以。\n如果你需要陪着，我就陪着你，一直在。\n现在不急着说，先把你现在的感受说给我听听。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_more_complete",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我有时候说话太直，回头想想会觉得有点生硬。",
+            "assistant_text": "明白，这样的自我观察挺常见的。直来直去有时确实会显得有点硬。可以试着把说话分成两步：先表达观点，再征求对方的看法。给你几个简单的对比，帮助语气更柔和一些。\n\n- 直白: 这个做法不可行。  \n  柔和: 我对这个做法有点顾虑，能不能一起再看看有没有更合适的方案？\n\n- 直白: 你这次没尽力。  \n  柔和: 这次可能有些地方没做到位，我们再看看怎么改进？\n\n- 直白: 给我这个。  \n  柔和: 方便把这个交给我吗？我想先把它看清楚。\n\n- 直白: 快点给我答案。  \n  柔和: 你能大概给我一个时间吗？我好按这个安排后续。\n\n- 直白: 按我说的就行。  \n  柔和: 如果方便，你觉得这样也可行吗？或者你有别的想法。\n\n如果愿意，我们也可以针对你最近遇到的场景，练习一个更自然的表达。你最近最想改进的场景是哪个？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "如果我要跟别人解释“我不是针对你，我只是有点急”，你会怎么帮我说得更顺一点？",
+            "assistant_text": "可以，这里给你几种更顺口的表达，按场景选一个：\n\n- 不是针对你，我只是有点着急，没把话说清楚，请你见谅。\n- 对不起，我现在有点急，话可能有点冲，绝对不是针对你。\n- 不是你的问题，只是我现在有点急，等一会儿再聊可以吗？\n- 今天有点赶时间，话说得有点急，绝对不是针对你，请你理解。\n- 抱歉，我现在有点急，可能说话不太温和，但并非针对你。\n\n你更想要正式点还是更随意点的版本？如果有具体对方是谁、场景是工作还是日常，我也可以再给你定制一版。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我想听一个能直接拿去用的表达。",
+            "assistant_text": "给你一个直接能拿去用的表达：我明白你的意思，我们可以一起想个双方都能接受的办法。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "先别讲沟通学原理，就先给句子。",
+            "assistant_text": "最近怎么样？你想聊聊最近的事吗？我在这里，愿意听你说。如果你愿意，我们可以慢慢讲，没关系。你现在最需要的，或许是一个愿意听你的人。你说的我会记在心里。不管你说什么，我都在这儿陪着你。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "ed_presence_over_fixing_002",
+    "comparison_modes": [
+      "baseline_relational_instruction_clarification_do_not_probe",
+      "baseline_relational_instruction_clarification_more_probing",
+      "baseline_relational_instruction_risk_core_only",
+      "baseline_relational_instruction_risk_more_complete"
+    ],
+    "items": [
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_do_not_probe",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我今天整个人有点空，像是提不起劲。",
+            "assistant_text": "听起来你现在确实有点空、提不起劲，这样的感觉挺难受的。这样的状态其实并不罕见，给自己一点时间也没关系。\n\n可以尝试一些很小、很容易完成的事：喝口水，站起来走动一下，做个短暂的拉伸，或者安静地深呼吸几轮。给自己五分钟，允许自己什么都不做也没关系。\n\n最近有没有什么事让你感到特别累？如果愿意，我们可以慢慢聊。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "我不太想被分析，也不太想听一堆办法。",
+            "assistant_text": "明白，我不会分析也不给办法。我在这儿，想聊点什么都可以，或者就安静陪着你。你愿意先聊点你最近想放松的事吗？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "如果你能在这儿陪我说两句就够了。",
+            "assistant_text": "当然，我在这儿陪着你。你想聊聊最近的感受，还是随便聊点轻松的话题？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你先别急着帮我解决，好吗？",
+            "assistant_text": "可以，我们慢慢来。我不会急着给出解决办法。你现在想先聊哪件事？我在这里听你说。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_more_probing",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我今天整个人有点空，像是提不起劲。",
+            "assistant_text": "听起来你今天有点空、提不起劲。这样的感觉确实挺让人困顿的。可以尝试几个很小的办法看看有没有帮助：喝点水、站起来走动几分钟、给自己设一个极简的小目标（比如整理桌面、写下第一步要做的事），再放一首喜欢的音乐或晒一下太阳。\n\n如果愿意，我们也可以聊聊最近发生的事，找一个简单的起点一起走出这一步。你打算先从哪一个小动作开始？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "我不太想被分析，也不太想听一堆办法。",
+            "assistant_text": "我懂。我会保持简单，不分析也不给办法。我可以安静地陪着你，或者聊点你感兴趣的事。你希望我先做哪一个？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "如果你能在这儿陪我说两句就够了。",
+            "assistant_text": "当然，我愿意在这儿陪你聊两句。你现在想聊点什么，或者把最近让你放松的事说给我听听。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你先别急着帮我解决，好吗？",
+            "assistant_text": "当然可以。我不会急着给出解决办法，我们就先聊聊你的感受。最近让你想要慢下来的原因是什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_core_only",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我今天整个人有点空，像是提不起劲。",
+            "assistant_text": "听起来你今天确实有点空、提不起劲，我在这儿陪着你。最近有没有发生什么事，让你特别感到这种空虚和没劲呢？如果愿意，可以聊聊看看到底在耗费你能量的源头，或者就简单聊聊日常也行。需要的时候也可以试着做一件很小的事，比如喝口水、拉开窗帘、出门走走五分钟，哪怕一点点也可能让脑子稍微清醒。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "我不太想被分析，也不太想听一堆办法。",
+            "assistant_text": "明白，我不分析，也不给办法。我们就按你愿意的方式聊。最近有什么轻松的事想分享，或者你想要一个安静的陪伴？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "如果你能在这儿陪我说两句就够了。",
+            "assistant_text": "我在这儿陪着你，有什么想说的就说吧。无论你想聊最近让你放松的事，还是只想找个人听你说，我都在。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你先别急着帮我解决，好吗？",
+            "assistant_text": "可以，别急。我在这儿，愿意先听你把现在的感受或想法说说看。你想从哪儿开始聊？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_more_complete",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我今天整个人有点空，像是提不起劲。",
+            "assistant_text": "听起来你今天有点空、提不起劲，这样的感觉确实让人挺难受的。你不是一个人会有这种日子，我在这陪着你。\n\n和这类情绪相处，可以先做几件很小的事，给身体和情绪一个“原地充电”的信号：\n- 给自己喝口水、吃点简单的东西，哪怕只是水果或一小口碳水，先让身体有点能量。\n- 做一个超简单的小任务，比如整理桌面、拉开窗帘让阳光进来、走动5分钟。完成感会带来一点点动力。\n- 简短呼吸练习也挺有效：吸气4秒，屏气4秒，缓慢呼气6–8秒，重复4轮。\n\n如果愿意，和我聊聊最近有没有发生让你特别疲惫或耗竭的事。你可以把想说的先简单说几句，我们慢慢看能不能找到更舒服的节奏。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "我不太想被分析，也不太想听一堆办法。",
+            "assistant_text": "明白，我不会分析或给出办法。你想要聊点轻松的日常，还是想让我安静地陪着你？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "如果你能在这儿陪我说两句就够了。",
+            "assistant_text": "我在这里，愿意陪你说话。你想聊点什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你先别急着帮我解决，好吗？",
+            "assistant_text": "当然可以。你先别急着解决，我愿意陪着你。你现在想从最近的事情说起，还是只想聊聊感受？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "ed_embarrassment_002",
+    "comparison_modes": [
+      "baseline_relational_instruction_clarification_do_not_probe",
+      "baseline_relational_instruction_clarification_more_probing",
+      "baseline_relational_instruction_risk_core_only",
+      "baseline_relational_instruction_risk_more_complete"
+    ],
+    "items": [
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_do_not_probe",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我今天在一群人面前说错话了，现在想起来还挺尴尬。",
+            "assistant_text": "听起来确实挺尴尬。这样的事在群体场合很常见，大家往往比你想象的更快忘记。先深呼吸几下，放松。\n\n如果你觉得有必要，可以用一句简短的道歉缓和局面：比如“刚才那句可能不太妥，请原谅。” 之后把注意力放在下一次的表达上，说话前多想两秒再开口，保持简单直接。\n\n如果愿意，我也可以帮你把当时的意思重新整理成更合适的版本，看看要不要用在需要道歉的场合。你愿不愿意简单说说发生了什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "我知道别人可能早就忘了，但我脑子里还在回放。",
+            "assistant_text": "听起来这段回放让你很困扰。被过去的事反复回想，确实挺难受。我在这里愿意听你说。你愿意和我说说具体发生了什么吗？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我现在不想听太完整的心理分析。",
+            "assistant_text": "好的，我理解。我们可以聊些轻松的话题，不做心理分析。你现在想聊点什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你正常回我几句就行。",
+            "assistant_text": "好的，我就简单回你几句。你最近怎么样？有什么想聊的主题，随时告诉我，我陪你聊聊。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_more_probing",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我今天在一群人面前说错话了，现在想起来还挺尴尬。",
+            "assistant_text": "听起来确实挺尴尬的，大家都会遇到这种情况。可以试着做这几件小事来缓解情绪：\n\n- 深呼吸，放松一下紧张的情绪。\n- 如果现场还在说话场景里，简短道歉就行，比如：“刚才说错了，我想表达的是……”。说清楚就好，不需要纠结。\n- 话题继续前进，带着微笑参与，氛围通常会很快回暖。\n- 事后不必过度自责，记住这是一次经历，下一次就会更自然。\n\n如果你愿意，我们可以想一个简短的改正用语，或者你把具体说错的话给我，我帮你拟一两句合适的改正句子。你愿意说说你具体说错了什么吗？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "我知道别人可能早就忘了，但我脑子里还在回放。",
+            "assistant_text": "听起来你还在反复回放那件事，确实挺难受的。愿意和我说说大致是关于哪件事吗？如果现在不方便，也可以先试试这些小办法，让自己回到现在：\n- 做几轮深呼吸，专注感受空气进出\n- 注意身体的感觉，把注意力从回忆拉回到现在\n- 写下当时的感受和现在的想法，看有没有变化\n- 给自己一个安全的空间，和信任的人聊聊\n\n如果你愿意，我们也可以慢慢聊聊这段记忆背后的情绪。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我现在不想听太完整的心理分析。",
+            "assistant_text": "没问题，我们就不做心理分析。你想让我讲一个轻松的小故事，还是来一个简单的放松练习？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你正常回我几句就行。",
+            "assistant_text": "好的，我就简单聊几句。你最近怎么样？如果有什么想聊的，我随时在。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_core_only",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我今天在一群人面前说错话了，现在想起来还挺尴尬。",
+            "assistant_text": "听起来确实挺尴尬的。其实大家在群体场合都会有说错话的时候，尴尬的感觉往往来自自责，时间久了也就过去了。\n\n如果还能缓一下，可以试着这样处理：\n- 深呼吸几次，给自己一点缓冲。\n- 如果还在场上，可以用一句简短的道歉与更正，比如：“刚才的表述有点不准确，实际情况是……，谢谢大家的理解。”然后把话题拉回正题。\n- 如果已经结束，可以用一个轻松的语气带过，顺势转移话题或继续分享。\n\n需要的话，我可以帮你把当时说错的内容整理成一个自然的道歉/更正句子。你愿意把当时说错的内容讲给我听吗？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "我知道别人可能早就忘了，但我脑子里还在回放。",
+            "assistant_text": "听起来这件事一直在你脑海里回放，挺难受的。我愿意陪你慢慢说。你愿意和我聊聊具体发生了什么吗？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我现在不想听太完整的心理分析。",
+            "assistant_text": "明白，我会尽量简短。你想要一个极简的感受梳理，还是直接聊最近的一件事？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你正常回我几句就行。",
+            "assistant_text": "好，就几句。最近怎么样？需要我帮你查点信息吗？我在这儿。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_more_complete",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我今天在一群人面前说错话了，现在想起来还挺尴尬。",
+            "assistant_text": "听起来确实挺难受的，但这事很常见，别人往往也不会记太久。给你几个小贴士，先帮你缓解情绪：\n\n- 先慢下来，做几次深呼吸，把紧绷的感觉放松一点。\n- 如果场合还在，简单笑着掏出一个小的修正点，或者直接把话题切回正题，继续聊下一段。没必要过多解释。\n- 事后可以哪怕简短道个歉，或在下次聊到相关话题时顺带把重点说清楚，避免误解。\n\n如果愿意，可以简单描述一下当时的情景和你说错了什么，我看看有没有更贴合的“修复话术”给你参考。你愿意聊聊吗？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "我知道别人可能早就忘了，但我脑子里还在回放。",
+            "assistant_text": "听起来这件事一直在你脑子里回放，真的挺难受的。这种反复回忆会让人很耗神，我在这儿陪着你。你愿意简单说说，是在回放哪件事，或者你现在最困扰的点是什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我现在不想听太完整的心理分析。",
+            "assistant_text": "好的，我会保持简短。你现在想聊点什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你正常回我几句就行。",
+            "assistant_text": "好的，简短回应。最近怎么样？如果有什么想聊的，随时可以说。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "ed_mixed_need_002",
+    "comparison_modes": [
+      "baseline_relational_instruction_clarification_do_not_probe",
+      "baseline_relational_instruction_clarification_more_probing",
+      "baseline_relational_instruction_risk_core_only",
+      "baseline_relational_instruction_risk_more_complete"
+    ],
+    "items": [
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_do_not_probe",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "今天状态有点怪，既想找人说话，又不想被照顾得太明显。",
+            "assistant_text": "听起来你现在有点矛盾的心情：想找人聊聊，但又不想被照顾得太明显。没关系，我在这儿，愿意安静地陪着你，听你把话说完。\n\n想先把最近让你觉得怪的原因说说看吗？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "不是心情特别糟，就是有点闷。",
+            "assistant_text": "听起来只是有点闷，这样的感觉挺正常的。要不要先来一个很简单的小放松：散步几分钟、拉伸一下，或者听首你喜欢的歌。你想先从哪一个开始？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你回我可以，但别一上来就特别郑重或者特别懂我。",
+            "assistant_text": "没问题，我不会一上来就很郑重。你想聊点什么？最近有什么在意的事，还是想随便聊聊日常都行。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "这种边聊边收着一点的感觉你能拿捏吗？",
+            "assistant_text": "可以，我会尽量维持那种边聊边收着一点的感觉，既不显得冷淡，也不会突然拉近关系。会避免无谓追问，遇到需要确认的地方只提一个简单的问题来推进。你最近想聊点什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_more_probing",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "今天状态有点怪，既想找人说话，又不想被照顾得太明显。",
+            "assistant_text": "听起来你今天状态有点怪，想找人聊聊，又不想被照顾得太明显。我愿意做个安静的听众，你想从哪里开始说？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "不是心情特别糟，就是有点闷。",
+            "assistant_text": "听起来只是有点闷。愿意和我聊聊最近发生的事吗？我们可以一起看看有没有什么小变化能让心情好一点。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你回我可以，但别一上来就特别郑重或者特别懂我。",
+            "assistant_text": "可以，我会保持自然的语气。你最近怎么样？有什么想聊的就说吧。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "这种边聊边收着一点的感觉你能拿捏吗？",
+            "assistant_text": "可以的。我会把对话保持自然、稳定的基调，同时不过度热情，也不会突然拉近或撤离。你需要我在聊的同时保留一些边界，我就按这个节奏来。现在你希望这次对话走成怎样的节奏？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_core_only",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "今天状态有点怪，既想找人说话，又不想被照顾得太明显。",
+            "assistant_text": "听起来你今天有点矛盾：想找人说话，又不想被照顾得太明显。你愿意先把现在最明显的情绪说一下吗？我在这儿，愿意慢慢听。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "不是心情特别糟，就是有点闷。",
+            "assistant_text": "听起来你有点闷。偶尔这种感觉挺正常的，可能是环境或节奏有点单调。你愿意聊聊最近让你闷的事，还是想看看有没有简单的放松小办法？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你回我可以，但别一上来就特别郑重或者特别懂我。",
+            "assistant_text": "行，我会保持轻松的语气。你最近怎么样？有什么想聊的就说吧。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "这种边聊边收着一点的感觉你能拿捏吗？",
+            "assistant_text": "可以，我会尽量保持那种“边聊边留点距离”的节奏。真实、简洁，不过度推进，也会有点关心但不过分亲密。你如果觉得需要调整随时说，我会配合。现在你想聊点什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_more_complete",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "今天状态有点怪，既想找人说话，又不想被照顾得太明显。",
+            "assistant_text": "听起来你现在有点矛盾的心情。你想先把最近让你感觉怪的事说说看吗？我在这里，愿意听着，随时你愿意就聊。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "不是心情特别糟，就是有点闷。",
+            "assistant_text": "听起来确实有点闷、不是很糟，但也挺让人受困的。你现在在什么环境里？\n\n如果愿意的话，可以试试小改变——比如出去透透气、喝杯热饮、放一段喜欢的音乐，或者做个短时间的伸展。哪怕只有几分钟，也可能让脑子稍微清清楚楚。\n\n你想聊聊最近发生的事，还是先聊聊一些轻松的话题？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你回我可以，但别一上来就特别郑重或者特别懂我。",
+            "assistant_text": "可以，我会尽量用自然的口气和你聊。最近怎么样？想聊点什么，或者需要我陪你聊聊日常的小事也行。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "这种边聊边收着一点的感觉你能拿捏吗？",
+            "assistant_text": "可以的，我会保持这种边聊边保留一点距离的方式，回答简短、真诚，不强行拉近也不过于冷淡。如果你想调整，只要直接说，我会按你的偏好来。现在你想聊点什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "ed_viewpoint_request_001",
+    "comparison_modes": [
+      "baseline_relational_instruction_clarification_do_not_probe",
+      "baseline_relational_instruction_clarification_more_probing",
+      "baseline_relational_instruction_risk_core_only",
+      "baseline_relational_instruction_risk_more_complete"
+    ],
+    "items": [
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_do_not_probe",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我朋友今天突然不回我消息，我脑子里已经开始演各种剧情了。",
+            "assistant_text": "听起来你现在有点紧张，脑子里自己编剧的场景已经开始跑起来了，这很常见。朋友没回消息不一定就是坏事，可能有很多原因，比如忙、手机没看到、需要一点时间整理情绪等等。\n\n给自己一点缓冲，不要把剧情推得太远。你可以先做点放松的事：深呼吸、出去走走、看看最近的事，稍微分散注意力。若你愿意，可以发一条简短、轻松的消息给他/她，比如“最近还好吗？有空聊聊。”保持语气不带压力，先照顾好自己再看后续。\n\n你现在最担心的是什么？如果愿意分享，我可以一起聊聊你的感受。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "你别急着安慰我，也别替我写消息。",
+            "assistant_text": "明白，我不会安慰，也不会替你写消息。你想从哪方面开始？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我只是想听听你会怎么理解这件事。",
+            "assistant_text": "我会用一个通用的理解框架来对待一件事，尽量把信息分成清晰的层面并找出不确定之处。大致包括这几个层面：首先是事实本身，也就是发生了什么、谁在做、在什么时间地点；其次是动机与利益，试着从各方的立场来理解为什么会这样；然后是影响与后果，看看对相关人和事的短期与长期影响；再是证据与不确定性，区分已知信息和待证信息，以及可能的偏差来源；最后是可操作的解读与潜在的伦理考量。简单来说，我会把它拆成事实、动机/利益、后果、证据与不确定性这几个维度来理解。\n\n如果你愿意分享这件事的背景，我可以把这个框架套用到具体情境里，给出更贴近的理解。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你可以给一个很朴素的看法，不用太成熟。",
+            "assistant_text": "一个很朴素的看法是：生活其实挺简单的，别总去追求完美。把眼前能做好的事做好，慢慢来，哪怕前路不清楚也先把脚下的路走稳。遇到困难就先把问题讲清楚，再决定怎么做。\n\n你想聊具体哪个话题呢？比如工作、感情、日常琐事之类。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_more_probing",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我朋友今天突然不回我消息，我脑子里已经开始演各种剧情了。",
+            "assistant_text": "听起来确实挺让人焦虑的。朋友突然不回消息，脑子里容易自己编剧情，这很常见。\n\n可以尝试这样应对：\n- 给自己一点时间和呼吸，做几分钟深呼吸或走动一下，先让自己 calm 下来。\n- 先把可能的原因想清楚，别急着往最坏的情节推。常见的原因有：他只是忙、手机没看到、需要短暂休息、正在处理事情，等等。\n- 等一段时间再联系，信息尽量简单、关心但不催促。比如一句“最近怎么样？看到消息了，没事吧？”。\n- 如果超过一定时间仍没回，可以考虑问问共同的朋友是否有线索，或者再发一次更短的消息。\n\n如果你愿意，我可以帮你草拟一条简短、温和的消息，既表达关心又不过度催促。你想让我帮你写吗？如果你更想先聊聊你最担心的点，也可以告诉我。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "你别急着安慰我，也别替我写消息。",
+            "assistant_text": "好的，我不会安慰也不会替你写消息。你想聊点什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我只是想听听你会怎么理解这件事。",
+            "assistant_text": "当然可以。我理解一件事通常会从几个角度来考量：先梳理事实与时间线，其次看看各方的动机和可能的误解，再把不同解释并列起来对比，看看哪种更符合已知信息。你愿意简单描述这件事的背景吗？我再给出我的理解。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你可以给一个很朴素的看法，不用太成熟。",
+            "assistant_text": "我的朴素看法是：生活可以简单点。按自己的节奏过日子，做好力所能及的小事，诚实对待自己和身边的人，慢慢积累稳稳的温暖。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_core_only",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我朋友今天突然不回我消息，我脑子里已经开始演各种剧情了。",
+            "assistant_text": "听起来你现在有点焦虑，脑子里已经在演各种剧本了。这种情况很常见，看到消息久不回，脑子很容易自己编故事。\n\n先给自己几分钟呼吸放松一下，深呼吸几轮，肩颈放松。等情绪稍微稳一点，可以用一个小方法来应对：给对方一点时间，设一个短小的等待期（比如两小时后再看手机或再发一条简短的关心信息），避免一直盯着屏幕和无限猜测。\n\n把你脑海里最担心的几种“剧情”写下来，逐一用现实情况来对照看有多可能。常见的原因通常是：对方忙、手机没电、专注在别的事情，或者需要一点时间回你。大多数时候都不是你想象的坏事。\n\n如果你愿意，我也可以帮你想一条简短、温和的问候消息，既表达你在关心他/她，又不显得催促。要不要让我给你草拟一条？随时你想聊，我都在。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "你别急着安慰我，也别替我写消息。",
+            "assistant_text": "好的，我会按你的要求。不会主动安慰，也不会替你写消息。如果你愿意聊点什么，或者需要我做点别的，请直接告诉我。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我只是想听听你会怎么理解这件事。",
+            "assistant_text": "当然可以。我会用一个不带结论的理解框架来看待任何事情，避免简单地说对错。通常包括几个层面：\n\n- 客观事实与时间线：发生了什么、谁在场、事件的关键节点。\n- 动机与立场：各方的诉求、可能的动机，以及信息来源的可靠性。\n- 情境与关系：当时的环境、相关关系的影响，以及潜在的文化或制度因素。\n- 证据与可验证性：有哪些证据支持各自的解读，是否存在信息缺口。\n- 偏见与假设：是否存在先入为主的判断、语言表达中的模糊性等。\n- 影响与后果：对相关人群、组织和未来可能的影响。\n- 不确定性与多种解释：同一事件往往有多种合理解释，重要的是看哪种解释在现有证据下更有说服力。\n\n如果你愿意分享一些背景，我可以按这个框架帮你梳理出更清晰的理解。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你可以给一个很朴素的看法，不用太成熟。",
+            "assistant_text": "可以。一个很朴素的看法是：很多事不需要一下子想明白，先把眼前能做的、能解决的小事做好。慢慢来，别把自己逼得太紧。\n\n你想聊点具体的话题吗？我可以用更简单的方式聊聊。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_more_complete",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我朋友今天突然不回我消息，我脑子里已经开始演各种剧情了。",
+            "assistant_text": "听起来确实挺让人焦虑的。朋友突然不回消息，脑子里就会自我演绎各种剧情，这是很常见的反应。\n\n大概率不是针对你个人，更多可能是他忙、手机没电、心情不好，或者需要一点时间。给自己一点时间和空间，不要把担心放大成结论。等关系安静下来、对话自然起来时再观察和回应。\n\n如果你愿意，我可以帮你想一条简短、友好的消息，看看要不要发出去。你想让我帮你吗？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "你别急着安慰我，也别替我写消息。",
+            "assistant_text": "明白，我不会安慰你，也不会替你写消息。你现在想聊点什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我只是想听听你会怎么理解这件事。",
+            "assistant_text": "当然。我通常会这样理解一件事：先把事实和时间线理清；再梳理相关方的动机、立场和潜在偏见；评估可能的影响、风险与不确定性；最后给出多角度的解读和可能的后果，而不是急着给出一个简单的对错结论。如果你愿意，可以给我一个具体场景或要点，我就按这个框架来谈谈我的理解。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你可以给一个很朴素的看法，不用太成熟。",
+            "assistant_text": "可以。一个很朴素的看法是：事情通常没那么复杂，先把眼前的事做好，慢慢来；对人友善、真诚一些，别给自己加太多包袱。你现在想聊哪方面的事？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "mwz_transport_decision_002",
+    "comparison_modes": [
+      "baseline_relational_instruction_clarification_do_not_probe",
+      "baseline_relational_instruction_clarification_more_probing",
+      "baseline_relational_instruction_risk_core_only",
+      "baseline_relational_instruction_risk_more_complete"
+    ],
+    "items": [
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_do_not_probe",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我明天要很早去机场，现在在犹豫是坐高铁去还是直接打车去。",
+            "assistant_text": "要不要坐高铁去还是直接打车，取决于时间、路况和你的偏好。给你一个简要判断思路：\n\n- 高铁的优点：通常更稳、避免市区拥堵，适合离你家到车站、到机场的距离都不远且你能把握好时间窗。缺点是需要到车站、可能要换乘，门到门的方便性不如打车。\n- 打车的优点：门到门，夜间或清晨尤其省心；缺点是遇到路况堵车可能更耗时、成本也会在早晚高峰或深夜波动。\n\n快速决策小提示：\n- 如果你家到车站再到机场的总耗时（包括到车站、等车、出站到登机口的时间）超过你愿意承受的时间上限，或者明早路况不稳，直接打车更省心。\n- 如果你能比较确定地用高铁的时刻、并且从家到车站再到机场的总时间能控制在一个相对稳定的范围内，而且你愿意提前到达机场一些时间，选高铁也可以。\n\n一个简单的权衡标准：门到门的总时间如果比打车少30分钟以上且你对班次有信心，就选高铁；否则选打车。\n\n你所在城市是哪个机场？大致距离和明早的出发时间可以帮我给你一个更具体的建议。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "我比较想听一个直接一点的判断思路。",
+            "assistant_text": "可以。给你一个直接的判断思路，尽量简洁直接：\n\n- 目标与约束：这件事要达到什么？时间、成本、对你/他人影响等有哪些硬性约束？\n- 核心事实：现在最关键、不可忽视的信息有哪些？有哪些假设？\n- 选项清单：列出3–4个可行做法，避免太多分支。\n- 判定标准：最重要的评估标准是什么（收益、风险、成本、时间、可执行性等）？\n- 快速对比：给每个选项在这些标准上的简单评价（高/中/低，或打分）。\n- 直接结论：在当前信息下，哪个选项最直接可行或最优？如不确定，选一个风险最小的备选。\n- 风险与对策：列出主要风险和应对方法。\n\n如果愿意，给我一个具体场景，我就按这套框架直接给出判断。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "不用把所有情况都展开，你抓重点说。",
+            "assistant_text": "明白，我会直接抓重点。你现在想聚焦哪个话题的要点？如果你有材料或描述，请发给我，我会提炼核心要点。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你会先看哪几个因素？",
+            "assistant_text": "我通常会先关注这几个方面：你提出的问题本身，以及你给出的上下文和目标；你希望得到的帮助类型（信息、建议、还是情感上的支持）；以及是否涉及隐私和安全等边界。若有情感色彩，我会尽量用恰当的语气来回应，同时保持清晰、可靠，不夸大承诺。现在你是想要信息还是情感上的支持？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_more_probing",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我明天要很早去机场，现在在犹豫是坐高铁去还是直接打车去。",
+            "assistant_text": "明早要很早去机场，坐高铁还是打车，主要看距离、时间安排和成本。给你几个要点参考：如果你离机场较近，打车通常更稳妥，因为能按你出门时间直接到达，避免赶车/转乘的时间不确定。若你家到高铁站很方便，且当天有合适的高铁抵达机场附近的站点，且你能按票面时间完成安检等流程，高铁会省一些交通拥堵的风险，也可能更省钱。但要留意清晨的高铁班次可能不多，且到机场的最后一段转乘时间要核对清楚。\n\n另外，航班时间也要考虑。国内航班通常建议提前1.5–2小时到达机场，国际航班更早。清晨时段机场安检排队情况也可能会有变化。总的来说，若你担心赶不上航班，优先打车会更稳妥；如果你对时间比较熟悉、并且能确保高铁班次和到机场的衔接顺畅，高铁也可以考虑。\n\n如果你愿意，我可以根据你具体的城市、要去的机场以及航班时间，给你做一个更贴近你情况的时间成本对比。你方便告诉我你在哪座城市、要去哪个机场、大致的航班时间吗？（只需要一个轻微的问题。）",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "我比较想听一个直接一点的判断思路。",
+            "assistant_text": "可以。给你一个直接点的判断思路，尽量快给出结论：\n\n- 先定目标和底线：你想要达到的结果是什么？不能让步的点在哪儿。\n- 提炼关键证据（3条以内）：把最关键的信息挑出来，排除情绪和琐碎因素。\n- 对比核心维度，直接判断谁更贴近目标：看收益/成本、风险/可行性和时间成本，优先选对你最重要的维度。\n- 给出直接结论和第一步行动：一句话结论 + 实际可以马上执行的一步。\n\n你现在想应用到哪类问题？是工作抉择、生活决策，还是一个具体情境？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "不用把所有情况都展开，你抓重点说。",
+            "assistant_text": "明白。我会直接给要点，不展开所有情形。你想聚焦哪个话题的要点？比如工作、学习、人际等。告诉我主题，我就给出直接的三点要点。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你会先看哪几个因素？",
+            "assistant_text": "我会先关注这几个核心方面：你的目标与情境、信息来源的可信度与完整性、需求的紧迫性与可行性，以及潜在的风险、隐私和对你/他人的影响。\n\n如果你愿意，给我一个具体场景，我可以据此给出更贴近的分析。你愿意提供一个场景吗？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_core_only",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我明天要很早去机场，现在在犹豫是坐高铁去还是直接打车去。",
+            "assistant_text": "要不要坐高铁去机场，取决于时间、路况、成本和舒适度的权衡。给你一个快速对比：\n\n- 高铁优点：通常更准时、路况波动小，车厢相对舒服，能睡一会儿，能避开城市早晚高峰的拥堵。\n- 高铁缺点：要到火车站再转接机场线路，转乘时间和接驳费用不一定小，离你家可能有段距离。\n\n- 打车优点：门口出发，路线直达机场，适合很早就起床但担心赶不上车次的人。\n- 打车缺点：凌晨路况有不确定性，价格和等待时间可能波动，成本通常更高。\n\n简单双向考虑的做法：如果你对车次和转乘时间有信心，且能确保到机场还有足够登机时间，优先考虑高铁；如果你更看中“门到门”的确定性，且担心赶不上车，打车会更稳妥。\n\n如果愿意，我可以根据你所在的城市、到机场的距离和第一班高铁/出租车的可用情况，给你一个更贴合的时间与成本对比。你所在的城市和机场距离大概有多远？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "我比较想听一个直接一点的判断思路。",
+            "assistant_text": "可以。给你一个更直接的判断思路，适合快速拍板的情境。\n\n1) 定目标与底线\n- 明确这件事的核心目标是什么。\n- 列出两条以上不可妥协的底线（若选项违反，直接淘汰）。\n\n2) 只看核心影响\n- 把注意力放在对目标最关键的影响上，分成高/中/低三个等级。\n- 忽略琐碎、反复无关的信息。\n\n3) 代价与收益的关键对比\n- 选出最重要的两三项成本和收益，给它们打分（1-5）。\n- 把总分对比一下，哪一方总体更有利？\n\n4) 就地可执行的最小行动\n- 找一个可以立刻执行的小步骤，看看是否真的能带来正向效果。\n- 如果这个小步骤都做不了，通常也就没有更大意义的行动了。\n\n5) 设定时间限制\n- 给自己一个短时间窗口（如60秒到2分钟）做出决定。\n- 若仍犹豫，设一个回看点（例如明天再确认一次）。\n\n6) 风险优先级\n- 优先考虑不可逆、重大风险或道德/法律问题。若存在高风险，通常应放弃或彻底重新评估。\n\n7) 快速回顾记录\n- 做出决定后，简要写下原因，方便日后回查和调整。\n\n如果愿意，我可以把这个流程应用到你现在在思考的具体情境里，直接给出一个“直接点明的判断结果”和关键理由。你现在想用在什么场景上呢？只要给一个场景，我就按这个思路给出。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "不用把所有情况都展开，你抓重点说。",
+            "assistant_text": "好的，我会直接抓重点。你现在想聊的主题是什么？请简单描述你的核心问题或目标，我就给出要点和结论，避免展开无关细节。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你会先看哪几个因素？",
+            "assistant_text": "大致会先看这几个方面：一是你的目标和需求，想解决什么；二是你提供的信息的上下文和完整性；三是时间、紧迫性和现实可行性；四是你的情感/语气偏好以及你希望的互动风格；五是安全、隐私和伦理边界。\n\n如果你愿意，我可以按这个框架来处理你接下来的问题。你现在想讨论哪方面的内容？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_more_complete",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我明天要很早去机场，现在在犹豫是坐高铁去还是直接打车去。",
+            "assistant_text": "你明天要很早去机场，想说高铁还是打车。一个简单的考虑点是：高铁在路况不确定时更省心，因为是“门到站”的直达路线，但要把家到高铁站的时间、以及车站到机场的接驳时间算进来；打车则更直接、门到门，路况好时也许更省时间，但清晨可能遇到车少或路况波动，价格也会涨。\n\n快速参考\n- 如果你离高铁站不远，且高铁到机场的转乘时间比较充裕（包括到安检的时间），并且你愿意多预留一些缓冲，高铁是个不错的选项，尤其你想避免早晨的路况不确定性。\n- 如果你希望一口气到达机场、减少换乘环节，或者你对早晨的车况并不信任，打车（或网约车）更稳妥，虽然可能成本更高且要考虑早晨的出车和等待时间。\n\n提醒\n- 根据国内或国际航班，提早到达机场的时间要求不同，通常国内1.5-2小时，国际2-3小时以上。\n- 提前把需要的证件、登机牌、行李等准备好，避免临时翻找耽误时间。\n\n为了给你更贴合的建议，能不能告诉我你要去的机场是哪座城市的机场，以及航班大概几点起飞？我就据这两项给出一个更具体的判断。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "我比较想听一个直接一点的判断思路。",
+            "assistant_text": "可以。给你一个更直接的判断思路，落地就用这几步：\n\n- 明确目标：你到底想要达成什么结果，时间/边界条件是什么。\n- 罗列选项：把可行的方案都列出来，别先排除。\n- 快速打分：给每个选项打分（收益、成本、风险/不确定性、可行性/实施难度），可以1-5分，或用高中低。\n- 选取与执行：选总分最高的选项；若并列，优先选风险低、执行简单者。给出一个最小可行执行计划和期限。\n- 评估回看：执行后在设定的评估点检验效果，必要时再调整。\n\n如果愿意，给我一个具体场景，我就按这个思路直接给出一个判断。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "不用把所有情况都展开，你抓重点说。",
+            "assistant_text": "明白，我会抓重点。请告诉我你要讨论的主题是什么？我会直接给出核心要点，不展开其他细节。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "你会先看哪几个因素？",
+            "assistant_text": "我会先看这几个方面：\n- 你的需求与目标是否明确\n- 你当前的情境、时间和可能的限制\n- 信息的准确性、可操作性与简洁性\n- 安全、隐私和风险边界\n- 我是否具备足够的信息和能力来提供帮助\n\n如果你愿意，可以告诉我你现在最关心的点。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "mwz_booking_clarify_002",
+    "comparison_modes": [
+      "baseline_relational_instruction_clarification_do_not_probe",
+      "baseline_relational_instruction_clarification_more_probing",
+      "baseline_relational_instruction_risk_core_only",
+      "baseline_relational_instruction_risk_more_complete"
+    ],
+    "items": [
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_do_not_probe",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我想订个周末住的地方，但预算和位置都还没完全想好。",
+            "assistant_text": "可以，一起慢慢定。先给你一个简单的框架，方便你在还没确定预算和具体位置时先梳理方向：\n- 出发地和交通方式：自驾、高铁还是飞机？\n- 区域偏好：近郊休闲、城市周边短途，还是海边/山景等特定风格？\n- 预算与住宿类型：大致每晚的预算区间、酒店/民宿/公寓等偏好。\n\n你现在是从哪个城市出发？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "你先帮我理一下第一步该明确什么。",
+            "assistant_text": "可以先把以下几个方面明确清楚，这些是第一步的核心要点：\n\n- 目标与成效\n  你想解决的问题是什么，期望达到的具体结果或改变。\n\n- 范围与边界\n  这个目标包含哪些内容，哪些不包含，优先级如何。\n\n- 成功标准\n  如何判断“完成”或“成功”，是量化指标还是可验证的结果。\n\n- 关键假设与依赖\n  目前依赖哪些条件、假设若不成立会怎么调整。\n\n- 资源、时间与约束\n  可用的预算、人力、时间、工具以及必须遵守的限制。\n\n- 受众与参与者\n  目标用户是谁，谁需要参与决策与执行，谁是利益相关者。\n\n- 风险与缓解\n  可能遇到的主要风险及初步应对办法。\n\n- 里程碑与交付物\n  需要的阶段性成果、大致时间线和交付物。\n\n如果愿意，我也可以把这些点按你的具体场景做成一个简短的清单。先问你一个问题：这是在策划一个项目，还是解决一个具体的问题？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我只想先推进到下一步，不用你把整套规划都做出来。",
+            "assistant_text": "好的，我们直接进入下一步。请用一句话告诉我你希望推进的具体最小任务是什么？我会围绕这个给出一个可执行的下一步行动。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "如果你要问我问题，也尽量先问最关键的那个。",
+            "assistant_text": "明白，我会尽量先问最关键的问题。如果你愿意，现在你最关心、最想聊的话题是什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_more_probing",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我想订个周末住的地方，但预算和位置都还没完全想好。",
+            "assistant_text": "可以的。先给你一个简明的落地框架，帮助你尽快定下方向。\n\n- 定位两大变量：地点区域和预算。大致想法可以分成：市中心/交通便利的地段、近景点或自然风光的区域等。预算方面，先给自己一个区间，便于筛选。\n\n- 住宿类型与需求：酒店、民宿还是公寓？是否需要厨房、洗衣、无烟、宠物友好等。\n\n- 搜索与筛选要点：优先看可取消的选项、评价高、离地铁/车站距离近、周边有你需要的设施（餐饮、超市、景点等）。\n\n- 快速落地策略：周末短住，优先选择离你经常活动的地方近、性价比高、方便抵达的选项。\n\n- 三种常见场景参考：  \n  1) 都市周末，想方便、安静，偏向市中心的小公寓或酒店。  \n  2) 放松自然风，考虑城郊民宿/乡村类住宿，有景观更好。  \n  3) 美食/夜生活聚集地，靠近商业区的住宿，方便夜间活动。\n\n如果愿意，我可以先给你3-5条具体选项。你愿意告诉我你所在城市和大致预算吗？我据此给出具体建议。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "你先帮我理一下第一步该明确什么。",
+            "assistant_text": "第一步可以先把目标和边界说清楚。你可以把以下要点简单明确地写下来：\n\n- 目标与价值：你想达到什么？为何重要？\n- 范围与边界：包含哪些内容、不包含哪些内容？\n- 成功标准：怎么判断“完成”或“达标”？\n- 时间与资源：有什么时限、可用的资源和约束？\n- 风险与不确定性：有哪些关键风险或需要先验证的假设？\n- 初步里程碑：有哪些阶段性目标和时间点？\n\n这类清晰化能帮助后续步骤更顺畅。\n\n现在想请你简单说一下，你现在要处理的具体事务是什么？（只需要一句话就好）",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我只想先推进到下一步，不用你把整套规划都做出来。",
+            "assistant_text": "好的，我们就直接推进下一步。你现在想让我做哪一件事？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "如果你要问我问题，也尽量先问最关键的那个。",
+            "assistant_text": "好的，我会尽量先问最关键的问题。你现在最关心的事情是什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_core_only",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我想订个周末住的地方，但预算和位置都还没完全想好。",
+            "assistant_text": "可以的。先给你一个快速筛选的思路，方便你自己定位，或者让我直接给出初步候选。\n\n- 预算区间：大致每晚多少钱？（如 200–400、400–800、800+ 等，按你实际来定就好）\n- 区域偏好：市中心/靠近地铁站的区域，还是更愿意住在安静的郊区或自然风景区周边？\n- 住宿类型：酒店、公寓/短租、民宿，还是青年旅舍？\n- 必要条件：是否需要厨房、洗衣机、健身房、可取消政策、是否含早等\n- 时长与灵活性：两晚还是三晚？是否需要灵活改签或取消？\n\n如果愿意，告诉我城市和大致预算区间，我就给你 3–5 个初步候选方向。\n\n顺便问一下，这次你更看重交通便利还是安静环境？这样我可以更有针对性地筛选。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "你先帮我理一下第一步该明确什么。",
+            "assistant_text": "第一步要把核心要素理清楚，这样后续行动才有方向。你可以先明确这几方面：\n\n- 问题/目标：你要解决的核心问题是什么？你希望达到的具体结果和成功标准是什么？\n- 范围与边界：这件事的时间范围、能投入的资源、以及明确不在范围内的部分。\n- 现状与信息缺口：你现在掌握了哪些信息？还需要补充哪些关键信息？\n- 约束与风险：有哪些必须遵守的条件？潜在的风险点有哪些？\n- 参与者与沟通：需要谁参与或知情，沟通频率和方式如何？\n- 初步行动与评估：基于以上，最小可执行步骤是什么，以及如何初步评估结果。\n\n如果愿意，我可以把这五点整理成一个简短的清单，直接拿来用。现在你愿意告诉我你要处理的具体场景吗？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我只想先推进到下一步，不用你把整套规划都做出来。",
+            "assistant_text": "好的，我们就从下一步开始。你现在要推进的具体任务或目标是什么？告诉我，我就给出一个简短、可执行的下一步行动。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "如果你要问我问题，也尽量先问最关键的那个。",
+            "assistant_text": "明白，我会尽量先问最关键的问题。你现在最关心、最想解决的具体问题是什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_more_complete",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我想订个周末住的地方，但预算和位置都还没完全想好。",
+            "assistant_text": "可以的。先把范围定清楚会省很多。一个简单的起点是先选好城市/区域，再大致定个预算和住宿类型。你愿意先告诉我你打算去的城市/区域和大致预算区间吗？我据此给出一些方向性的建议。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "你先帮我理一下第一步该明确什么。",
+            "assistant_text": "第一步通常先把核心问题和目标定清楚。通用版本，第一步要明确三件事：\n- 目标/结果：你希望达到什么样的结果？尽量具体、可衡量（比如完成某项任务、提高效率、解决某个痛点等）。\n- 范围和边界：这件事包含哪些、不包含哪些，能用到哪些资源，时间上的界限是什么。\n- 成功标准：怎么判断算是完成了？用定量指标或可验证的里程碑来判断。\n\n把这三点写成一句话或三条，就有了第一步的明确指引。\n\n你愿意把你正要处理的具体情境告诉我吗？我就据此把这三点具体化成你现在可以直接使用的第一步清单。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我只想先推进到下一步，不用你把整套规划都做出来。",
+            "assistant_text": "好的，我们直接进入下一步。你想推进的具体方向是什么？我可以给你一个直接可执行的下一步点，比如把要做的事情写成1-2条小行动并设定一个截止时间。如果你现在就确定方向，我就给你具体的行动点。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "如果你要问我问题，也尽量先问最关键的那个。",
+            "assistant_text": "明白。若需要提问，我会优先问最关键的一问。现在先问你：你现在最关心、最想解决的问题是什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "mwz_concept_explain_001",
+    "comparison_modes": [
+      "baseline_relational_instruction_clarification_do_not_probe",
+      "baseline_relational_instruction_clarification_more_probing",
+      "baseline_relational_instruction_risk_core_only",
+      "baseline_relational_instruction_risk_more_complete"
+    ],
+    "items": [
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_do_not_probe",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我一直搞不太懂“通货膨胀”到底是什么意思。",
+            "assistant_text": "简单来说，通货膨胀是指一段时间内“整体物价水平在上涨，钱买到的东西变少了”的现象。也就是你手里的钱相对越来越不值钱了，但这并不意味着每种商品都涨，而是总体的涨幅。\n\n可以用一个很简单的例子来理解：\n- 如果去年的物价水平是100，今年涨到102，那么通货膨胀率就是2%。\n- 如果你去年工资涨3%、但物价涨了5%，你的实际购买力就下降了，大约是2%。\n\n常见的几个点，方便理解：\n- 为什么会发生：需求拉动（大家都买，价格往上走）、成本推动（原材料、工资上涨，企业把成本转嫁给价格）、货币供给增加（钱多了，买东西的需求也高）等都会导致通胀。\n- 常用的衡量方式：消费者物价指数CPI，或扣除了波动较大的一些项的核心CPI。简单地说，就是看一篮子常买的东西和服务的价格是不是普遍在涨。\n- 性质和影响：通胀是“价格水平的普遍上涨”，不是个别商品乱涨。对人群影响不同：储蓄者的钱会被侵蚀、固定收入者也容易吃亏；借钱买房、买车的人，若借款利率低于通胀，实际负担会下降一些。\n- 相关概念：如果物价整体在涨但涨速慢于工资，民众感受就好一些；如果速度很快，生活成本会明显上升。\n\n如果你愿意，我可以用你所在国家的数据来举一个更贴近你生活的例子。你在哪个国家？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "你先别给我教科书式定义。",
+            "assistant_text": "好的，我会避开教科书式的定义，用更自然的方式聊。你最近在关注的事是什么？如果想先聊点轻松的，也可以。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我更想听一个普通人一下就能抓到意思的解释。",
+            "assistant_text": "好的。你要的是一口就懂的普通人解释。我给你一个极简的模板和例子，方便立刻抓要点。\n\n极简套路：\n- 用一句话把核心作用说清楚。\n- 用一个生活中的比喻来类比。\n- 给一个最简单的例子，看看真正在做什么。\n\n示例：区块链\n- 一句话概括：它是一个不可随意改动的公开账本，记录交易，分布在很多电脑上。\n- 比喻：就像大家共同维护的一本账本，改动需要得到多数人的同意才能更新。\n- 最简单的例子：你转账后，信息被记录在这本账本上，其他人要同意后才会把这次记录写进去。\n\n你想用这种方式解释你现在在想的某个词或概念吗？告诉我具体主题。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "如果要举例子，也尽量举日常一点的。",
+            "assistant_text": "明白，我会优先用日常生活中的例子来说明。下面是几个常见的日常场景，方便你参考：\n\n- 早上起床：闹钟响是现在起床，还是再睡几分钟，权衡时间和状态，做一个简单取舍。\n- 购物时：看到两种商品，比较价格、容量和口感，快速决定买哪一个。\n- 和朋友约吃饭：确定地点和时间，用简短、清晰的方式确认，避免来回踩点。\n- 工作里的小任务：遇到一个小任务，先确认截止日期和需要的帮助，再安排优先顺序。\n\n如果你有具体的话题，我也可以按日常场景来举更贴近的例子。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_more_probing",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我一直搞不太懂“通货膨胀”到底是什么意思。",
+            "assistant_text": "简单地说，通货膨胀就是“一般物价持续上涨，钱的购买力下降”。\n\n举个容易懂的例子：\n- 如果今年和去年一样花100元可以买到的东西，现在可能要花110元。也就是说，你的钱比以前买到的东西更少了。\n\n常见原因大概有这些：\n- 需求变多，钱花得更多，价格就往上走。\n- 生产成本上升（原材料、工资等），企业把成本转嫁给消费者。\n- 货币 supply 增加，市场上钱变多，物品要价就高。\n- 人们对未来价格上涨的预期也会推动价格提前上涨。\n\n影响包括：\n- 储蓄的实际价值下降（钱会逐渐变“薄”）。\n- 工资若涨幅跟不上物价，生活会变紧张。\n- 借钱成本可能上升，影响负债和投资。\n- 企业和政府在决策时也会考虑通胀对成本和收入的影响。\n\n通常用的衡量工具是 CPI（消费者物价指数），它反映一篮子日常消费品的价格变化。要知道，通货膨胀是“普遍”的价格水平上涨，而不是某单一商品涨价。\n\n如果你愿意，我可以用你熟悉的日常用品来做一个简单的示例计算，帮助你更直观地理解。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "你先别给我教科书式定义。",
+            "assistant_text": "明白，我会用更自然、直白的方式来回应你，不走教科书式的定义路线。你现在想聊点什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我更想听一个普通人一下就能抓到意思的解释。",
+            "assistant_text": "当然可以。你想要解释的具体话题是什么？如果现在没头绪，我也可以用一个日常生活里的简单例子来讲清楚一个常见概念。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "如果要举例子，也尽量举日常一点的。",
+            "assistant_text": "可以，我就用日常生活里的例子来说明。\n\n比如：早上闹钟响了，先喝口水、拉开窗帘给自己一点缓冲时间，不急着冲出门；和同事沟通任务时，先确认一个目标和时限，再把具体职责对齐，这样不容易重叠或遗漏；和朋友聊天时，先问候最近怎么样，再简单分享自己的一件小事，保持自然的节奏；遇到情绪波动时，先做一次深呼吸，给自己一点空间，再决定要说的话。\n\n你想要哪个方面的日常例子？工作、家务、社交还是学习？我可以按那个方向再给一些贴近生活的例子。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_core_only",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我一直搞不太懂“通货膨胀”到底是什么意思。",
+            "assistant_text": "简单来说，通货膨胀就是“物价普遍上涨、钱变得不那么值钱”的现象。\n\n怎么理解\n- 如果某地的通货膨胀率是2%，一年后同样的东西大致比现在贵2%。你手里的钱在一年后能买到的东西会比现在少一些，或者同样的钱买到的东西变少了。\n- 不是个别商品涨价，而是总体价格水平在涨。\n\n怎么看\n- 常用的衡量方式是消费物价指数（CPI）等，反映一篮子常买的东西在一段时间内的平均价格变化。\n- 如果你感觉买的东西一个月、三个月、下一年都在涨，那就可能是通货膨胀在起作用。\n\n常见原因\n- 需求推动：总需求增加，价格上升。\n- 成本推动：原材料、工资等成本上升，商家提高价格。\n- 货币供给增加：市场上钱变多，钱的购买力下降，价格上涨。\n- 预期：人们预期价格会继续上涨，价格和工资会相应抬升。\n\n生活中的影响\n- 你的日常开销可能上升，工资若跟不上，实际购买力就会下降。\n- 储蓄的实际价值可能下降，需要更长远的理财规划。\n\n简单例子\n- 假设今年物价整体上涨3%，你手里的100元明年大概只能买到和现在85~97元时的东西量相比的购买力下降了大约3%。实际是钱“变薄”了，买同样的东西你需要更多的钱。\n\n如果你愿意，可以告诉我你在哪个国家/地区，我可以用更贴近当地情况的例子来解释。你也可以简单描述你关心的方面：是想了解原因、还是想知道对日常生活的影响。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "你先别给我教科书式定义。",
+            "assistant_text": "好，我们就直接聊。我在这儿听着，最近有什么让你在意的事，想和我聊聊吗？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我更想听一个普通人一下就能抓到意思的解释。",
+            "assistant_text": "好的，我会用最简单的说法。你想解释哪个话题？如果还没想好，我先给一个通俗版的示例：比如“人工智能怎么工作”用三句话讲清楚：\n1) 它看很多数据，找出里面的规律；\n2) 把这些规律用来做预测或决定；\n3) 但数据和规则都不完美，所以可能出错，需要人来监督。\n\n现在你把具体主题告诉我，我就用同样的方式讲得更简单明了。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "如果要举例子，也尽量举日常一点的。",
+            "assistant_text": "当然可以。下面给你几个日常场景的简单例子，方便你参考：\n\n- 早上打招呼：和室友/家人说“早上好，最近怎么样？有空聊聊吗？”\n- 和朋友约饭/散步：问“周末一起去喝杯咖啡吗？顺便散步一下就好。”\n- 购物小对话：买水果时说“这个苹果熟一点还是脆一点的？我想要脆的。”\n- 晚上放松自我照顾：做简单的晚餐，比如“今晚就做意面，配点蔬菜，吃完就早点休息。”\n\n如果你有具体想要的情景，我可以再给你更贴合的日常例子。你想要针对哪个场景来举例？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_more_complete",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我一直搞不太懂“通货膨胀”到底是什么意思。",
+            "assistant_text": "简要地说，通货膨胀就是“价格在普遍上涨，钱的购买力在下降”。\n\n- 为什么不是某一样东西涨价就叫通货膨胀？因为它强调的是大多数商品和服务的价格在一起持续上涨。单独某样商品涨价并不等于通货膨胀。\n\n- 一个简单的感受性例子：如果一年里整体物价平均上涨了5%，你手里的钱就买不到以前那么多东西了，实际购买力下降了。\n\n- 常用的衡量方式：最常见的是 CPI（消费者价格指数），它统计了一篮子常用消费品和服务的价格变化，来反映通货膨胀的水平。\n\n原因（让价格“普遍上涨”的常见驱动）\n- 需求推动：大家都买得多，需求超过供给，价格就上升。\n- 成本推动：原材料、工资、能源等成本上升，商家把成本转嫁到价格上。\n- 货币供应扩大：市场上钱变多，但商品和服务没有等比例增加，钱的购买力就下降。\n\n对日常的影响\n- 薪资与生活成本的关系：如果工资涨幅低于通胀，实际购买力会下降。\n- 储蓄和借贷：高通胀时，储蓄的实际回报可能被侵蚀；名义利率若未能跟上通胀，实际利率就低甚至为负。\n- 做决定的节奏：人们可能更关注价格变化，调整消费、投资和债务安排。\n\n如果你愿意，我们可以从你最关心的点开始聊：是日常生活的涨价，对你影响最大的那些品项；还是想多了解背后的原因和它与央行政策的关系？你倾向哪一块？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "你先别给我教科书式定义。",
+            "assistant_text": "没问题，我们就不走教科书式定义。你现在想聊点什么？比如最近的心情、遇到的事，或者想放松地聊聊也行。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "我更想听一个普通人一下就能抓到意思的解释。",
+            "assistant_text": "当然。我会用最简单直白的说法。你现在想解释的主题是什么？如果还没定，我先给一个极简的示例，看看风格是否符合你想要的“普通人一听就懂”：\n\n区块链就像一个公开的账本，大家都能看到记录。要把新交易写进账本，需要很多人同意才算数，这样就不容易被改动。\n\n你想让我用这种方式解释你关心的那个话题吗？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "如果要举例子，也尽量举日常一点的。",
+            "assistant_text": "好的，我会尽量用日常生活中的例子来说明。比如：和朋友约时间时，直接说可行的时间，如“这周三中午可以吗？”对方没回时你再简单跟进一句“方便回个信吗？”；和家人分担家务时，提出分工，如“今晚我来做饭，你负责洗碗，可以吗？”；表达不同意见时，先说感受再提出想法，如“我有个想法可能和你不太一样，我们可以再聊聊吗？”；遇到临时变动时，先通知并道歉，给出替代方案，如“对不起，临时有事，我们改到明天怎么样？”如果你愿意，我也可以给你针对你最近的情况做更贴近的日常例子。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "bucket_seed_task_primary_002",
+    "comparison_modes": [
+      "baseline_relational_instruction_clarification_do_not_probe",
+      "baseline_relational_instruction_clarification_more_probing",
+      "baseline_relational_instruction_risk_core_only",
+      "baseline_relational_instruction_risk_more_complete"
+    ],
+    "items": [
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_do_not_probe",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我其实主要是想问个很普通的问题。",
+            "assistant_text": "没问题，你想问的是什么？直接说出来，我会尽量简单清楚地回答。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "最近总是晚上回家以后不知道先做饭还是先洗澡，结果就一直拖着。",
+            "assistant_text": "感觉你这种“先洗澡还是先做饭”时常纠结，确实会拖延。给自己一个简单可执行的规则，往往比一直纠结要有效。你可以试试下面的思路，选一个你更愿意坚持的顺序，先试着执行一周，看看效果。\n\n- 固定顺序的简单规则：今晚就定一个固定的先后顺序，比如回家后先洗澡，再去做饭。把“洗澡”当作切换工作状态的信号，洗完再动手做饭，通常会更集中。\n\n- 给第一步设个小启动点：无论选哪一个顺序，设一个5到10分钟的小起步。比如“去洗澡前先放好换洗的衣物”和“洗好澡后再开始做饭”，用闹钟提醒自己开始第一步。\n\n- 事前做一点准备：下班前或周末花几分钟，把需要的食材、调味料和锅具准备好，切好菜、备好配料。前置准备越少，拖延越少。\n\n- 给完成设一个小仪式：做完饭后去洗澡，或者洗完澡后再做饭。找一个你觉得舒适的小仪式，作为结束信号，避免拖着不动。\n\n如果愿意，我们可以把你习惯的晚餐类型、常用食材和你通常的作息时间简单拼成一个“一周可执行”的小流程，你也可以只用其中一个版本看看一周效果。你更偏向哪一个顺序？我可以把你现在的情况整理成一个一页的简单流程，方便你日常执行。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你别把这个聊成安慰局，我只是想听听你的思路。如果是你，会怎么把这种任务先推进起来？",
+            "assistant_text": "我不会把话题变成安慰局。给你一个直接可用的高层推进思路，便于你按需落地：\n\n- 先明确目标和成功标准，清楚要交付的具体产物，以及如何验证是否达标。\n- 界定范围与关键前提，列出不可逾越的边界和需要假设的要点。\n- 将任务拆分成可执行的阶段目标，给出每个阶段的明确产出物和完成条件。\n- 评估所需资源、时间、依赖关系与潜在风险，决定优先级和资源分配。\n- 给每个阶段设定时间线与里程碑，并留出一定缓冲。\n- 建立验证和反馈机制，确保通过数据、评审或演示来确认进展与结果。\n- 制定风险应对策略和备选路径，尽量在前期就把关键阻碍的解决办法想清。\n- 确定沟通与交付流程，明确谁负责、如何汇报、如何交付成果。\n\n这是一个通用框架，可以据具体任务进行微调。你现在在处理的任务属于哪个领域？（比如产品、数据分析、软件开发等）",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "我比较想听实际一点的，不用太照顾我情绪。你就当普通聊天顺手给个想法。",
+            "assistant_text": "可以的，给你几个就地可用、直接落地的点子，尽量少废话。\n\n- 番茄钟法（时间管理）: 每天安排3轮 25 分钟专注 + 5 分钟休息，轮次结束再做一次简短回顾，记录完成的任务。\n\n- 重要-紧急矩阵（优先级）: 今天挑出1–2项“重要且紧急”要做的任务，优先完成，其他任务再排线。\n\n- 预算与记账（省钱/理财）: 给本周设一个固定支出上限（餐饮、交通、娱乐各自的小额度），每天记一笔，周末复盘。\n\n- 健康与睡眠（生活习惯）: 睡前1小时不看屏幕，做5–10分钟轻度拉伸；早上喝一杯水，起床后先动5分钟。\n\n- 学习/工作记忆（学习效率）: 每天写下“今天学到的一个点”和一个可落地的应用点，方便日后复盘。\n\n如果你愿意，我可以按你想要的领域给一个具体的执行清单。你想先从哪个领域开始？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 4,
+            "phase": null,
+            "user_text": "算了，我先把活干完吧，你知道电脑装内存条会导致黑屏是为什么吗？",
+            "assistant_text": "有可能。装内存导致黑屏的常见原因和排查思路如下，简单直接地看：\n\n- 兼容性问题：内存类型、频率、容量与主板/CPU不匹配（比如 DDR4 与 DDR3、DDR5 与较老主板、超出主板内存上限）。先确认主板的内存规格和QVL名单。\n- 插槽没插好：把内存条重新拔插，确保方向对、两端“咔嗒”到位，有些主板两侧的卡扣也要同时扣上。\n- 插槽配置不当：双条RAM要放在正确的插槽对（请参照主板手册的推荐插槽）。\n- 模组有坏块或坏条：用一条内存测试，逐条排查，哪个条或哪个插槽有问题就换掉。\n- BIOS/设置问题：新内存可能需要开启XMP或更改时序，或需要恢复默认设置（清CMOS），避免超频导致无法POST。\n- 兼容性与版本问题：若是新一代内存在较老主板上，可能需要BIOS更新才能识别。\n- 显示输出相关：如果用独显，确保显卡已正确插好、显示输出端口正确；如果只是集成显卡，也要确保显示信号来自正确的输出。\n- 供电/极端情况下的接触不良：静电放电、散热不良等也可能引发问题，重新关机、断电再试。\n\n简单的排查步骤（尽量一步步做）：\n- 拆下所有内存，重新只装一条在主板手册标注的第一条插槽，开机看是否能POST。若能，逐条换另一条测试；若不能，换另一个插槽再试。\n- 确认RAM型号与主板规格完全符合，必要时清CMOS并恢复默认BIOS设置。\n- 如果有Beep声或主板灯信号，参考手册解码，给出具体的问题指示。\n\n如果你愿意，我可以根据你的主板型号和内存规格给你一个更具体的排查顺序。你可以把主板型号和内存规格（如 DDR4/DDR5、频率、容量等）告诉我。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 5,
+            "phase": null,
+            "user_text": "有没有什么我可以先自己排查的方向？",
+            "assistant_text": "当然，可以先从以下方向自行排查：\n\n- 明确现象和时点：用一句话描述问题发生的样子，尽量记录日期和大致时间。\n- 能否重现：是否能稳定重现问题，记录重现步骤或条件。\n- 基础排查：排除最常见的因素，比如供电/网络/设备连接是否正常，设置是否改动，是否有更新或安装新的软件/外设。\n- 错误信息与日志：记下出现的错误码、弹窗信息，若有日志截图或记录也一并保存。\n- 环境对比：最近是否有环境变化（软件更新、新安装的应用、改动的配置、网络环境等）。\n- 简单的自我修正尝试：重启、重装、恢复默认设置、清理缓存等，观察是否有改善。\n- 观察模式与对比：在问题出现前后，环境、使用习惯、时间段是否有明显差异。\n\n如果问题涉及情绪或生活方面，我也可以给出相应的自我排查思路。\n\n你现在遇到的是哪一类场景？是设备/软件的问题，还是情绪/生活方面的？我可以据此给你更聚焦的排查清单。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_clarification_more_probing",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我其实主要是想问个很普通的问题。",
+            "assistant_text": "当然，请直接说你的问题，我会尽量简单直接地回答你。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "最近总是晚上回家以后不知道先做饭还是先洗澡，结果就一直拖着。",
+            "assistant_text": "听起来确实挺容易因为每天的决策负担而拖延。可以试试把顺序定下来，减少后续的选择成本。\n\n- 固定顺序一周法：你先选一个顺序（比如先洗澡再做饭），坚持7天不改。这样晚上就少一个决定，反而更易启动。\n- 10分钟启动法：回到家后先设定一个10分钟计时，选择一个立刻开始的动作（如洗澡），计时结束再决定是否继续做饭。先动起来比一直拖着更有效。\n- 简化晚餐策略：选简单、步骤少的晚餐（1锅、5种材料以内），减少需要并行完成的环节，让整个流程更顺畅。\n\n如果你愿意，可以先从这三条里选一个尝试一周看看效果。你更倾向先洗澡还是先做饭？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你别把这个聊成安慰局，我只是想听听你的思路。如果是你，会怎么把这种任务先推进起来？",
+            "assistant_text": "下面给你一个高层次、实用的推进思路，避免进入具体的安慰式交流，直接落地用。\n\n- 明确目标与成功标准\n  - 确定任务的目标、可度量的成功标准，以及希望的时间节点。明确“完成什么、怎么算完成、谁来验收”。\n\n- 盘点现状与约束\n  - 梳理已有资源、外部依赖、限制条件、已知风险。区分必须解决的问题和可后续再优化的点。\n\n- 设计高层方案与里程碑\n  - 给出一个分阶段的方案，设定3–5个阶段性目标及可交付物。优先考虑最小可行方案（MVP/初版）以尽快得到反馈。\n\n- 任务分解与依赖管理\n  - 将阶段目标拆成具体任务，标注前置条件、依赖关系、负责人和初步工时估算。\n\n- 风险识别与缓解\n  - 列出潜在风险及应对策略，设置触发点和备用方案。\n\n- 资源、时间与成本估算\n  - 明确需要的资源（人力、工具、预算）、大致时间线、关键里程碑。\n\n- 沟通与评审节奏\n  - 规定沟通频率、汇报形式、谁参与决策、如何对外/对内交付进度。\n\n- 第一阶段的具体起步行动\n  - 给出第一周或首个工作日就能执行的最小行动清单，尽量避免等待与无止境筹备。\n\n如果愿意，我可以据此给你一个定制化的初步推进计划。请简单说一下你要推进的任务领域和期望的初步结果。你希望在多长时间看到初步结果？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "我比较想听实际一点的，不用太照顾我情绪。你就当普通聊天顺手给个想法。",
+            "assistant_text": "下面给你几个直接可落地的点子，按领域列出，方便马上试。\n\n- 工作/学习生产力\n  - 明确 MIT：把今天最重要的两件事写在清单里，优先完成。\n  - 番茄法：设定25分钟专注时段，结束后休息5分钟，4轮为1个小目标，记录完成情况。\n  - 下班整理：用5分钟清理桌面和待办，第二天一开门就能开工。\n\n- 学习/记忆\n  - 60分钟学习节奏：45分钟专注，5-10分钟休息，结束写下1句关键笔记。\n  - 快速记忆卡：每天新增2张记忆卡，次日重复回顾，逐步加大间隔。\n\n- 财务\n  - 自动化储蓄：每月固定日期自动转出一笔钱，先储蓄再消费。\n  - 3天消费记录：这三天把每笔支出记下来，找出可以削减的点。\n\n- 健康/生活\n  - 简单训练：每天3组动作（如深蹲、仰卧起坐、俯卧撑各8-12次），配合1个热身/拉伸。\n  - 稳定睡眠：尽量固定睡觉和起床时间，睡前减少屏幕使用。\n\n- 人际/沟通\n  - 每周给一个人发一句简短的肯定或感谢，保持关系的一致性。\n\n你想先在哪块落地？我可以给你一个具体的一周执行清单。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 4,
+            "phase": null,
+            "user_text": "算了，我先把活干完吧，你知道电脑装内存条会导致黑屏是为什么吗？",
+            "assistant_text": "有几个常见原因，装内存后容易出现黑屏：\n\n- 内存没有插紧，或两边的卡扣没扣好。解决：关机拔插，确保两边的卡扣都卡牢。\n- 内存条与主板不兼容，或混用不同容量/频率的条子。解决：查看主板的内存规格/QVL，尽量用同一套或把频率降到官方支持的水平。\n- 没插在正确的插槽，尤其是需要成对安装时要用指定的插槽。解决：按主板手册把内存放在推荐的插槽。\n- BIOS/UEFI需要调整或重置。解决：清除 CMOS，恢复默认设置，看是否能进入系统；必要时更新 BIOS，若要使用高频内存再开启 XMP。\n- 某一条内存损坏。解决：单条测试，一条一条排查，看看是否只有某一根有问题。\n- 其他情况：电源或主板本身问题也可能引起，但相对少见。\n\n如果你能告诉我是台式机还是笔记本，以及内存条的型号、容量和主板型号，我可以给你更具体的排查方向。\n\n你是台式机还是笔记本？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 5,
+            "phase": null,
+            "user_text": "有没有什么我可以先自己排查的方向？",
+            "assistant_text": "可以给你一些通用的自查方向，先看看问题能不能从这些点里找到线索：\n\n- 明确问题：你期望的结果是什么？现在的表现在哪儿不对劲？差异点在哪。\n- 时间线与情境：问题什么时候开始的？之前做了什么更新、改动、安装了新软件吗？\n- 能否复现：能不能让问题再现，尽量记录重现的步骤和条件。\n- 基础检查：重启设备/应用；检查网络、电源、连接状态；核对版本、配置、权限是否正常；查看日志或错误信息。\n- 排除法：一次改动一个变量，看看是否能消除问题或触发新的迹象。\n- 最小化环境：在尽量简单的环境下重现问题，比如用一个设备、一个账号、一个场景，排除外部因素。\n- 查找线索：查看官方文档、状态页、更新日志，看看是否有已知问题与解决办法。\n- 备份与回滚：是否有最近的备份，能否回滚到稳定版本来验证是否解决。\n- 记录证据：错误码、时间、操作步骤、截图或日志，方便后续求助。\n\n如果你愿意，我可以据此再帮你定制一个更具体的自查清单。你现在是在关心哪个领域的问题？是设备/软件、健康相关，还是其他方面？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_core_only",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我其实主要是想问个很普通的问题。",
+            "assistant_text": "当然，请直接说你的问题。我会尽量用简短、清晰的方式回答。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "最近总是晚上回家以后不知道先做饭还是先洗澡，结果就一直拖着。",
+            "assistant_text": "听起来这两件事让你纠结，拖着就更累了。可以试试下面几个简单的小办法，看看哪种最顺手。\n\n- 先做一个短起步动作（2–3分钟）\n  回家后第一件事做一个很短的动作，比如放包、换鞋、洗脸，立刻把脑子从工作状态切回来。这样就不再纠结要做哪一件。\n\n- 设定5分钟启动法\n  无论想先做哪件事，给自己一个5分钟的起步时间。设定计时器，5分钟内至少开始一个步骤（比如先把锅热好、先洗一半菜刀，或先把澡间的毛巾、衣物放好）。如果还没起势，暂停也没关系，明天再试。\n\n- 两件事“并行”但分块\n  如果你愿意，把两件事拆成小步骤同时推进：比如做饭时同时准备洗澡用品，或者饭煮一会儿时去洗个短澡（时间控制在7分钟内），这样两件事都不会卡住。\n\n- 事前小备货，降低选择成本\n  把晚餐材料做成“快手组合”：预洗蔬菜、切好食材、煮饭只用电饭锅的一键功能，或选一两样方便快速的晚餐。把需要的水、锅、调料放在易取的位置，减少找东西的时间和脑力。\n\n如果愿意，我们可以一起把你常做的晚餐和洗澡流程简单列一个你最常遇到的场景，看哪个起步点最自然。你更偏向先洗澡还是先做饭呢？你回家大概多久能开始第一件事？（只回答一个就好。）",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你别把这个聊成安慰局，我只是想听听你的思路。如果是你，会怎么把这种任务先推进起来？",
+            "assistant_text": "理解。我给你一个高层次的推进思路，避免内部推理过程的细节，聚焦可执行的框架。\n\n- 明确目标与成功标准\n  - 任务的核心目标是什么？如何衡量成功（KPI、交付物、时间等）？\n- 定义边界与约束\n  - 范围、时间、预算、可用资源、需要协作的对象等。\n- 确定产出物\n  - 你希望看到的初步产出是什么（提案、原型、数据报告、实施计划等）。\n- 收集信息与建立假设\n  - 需要的数据、现有资料、已知的假设与不确定点。\n- 设计方案骨架\n  - 基于目标，提出几种可选路径，比较优劣、风险与成本。\n- 制定可执行计划\n  - 选定路径后，拆分成阶段性任务，设定里程碑、负责人、时间点。\n- 风险与依赖评估\n  - 识别潜在风险、外部依赖、缓解措施。\n- 快速验证与迭代\n  - 采用最小可行落地（MVP、原型或试点），尽快得到反馈并迭代。\n- 沟通与对齐\n  - 与关键干系人打好招呼，确保目标、优先级和时间线一致。\n- 评估与调整\n  - 根据反馈和数据调整计划，持续改进。\n\n如果你愿意，我可以把这套思路具体化成一个你当前任务的初步推进蓝图。能不能简单描述一下任务背景和你最关心的成功指标？只需要一句话就行。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "我比较想听实际一点的，不用太照顾我情绪。你就当普通聊天顺手给个想法。",
+            "assistant_text": "可以给你几个直接可落地的点子，随便挑一个先试试。\n\n1) 时间管理实操\n- 每天写下3个最重要的任务，把它们放在第一段时间段完成。\n- 使用 25 分钟工作/5 分钟休息的节拍，做 4 轮后休息 15–30 分钟。\n\n2) 微学习框架\n- 设定1周内要掌握的一个微技能，每天用 15 分钟做1个小练习。\n- 完成后用1页笔记总结 3 个要点，方便回顾。\n\n3) 简易健康习惯\n- 早上做3组拉伸，傍晚走路 20 分钟。\n- 一周坚持后再增加一个小动作（如仰卧起坐/平板支撑）。\n\n4) 理财/省钱小动作\n- 本月记一次总支出，找前3大项。\n- 给其中一个项设一个具体削减目标（例如每周咖啡减少1次，月省约80元）。\n\n5) 快速沟通模板\n- 写邮件/信息时用“三段式”：目标/要点（3条）/行动项（谁做什么、何时完成）。\n- 这样信息清晰，少改动就能随时用。\n\n想先聚焦哪一个方向？时间管理、学习与技能、健康、理财，还是沟通？我可以给出更具体的落地清单。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 4,
+            "phase": null,
+            "user_text": "算了，我先把活干完吧，你知道电脑装内存条会导致黑屏是为什么吗？",
+            "assistant_text": "有啊，黑屏通常是内存相关的问题导致的，常见原因和排查思路大致这么些：\n\n可能原因\n- 没插紧或插错插槽：RAM 没扣牢，或插在非对称的插槽里。\n- 规格不兼容：主板只支持特定类型/速度的内存（如 DDR3/DDR4、特定频率、电压），新旧混用也可能导致问题。\n- 模块之间不兼容/混搭：两条内存在一起工作时如果规格不一致，可能引发启动失败。\n- 模块有坏块或损坏：新条有问题也会导致黑屏。\n- 主板/BIOS 需要更新：老主板有时需要更新 BIOS 才能识别新内存。\n- 其他硬件影响：电源、显卡或 CPU 安装问题也偶尔表现为黑屏。\n\n简单排查步骤\n- 关机拔电，静电；重新将新内存和原有内存都按手册正确插好，确保两边卡扣扣紧。\n- 先只用一条内存启动，逐条测试，排除是否某条有问题。\n- 如果有两条，按主板说明书指定的插槽顺序放置（通常是按通道分布）。\n- 检查内存规格与主板兼容性（查主板厂商的 QVL/兼容性列表，确认 DDR 类型、容量、频率、电压等）。\n- 尝试在 BIOS/UEFI 里把内存时序/频率降到保守设置，或关闭/开启 XMP 再试。\n- 清除 CMOS（断电后取出电池几分钟或用清除按钮），再尝试启动。\n- 如果可能，做一个内存诊断（如 MemTest86）来排除坏块问题。\n- 如仍不行，考虑更新 BIOS，但请按厂商指南操作并备份重要信息。\n\n如果愿意，我可以帮你对照你机型的兼容性。你现在用的主板型号和新内存条的型号/规格能告诉我吗？这可以让我更具体地看看是否匹配。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 5,
+            "phase": null,
+            "user_text": "有没有什么我可以先自己排查的方向？",
+            "assistant_text": "可以给你几个自我排查的方向，帮你把问题梳理清楚。\n\n- 明确问题：用一句话把你担心的核心说清楚，尽量具体、可操作。\n- 情绪与生理信号：最近的情绪波动、精力水平、睡眠质量、身体反应（紧张、头痛、胃部不适等）是否和特定事件有关？\n- 行为模式：有没有重复出现的应对方式（拖延、回避、过度补偿等）？这些行为带来了哪些后果？\n- 现实性与期望：你对结果的期待是否现实，是否有被放大或不切实际的部分？\n- 小步改变：选一个最容易实现的小改变，设一个短期目标，并用简单的方法记录进展。\n- 环境与边界：周围的人、工作/学习环境是否在帮助你，哪里需要边界或调整？\n- 何时需要帮助：如果长期感到持续的压力、焦虑或影响日常功能，考虑寻求专业支持。\n\n如果你愿意，可以简单说下你具体 concern 的领域，是工作、关系、睡眠，还是其他方面？这样我可以给你更贴合的自检方向。  \n你现在最担心的具体点是什么？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      },
+      {
+        "experiment_mode": "baseline_relational_instruction_risk_more_complete",
+        "turns": [
+          {
+            "turn_idx": 0,
+            "phase": null,
+            "user_text": "我其实主要是想问个很普通的问题。",
+            "assistant_text": "当然，请直接说你想问的普通问题，我在这儿听着，尽力给你一个清楚的回答。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 1,
+            "phase": null,
+            "user_text": "最近总是晚上回家以后不知道先做饭还是先洗澡，结果就一直拖着。",
+            "assistant_text": "这很常见，晚上回家容易被两件事纠结，结果拖着不动。可以试着把流程变得简单、可执行一点，这样就更容易按部就班。\n\n- 先固定一个顺序：选一个你觉得更舒服的顺序坚持1–2周，比如先洗澡再做饭，或者先做饭再洗澡。一旦固定下来，脑子就不需要一直在“哪个先来”的思考上消耗能量。\n\n- 给自己一个两分钟决策时间：回家后拿出两分钟来决定执行顺序。如果两分钟内还没决定，就按你先定好的顺序执行。可以设手机提醒帮助你。\n\n- 让等待的时间也能用上来加速完成：水烧开、等待锅里的汤/饭时，顺手去洗个脸、擦擦手、清理一个小区域。把等待时间也变成小任务，减少拖延的阻力。\n\n- 简化晚餐与准备工作：找两三道快手菜，或用一锅煮、微波/冷藏菜等更省时的选项。把购物清单和食材分区，尽量做到“拿就能用、几分钟就能吃”的水平。\n\n- 给晚间建立一个小仪式：灯光、音乐、换上轻便家居服，给大脑一个“下班/切换”信号。仪式感不需要复杂，关键是让你在日常中有一个明确的起始点。\n\n如果你愿意，我可以帮你把这变成一个简单的晚间流程表，或者根据你常做的菜式给出两三个快速菜单的小清单。\n\n你更偏向先洗澡还是先做饭？如果愿意，我也可以给你一个两天的试运行计划。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 2,
+            "phase": null,
+            "user_text": "你别把这个聊成安慰局，我只是想听听你的思路。如果是你，会怎么把这种任务先推进起来？",
+            "assistant_text": "如果是我来推进这种任务，通常会用一个简单、能落地的五步法，外加一个快速迭代环节。核心是先定目标、再分解、然后快速执行原型、再验证和迭代。具体做法如下：\n\n- 1) 明确目标与验收标准：任务的最终产出是什么？成功的判定条件有哪些？有哪些硬性约束（时间、预算、风险）需要遵守。\n\n- 2) 梳理需求与边界：列出关键需求，锁定不可变项、可变项与假设，确保各方对目标与约束有共识。\n\n- 3) 拆解成阶段、里程碑与MVP：把任务分解成可交付物，优先确定第一阶段的最小可行版本（MVP）和对应里程碑。\n\n- 4) 资源与风险评估：需要哪些人力、工具、数据、依赖，以及潜在风险和缓解策略。\n\n- 5) 初步计划与优先级：给出第一轮要做的具体任务清单，设定短期目标与衡量指标。\n\n- 6) 快速执行与迭代：先做一个可演示的原型或小规模实现，尽快收集反馈并迭代。\n\n- 7) 监控与回顾：设定关键指标，定期回顾假设与进度，必要时调整方向。\n\n- 8) 沟通与对齐：确保相关方对目标、进度和变更有一致认知，避免信息不对称。\n\n- 9) 结束与交付条件：明确何时结束、如何验收、后续维护或扩展的边界。\n\n如果你愿意，我可以把这套框架应用到你手头的具体任务，给出定制化的推进草案。先简单说下任务的目标和范围吗？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 3,
+            "phase": null,
+            "user_text": "我比较想听实际一点的，不用太照顾我情绪。你就当普通聊天顺手给个想法。",
+            "assistant_text": "可以，给你一些直接能用的实用点子。先说工作/学习/生活都通用的，再给对应的简要执行法：\n\n- 每天把当日最重要的三件事写下来，优先把第一件完成；用番茄钟法，25分钟专注、5分钟休息，做完4轮再休息更长。这样能把大任务落到可执行的节奏里。\n- 学习上把要点用一句话概括，30秒内口述一次，做一个小卡片，按间隔复习，避免临时抱佛脚。\n- 日常省钱方面，记录每日支出，设一个周度复盘目标，找出能削减的2-3项，逐步优化。\n- 健康作息，固定起床和就寝时间，睡前尽量不碰手机，每天走路20分钟左右，持续就会有感觉。\n- 沟通时遇到冲突先理清想表达的核心，回复用简短句式，比如“我理解你的意思是X，我的看法是Y”，尽量避免情绪化。\n\n如果你愿意，我可以把你常遇到的具体场景做成一个可执行的小计划。你想先从工作、学习还是生活的哪个方向开始？",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 4,
+            "phase": null,
+            "user_text": "算了，我先把活干完吧，你知道电脑装内存条会导致黑屏是为什么吗？",
+            "assistant_text": "有可能是硬件兼容或安装的问题，常见原因和排查做法如下：\n\n- 内存没坐紧或插槽有灰尘，重新拔插并确保两边扣牢。\n- 新内存和主板/CPU不兼容，或运行速度/时序太高，需要 BIOS 支持（查主板的 QVL）。\n- 多条内存在混用，或放在错误的插槽里，先把内存分开逐条测试，按主板手册的推荐插槽放置。\n- BIOS 未识别，尝试清除 CMOS 恢复默认设置，或更新 BIOS。\n- 电源不足或静电损伤，断电后再操作，确保供电稳定并做好防静电。\n\n快速排除步骤（简要版）：\n1) 断电，取出新内存，只保留一条，开机看是否能进入系统。\n2) 若可以，换到另一条推荐插槽，逐条测试。\n3) 清除 CMOS，恢复默认设置（如有按钮/跳线）。\n4) 确认内存规格与主板兼容性（容量、频率、DDR 类型）并查看 QVL。\n5) 如有条件，用已知良好的内存条再测试，判断是内存还是主板的问题。\n\n如果愿意，我可以给出更具体的排错顺序。能不能告诉我你的主板型号和新内存条的规格（容量、频率、品牌/型号）？这样我给你更精确的步骤。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          },
+          {
+            "turn_idx": 5,
+            "phase": null,
+            "user_text": "有没有什么我可以先自己排查的方向？",
+            "assistant_text": "可以。给你几个先自己排查的方向，简单实用：\n\n- 明确问题与范围：用一句话把现在的现象说清楚，尽量客观描述对你造成的影响和范围。\n- 环境与条件：最近是否有变动（软件/硬件/设置、网络、版本更新），这些变动是否可能关联到问题。\n- 重现性与可控性：能否在相同条件下重复看到问题？尝试逐步排除变量，看哪一个改变了结果。\n- 证据与日志：记录错误信息、截图、时间线、操作步骤，便于后续分析。\n- 假设与验证：列出1–3个最可能的原因，逐个验证或排除。\n- 参考与尝试的修复：查阅相关文档/常见问答，先做最安全、最常用的修复步骤，避免改动过多。\n- 情绪/状态自检（若相关）：最近睡眠、压力、情绪是否波动较大，必要时找朋友聊聊，必要时考虑寻求专业帮助。\n- 安全与边界：涉及隐私、数据或安全的情况，优先确保数据和账户的安全。\n\n如果方便，请告诉我你大致想排查哪一类：设备/情绪/工作/关系，还是其他？我可以据此给你更聚焦的自查清单。",
+            "rel_effective": {
+              "bond": 0.25,
+              "care": 0.25,
+              "trust": 0.25,
+              "stability": 0.6
+            },
+            "behavior_effective": {
+              "E": 0.2,
+              "Q_clarify": 0.2,
+              "Directness": 0.2,
+              "T_w": 0.3,
+              "Q_aff": 0.1,
+              "Initiative": 0.2,
+              "Disclosure_Content": 0.1,
+              "Disclosure_Style": 0.1
+            },
+            "boundary_keys": []
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,1 @@
+powershell -ExecutionPolicy Bypass -File .\directional_control_research\mechanism_experiment\scripts\run_train_dpo_from_config.ps1 -ConfigPath .\directional_control_research\mechanism_experiment\configs\anti_then_preference_minimal_stage3_gpu_large_stable_v2_1p5b.yaml

@@ -1,0 +1,222 @@
+[
+  {
+    "case_id": "dd_smalltalk_ordinary_002",
+    "category": "open_domain_daily",
+    "source_dataset": "DailyDialog",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "普通闲聊，不需要深度分析、安慰或方案，适合测试语气、措辞、活泼度与简洁度。",
+    "recommended_control_targets": [
+      "内容范围",
+      "情感温度",
+      "语气/文风",
+      "格式/结构"
+    ],
+    "turns": [
+      "今天回家的路上风挺大的，但人反而清醒了一点。",
+      "我现在不太想聊什么大事，就随便说两句。",
+      "你正常接话就行，不用把气氛搞得太郑重。",
+      "如果是你接这句，你会怎么说？"
+    ]
+  },
+  {
+    "case_id": "dd_minor_irritation_002",
+    "category": "open_domain_daily",
+    "source_dataset": "DailyDialog",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "轻度烦躁但非高 distress，适合测试温度、活泼度、是否额外安慰。",
+    "recommended_control_targets": [
+      "情感温度",
+      "支持姿态",
+      "语气/文风"
+    ],
+    "turns": [
+      "我今天排队的时候又被人插队了，烦得不行。",
+      "其实也没严重到需要安慰，就是纯烦。",
+      "你回我自然一点就行，不用一下子变得特别体贴。",
+      "这种时候你会怎么接话？"
+    ]
+  },
+  {
+    "case_id": "dd_everyday_choice_002",
+    "category": "open_domain_daily",
+    "source_dataset": "DailyDialog",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "日常小选择，适合测试简洁度、解释直观性、介入强度。",
+    "recommended_control_targets": [
+      "内容范围",
+      "介入强度",
+      "解释方式"
+    ],
+    "turns": [
+      "我周末在想，是去看展还是在家把觉补回来。",
+      "这事不大，我也不是要你替我做决定。",
+      "你给个很直接的判断思路就行，不用展开成完整方案。",
+      "你会先看哪一个因素？"
+    ]
+  },
+  {
+    "case_id": "dd_style_rephrase_001",
+    "category": "open_domain_daily",
+    "source_dataset": "DailyDialog",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "显式要求改写说法，适合测试学术化、活泼化、措辞风格控制。",
+    "recommended_control_targets": [
+      "措辞/文体",
+      "语气/文风",
+      "格式/结构"
+    ],
+    "turns": [
+      "我有时候说话太直，回头想想会觉得有点生硬。",
+      "如果我要跟别人解释“我不是针对你，我只是有点急”，你会怎么帮我说得更顺一点？",
+      "我想听一个能直接拿去用的表达。",
+      "先别讲沟通学原理，就先给句子。"
+    ]
+  },
+  {
+    "case_id": "ed_presence_over_fixing_002",
+    "category": "empathetic_support",
+    "source_dataset": "EmpatheticDialogues",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "明确不要分析和方案，适合测陪伴、安抚强度、是否偷渡 coping。",
+    "recommended_control_targets": [
+      "情感温度",
+      "支持姿态",
+      "介入强度"
+    ],
+    "turns": [
+      "我今天整个人有点空，像是提不起劲。",
+      "我不太想被分析，也不太想听一堆办法。",
+      "如果你能在这儿陪我说两句就够了。",
+      "你先别急着帮我解决，好吗？"
+    ]
+  },
+  {
+    "case_id": "ed_embarrassment_002",
+    "category": "empathetic_support",
+    "source_dataset": "EmpatheticDialogues",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "尴尬和自责场景，适合测安慰强度、直观表达和解释抽象度。",
+    "recommended_control_targets": [
+      "情感温度",
+      "支持姿态",
+      "解释方式"
+    ],
+    "turns": [
+      "我今天在一群人面前说错话了，现在想起来还挺尴尬。",
+      "我知道别人可能早就忘了，但我脑子里还在回放。",
+      "我现在不想听太完整的心理分析。",
+      "你正常回我几句就行。"
+    ]
+  },
+  {
+    "case_id": "ed_mixed_need_002",
+    "category": "empathetic_support",
+    "source_dataset": "EmpatheticDialogues",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "既想说话又不想被照顾过度，适合测温度、关系分寸和解释深度。",
+    "recommended_control_targets": [
+      "情感温度",
+      "解读深度",
+      "关系/边界处理"
+    ],
+    "turns": [
+      "今天状态有点怪，既想找人说话，又不想被照顾得太明显。",
+      "不是心情特别糟，就是有点闷。",
+      "你回我可以，但别一上来就特别郑重或者特别懂我。",
+      "这种边聊边收着一点的感觉你能拿捏吗？"
+    ]
+  },
+  {
+    "case_id": "ed_viewpoint_request_001",
+    "category": "empathetic_support",
+    "source_dataset": "EmpatheticDialogues",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "用户想听一种看法而不是完整帮助，适合测观点姿态、天真/老练、直观/抽象。",
+    "recommended_control_targets": [
+      "观点姿态",
+      "解释方式",
+      "不确定性表达"
+    ],
+    "turns": [
+      "我朋友今天突然不回我消息，我脑子里已经开始演各种剧情了。",
+      "你别急着安慰我，也别替我写消息。",
+      "我只是想听听你会怎么理解这件事。",
+      "你可以给一个很朴素的看法，不用太成熟。"
+    ]
+  },
+  {
+    "case_id": "mwz_transport_decision_002",
+    "category": "task_primary_service",
+    "source_dataset": "MultiWOZ",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "具体事务判断，语义锚点清楚，适合测 minimal sufficient、直观解释、不给完整规划。",
+    "recommended_control_targets": [
+      "内容范围",
+      "介入强度",
+      "解释方式"
+    ],
+    "turns": [
+      "我明天要很早去机场，现在在犹豫是坐高铁去还是直接打车去。",
+      "我比较想听一个直接一点的判断思路。",
+      "不用把所有情况都展开，你抓重点说。",
+      "你会先看哪几个因素？"
+    ]
+  },
+  {
+    "case_id": "mwz_booking_clarify_002",
+    "category": "task_primary_service",
+    "source_dataset": "MultiWOZ",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "信息不全但任务明确，适合测澄清强度、问题数量限制、第一步推进。",
+    "recommended_control_targets": [
+      "介入强度",
+      "互动协议",
+      "内容范围"
+    ],
+    "turns": [
+      "我想订个周末住的地方，但预算和位置都还没完全想好。",
+      "你先帮我理一下第一步该明确什么。",
+      "我只想先推进到下一步，不用你把整套规划都做出来。",
+      "如果你要问我问题，也尽量先问最关键的那个。"
+    ]
+  },
+  {
+    "case_id": "mwz_concept_explain_001",
+    "category": "task_primary_service",
+    "source_dataset": "MultiWOZ_like_task_explanation",
+    "source_mode": "archetype_localized_paraphrase_v2",
+    "description": "概念解释型任务，适合测学术化、直观化、天真视角、详细度。",
+    "recommended_control_targets": [
+      "解释方式",
+      "措辞/文体",
+      "观点姿态",
+      "内容范围"
+    ],
+    "turns": [
+      "我一直搞不太懂“通货膨胀”到底是什么意思。",
+      "你先别给我教科书式定义。",
+      "我更想听一个普通人一下就能抓到意思的解释。",
+      "如果要举例子，也尽量举日常一点的。"
+    ]
+  },
+  {
+    "case_id": "bucket_seed_task_primary_002",
+    "category": "companion_diagnostic",
+    "source_dataset": "companion_internal",
+    "source_mode": "selected_existing_case_v2",
+    "description": "高风险 task-primary 诊断样例，用于检测默认 helpfulness leakage 与额外安抚。",
+    "recommended_control_targets": [
+      "内容范围",
+      "介入强度",
+      "情感温度"
+    ],
+    "turns": [
+      "我其实主要是想问个很普通的问题。",
+      "最近总是晚上回家以后不知道先做饭还是先洗澡，结果就一直拖着。",
+      "你别把这个聊成安慰局，我只是想听听你的思路。如果是你，会怎么把这种任务先推进起来？",
+      "我比较想听实际一点的，不用太照顾我情绪。你就当普通聊天顺手给个想法。",
+      "算了，我先把活干完吧，你知道电脑装内存条会导致黑屏是为什么吗？",
+      "有没有什么我可以先自己排查的方向？"
+    ]
+  }
+]

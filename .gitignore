@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Secrets / local envs
+.env
+.env.*
+!.env.example
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp_*
+temp_*
+*.tmp
+
+# Logs
+*.log
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.out
+*.synctex.gz
+*.toc
+
+# Packaged exports / local binaries
+*.zip
+*.pdf
+
+# Duplicated release/package directories
+overleaf_acl_submission_v1/
+reproducibility_package_acl_submission_v1/
+
+# Local runtime/output directories
+mechanism_experiment/outputs/
+results/
+runtime/
+
+# Optional local caches
+data/cache/
+data/tmp/
+
+# Redundant local draft copies
+paper_draft_v1 copy.tex

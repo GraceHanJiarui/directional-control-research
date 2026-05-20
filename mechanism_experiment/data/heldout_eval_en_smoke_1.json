@@ -1,0 +1,12 @@
+[
+  {
+    "case_id": "en_everyday_choice_001",
+    "category": "task_primary",
+    "turns": [
+      "I am trying to decide whether to go to a museum this weekend or stay home and catch up on sleep.",
+      "This is not a huge life decision, and I am not asking you to decide for me.",
+      "Just give me a direct judgment lens, not a full plan.",
+      "What would you look at first?"
+    ]
+  }
+]

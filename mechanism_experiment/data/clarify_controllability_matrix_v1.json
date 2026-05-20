@@ -1,0 +1,105 @@
+{
+  "axes": [
+    {
+      "axis_id": "interaction",
+      "label": "clarify_vs_answer_first",
+      "mode_a": "ask_answer_first",
+      "mode_b": "ask_clarify_first",
+      "description": "Compare whether the model can switch between answering first and asking one key clarifying question first."
+    }
+  ],
+  "modes": {
+    "ask_answer_first": "补充说明：请先直接回答当前问题，不要先反问或澄清；只有在完全无法推进时，才问一个问题。",
+    "ask_clarify_first": "补充说明：如果当前关键信息还不够，请先问一个最关键的澄清问题，再继续给出尽量短的临时判断。不要连续追问。"
+  },
+  "cases": [
+    {
+      "case_id": "task_mail_reply_priority_001",
+      "category": "task_primary",
+      "probe_focus": "email priority decision",
+      "turns": [
+        "我现在有两封邮件都要回，一个是老板的，一个是合作方的。",
+        "我不是让你帮我写邮件，我只是想先理一下先回哪个。",
+        "你别一下子给我整一套沟通策略。",
+        "你会先看哪一点？"
+      ]
+    },
+    {
+      "case_id": "task_deadline_blocker_001",
+      "category": "task_primary",
+      "probe_focus": "starting point under deadline",
+      "turns": [
+        "我有个报告今晚要交，但我现在卡在不知道先动哪一部分。",
+        "我不是要你替我拆完整计划，我只想先动起来。",
+        "你给一个起步点就好。",
+        "如果是你，你会先碰哪一块？"
+      ]
+    },
+    {
+      "case_id": "mwz_booking_clarify_002",
+      "category": "clarify_next_step",
+      "probe_focus": "budget vs location first",
+      "turns": [
+        "我想订个周末住的地方，但预算和位置都还没完全想好。",
+        "你先帮我理一下第一步该明确什么。",
+        "我只想先推进到下一步，不用你把整套规划都做出来。",
+        "如果你要问我问题，也尽量先问最关键的那个。"
+      ]
+    },
+    {
+      "case_id": "clarify_resume_polish_001",
+      "category": "clarify_next_step",
+      "probe_focus": "resume first move",
+      "turns": [
+        "我最近想把简历改一改，但现在脑子里有点乱。",
+        "你先别给我整份修改方案。",
+        "我只想知道第一步先看什么。",
+        "如果你要问我问题，也先只问最关键的那个。"
+      ]
+    },
+    {
+      "case_id": "clarify_trip_packing_001",
+      "category": "clarify_next_step",
+      "probe_focus": "trip packing first check",
+      "turns": [
+        "我后天出门两天，现在还没开始收东西。",
+        "我不是要完整行李清单，我只是想先动起来。",
+        "你给我一个最先要确认的点就行。",
+        "最好别一下子问我一串问题。"
+      ]
+    },
+    {
+      "case_id": "clarify_study_restart_001",
+      "category": "clarify_next_step",
+      "probe_focus": "study restart first action",
+      "turns": [
+        "我最近想把英语重新捡起来，但一想到要规划就更不想动。",
+        "我不是要学习计划。",
+        "你只帮我定第一步就行。",
+        "也别默认给我一堆资源。"
+      ]
+    },
+    {
+      "case_id": "clarify_room_search_001",
+      "category": "clarify_next_step",
+      "probe_focus": "room search hard constraint",
+      "turns": [
+        "我最近想搬家，但看房这件事我一直拖着没开始。",
+        "你别直接给我整套筛房方法。",
+        "我只想知道第一步先定什么。",
+        "如果需要问我，也先问一个最关键的。"
+      ]
+    },
+    {
+      "case_id": "clarify_gift_choice_001",
+      "category": "clarify_next_step",
+      "probe_focus": "gift choice direction",
+      "turns": [
+        "朋友生日快到了，我想买点东西，但现在没什么头绪。",
+        "我不是要完整礼物清单。",
+        "你先告诉我第一步该想什么。",
+        "如果你要问我问题，也先只问一个。"
+      ]
+    }
+  ]
+}

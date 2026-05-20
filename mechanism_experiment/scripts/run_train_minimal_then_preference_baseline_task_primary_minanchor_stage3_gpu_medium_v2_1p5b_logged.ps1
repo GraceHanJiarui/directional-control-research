@@ -1,0 +1,1 @@
+powershell -ExecutionPolicy Bypass -File .\directional_control_research\mechanism_experiment\scripts\run_train_dpo_from_config.ps1 -ConfigPath .\directional_control_research\mechanism_experiment\configs\minimal_then_preference_baseline_task_primary_minanchor_stage3_gpu_medium_v2_1p5b.yaml

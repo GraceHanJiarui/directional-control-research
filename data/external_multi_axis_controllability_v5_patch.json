@@ -1,0 +1,104 @@
+{
+  "new_cases": [
+    {
+      "case_id": "clarify_pill_schedule_001",
+      "category": "clarify_next_step",
+      "probe_focus": "one missing fact before a safe next step",
+      "recommended_axes": ["clarify", "stance"],
+      "turns": [
+        "我这两天感冒了，家里有之前剩下的药，但我不确定现在还能不能继续吃。",
+        "我不是要完整用药方案。",
+        "我现在只想先判断第一步该先确认什么，或者先别做什么。",
+        "如果你要先问我一个问题，也只问最关键的那一个。"
+      ]
+    },
+    {
+      "case_id": "clarify_rent_contract_001",
+      "category": "clarify_next_step",
+      "probe_focus": "ambiguous housing decision with one key unknown",
+      "recommended_axes": ["clarify", "stance"],
+      "turns": [
+        "中介催我今天把租房合同定下来，但我还有点犹豫。",
+        "我不是要你替我做完整租房决策。",
+        "你就先告诉我现在最该先确认哪一点，或者先做哪一步。",
+        "如果必须先问我问题，也先问最关键的那个。"
+      ]
+    },
+    {
+      "case_id": "clarify_manager_reply_001",
+      "category": "clarify_next_step",
+      "probe_focus": "answer-first versus clarify-first under workplace ambiguity",
+      "recommended_axes": ["clarify", "stance"],
+      "turns": [
+        "老板刚发消息说“这个今天处理一下”，但没说是优先处理哪部分。",
+        "我不是要你写回信。",
+        "我只想先知道现在更适合先直接做，还是先确认一下范围。",
+        "别一下子展开成完整沟通策略。"
+      ]
+    },
+    {
+      "case_id": "clarify_travel_booking_001",
+      "category": "clarify_next_step",
+      "probe_focus": "one-key-question versus direct provisional guidance",
+      "recommended_axes": ["clarify", "stance"],
+      "turns": [
+        "我想把端午出行先订了，但现在是先订高铁还是先订住的地方，我拿不准。",
+        "我不是让你给我完整旅行规划。",
+        "你就先给一个当前判断，或者先问我一个最关键的问题。",
+        "不要连续追问。"
+      ]
+    },
+    {
+      "case_id": "stance_offer_deadline_001",
+      "category": "task_primary",
+      "probe_focus": "hedged caution versus decisive direct recommendation",
+      "recommended_axes": ["stance", "optionality"],
+      "turns": [
+        "我手上有两个 offer，一个今天就要答复，另一个下周才有结果。",
+        "我不是让你替我做完整职业规划。",
+        "你就围绕“现在该不该先接今天这个”给我一个当前判断。",
+        "如果你觉得信息还不够，也别展开成长篇分析。"
+      ]
+    },
+    {
+      "case_id": "stance_exam_signup_001",
+      "category": "task_primary",
+      "probe_focus": "direct call versus hedged wait-and-see stance",
+      "recommended_axes": ["stance", "scope"],
+      "turns": [
+        "一个考试报名今天截止，但我这周准备得并不好，我在犹豫要不要先报上。",
+        "我不是要你给我完整备考方案。",
+        "你就先告诉我更倾向哪边，以及最核心的理由。",
+        "不用把所有可能性都铺开。"
+      ]
+    },
+    {
+      "case_id": "stance_buy_used_phone_001",
+      "category": "task_primary",
+      "probe_focus": "bounded purchase judgment under uncertainty",
+      "recommended_axes": ["stance", "caveat"],
+      "turns": [
+        "有人转卖一台二手手机，价格挺划算，但没原装发票。",
+        "我不是要你给我完整验机清单。",
+        "你就先说现在更偏向买还是不买。",
+        "如果要保留条件，也只保留最关键的一条。"
+      ]
+    },
+    {
+      "case_id": "stance_team_conflict_001",
+      "category": "task_primary",
+      "probe_focus": "decisive versus hedged judgment in a social/work dilemma",
+      "recommended_axes": ["stance", "moralizing"],
+      "turns": [
+        "组里有个人一直拖进度，我在想这次是不是该直接在会上点出来。",
+        "我不是要你给我完整职场沟通课。",
+        "你就先给我一个当前判断，不用把两边都说得太平衡。",
+        "如果你要保留，也只保留最关键的那个条件。"
+      ]
+    }
+  ],
+  "notes": {
+    "purpose": "Expand external prompt-only benchmark coverage for two high-level directions that looked brittle in compact controlled-family induction: clarify-first versus answer-first, and deferential/hedged versus decisive/direct stance.",
+    "design_principle": "Use cases where one missing fact or one bounded judgment is natural, so that success or failure can be attributed to the target axis rather than generic length or assistant-helpfulness drift."
+  }
+}

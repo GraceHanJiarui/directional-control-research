@@ -1,0 +1,11 @@
+$cfg = '.\directional_control_research\mechanism_experiment\configs\baseline_then_preference_expand_stage3_gpu_large_stable_v1_1p5b.yaml'
+$stdout = '.\directional_control_research\mechanism_experiment\outputs\train_baseline_then_preference_expand_stage3_gpu_large_stable_v1_1p5b.stdout.log'
+$stderr = '.\directional_control_research\mechanism_experiment\outputs\train_baseline_then_preference_expand_stage3_gpu_large_stable_v1_1p5b.stderr.log'
+$ps = 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
+$env:PYTHONIOENCODING = 'utf-8'
+$env:HF_HUB_OFFLINE = '1'
+$env:TRANSFORMERS_OFFLINE = '1'
+$env:KMP_DUPLICATE_LIB_OK = 'TRUE'
+$env:HF_MODULES_CACHE = '.\directional_control_research\mechanism_experiment\outputs\hf_modules_cache'
+$proc = Start-Process -FilePath $ps -ArgumentList @('-ExecutionPolicy','Bypass','-File','./directional_control_research/mechanism_experiment/scripts/run_train_dpo_from_config.ps1','-ConfigPath',$cfg) -NoNewWindow -Wait -PassThru -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+Write-Host "exit_code=$($proc.ExitCode)"

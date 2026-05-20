@@ -1,0 +1,12 @@
+model_name: Qwen/Qwen2.5-1.5B
+train_file: data/built_pref_v1/preference_expand_pairs_v1_train_medium160.jsonl
+output_dir: outputs/qwen25_1p5b_baseline_then_preference_expand_stage3_gpu_medium_v1
+init_adapter_path: outputs/qwen25_1p5b_baseline_sft_v5
+ref_adapter_path: outputs/qwen25_1p5b_baseline_sft_v5
+max_length: 512
+learning_rate: 2e-5
+num_epochs: 0.5
+per_device_batch_size: 1
+grad_accum: 8
+beta: 0.05
+device: cuda

@@ -1,0 +1,116 @@
+{
+  "axes": [
+    {
+      "axis_id": "stance",
+      "label": "deferential_vs_decisive",
+      "mode_a": "ask_deferential_uncertain",
+      "mode_b": "ask_decisive_direct",
+      "description": "Compare whether the model can shift between a deferential, tentative stance and a decisive, direct stance while keeping the same core answer."
+    }
+  ],
+  "modes": {
+    "ask_deferential_uncertain": "补充说明：请保持同样的核心判断，但语气更保守、更条件化一些。可以承认信息有限，少一点武断感，但不要转成澄清模式，也不要额外展开。",
+    "ask_decisive_direct": "补充说明：请保持同样的核心判断，但语气更直接、更明确、少一点犹豫。不要转成完整方案，也不要额外展开。"
+  },
+  "cases": [
+    {
+      "case_id": "dd_everyday_choice_002",
+      "category": "task_primary",
+      "probe_focus": "everyday judgment under stance shift",
+      "turns": [
+        "我周末在想，是去看展还是在家把觉补回来。",
+        "这事儿不大，我也不是要你替我做决定。",
+        "你给个很直接的判断思路就行，不用展开成完整方案。",
+        "你会先看哪一个因素？"
+      ]
+    },
+    {
+      "case_id": "task_mail_reply_priority_001",
+      "category": "task_primary",
+      "probe_focus": "priority judgment under stance shift",
+      "turns": [
+        "我现在有两封邮件都要回，一个是老板的，一个是合作方的。",
+        "我不是让你帮我写邮件，我只是想先理一下先回哪个。",
+        "你别一下子给我整一套沟通策略。",
+        "你会先看哪一点？"
+      ]
+    },
+    {
+      "case_id": "task_deadline_blocker_001",
+      "category": "task_primary",
+      "probe_focus": "get-started judgment under stance shift",
+      "turns": [
+        "我有个报告今晚要交，但我现在卡在不知道先动哪一部分。",
+        "我不是要你替我拆完整计划，我只想先动起来。",
+        "你给一个起步点就好。",
+        "如果是你，你会先碰哪一块？"
+      ]
+    },
+    {
+      "case_id": "clarify_study_restart_001",
+      "category": "clarify_next_step",
+      "probe_focus": "first-step framing under stance shift",
+      "turns": [
+        "我最近想把英语重新捡起来，但一想到要规划就更不想动。",
+        "我不是要学习计划。",
+        "你只帮我定第一步就行。",
+        "也别默认给我一堆资源。"
+      ]
+    },
+    {
+      "case_id": "clarify_room_search_001",
+      "category": "clarify_next_step",
+      "probe_focus": "first constraint under stance shift",
+      "turns": [
+        "我最近想搬家，但看房这件事我一直拖着没开始。",
+        "你别直接给我整套筛房方法。",
+        "我只想知道第一步先定什么。",
+        "如果需要问我，也先问一个最关键的。"
+      ]
+    },
+    {
+      "case_id": "clarify_gift_choice_001",
+      "category": "clarify_next_step",
+      "probe_focus": "gift-direction first step under stance shift",
+      "turns": [
+        "朋友生日快到了，我想买点东西，但现在没什么头绪。",
+        "我不是要完整礼物清单。",
+        "你先告诉我第一步该想什么。",
+        "如果你要问我问题，也先只问一个。"
+      ]
+    },
+    {
+      "case_id": "troubleshoot_phone_storage_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "storage triage under stance shift",
+      "turns": [
+        "我手机最近老提示存储空间不足，已经有点影响用了。",
+        "我不是要完整清理教程。",
+        "你先告诉我最优先看哪一块。",
+        "抓重点说就行。"
+      ]
+    },
+    {
+      "case_id": "troubleshoot_wifi_drop_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "wifi diagnosis under stance shift",
+      "turns": [
+        "我家 Wi‑Fi 这两天总是隔一阵就断一下。",
+        "我不是要你把网络原理全给我讲一遍。",
+        "你先给我一个最先排查的方向。",
+        "如果你要问我问题，也先只问最关键的那个。"
+      ]
+    },
+    {
+      "case_id": "troubleshoot_battery_drain_001",
+      "category": "practical_troubleshooting",
+      "probe_focus": "battery triage under stance shift",
+      "turns": [
+        "我笔记本最近掉电特别快，感觉比以前夸张很多。",
+        "我不是要完整保养手册。",
+        "你先告诉我最先该确认什么。",
+        "简洁一点就行。"
+      ]
+    }
+  ]
+}
