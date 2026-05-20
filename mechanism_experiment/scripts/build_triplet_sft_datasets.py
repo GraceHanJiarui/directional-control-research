@@ -8,11 +8,21 @@ SYSTEM_PROMPTS = {
     "minimal_boundary_sft": "You are a helpful assistant. Respect the user's current-turn boundary. Answer the current question first. Stay minimal. Do not add unasked-for help unless clearly requested.",
 }
 
+SHARED_PROMPTS = {
+    "baseline_shared": SYSTEM_PROMPTS["baseline_sft"],
+    "neutral_shared": "You are a helpful assistant. Respond directly to the user's current request.",
+}
+
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument('--input', required=True)
     parser.add_argument('--out-dir', required=True)
+    parser.add_argument(
+        '--system-prompt-mode',
+        choices=['family_specific', 'baseline_shared', 'neutral_shared'],
+        default='family_specific',
+    )
     args = parser.parse_args()
 
     in_path = Path(args.input)
@@ -25,6 +35,12 @@ def main() -> None:
         'minimal_boundary_sft': 'minimal_boundary_response',
     }
 
+    if args.system_prompt_mode == 'family_specific':
+        prompt_by_variant = SYSTEM_PROMPTS
+    else:
+        shared_prompt = SHARED_PROMPTS[args.system_prompt_mode]
+        prompt_by_variant = {variant: shared_prompt for variant in variant_fields}
+
     buckets = {k: [] for k in variant_fields}
     with in_path.open('r', encoding='utf-8-sig') as f:
         for line in f:
@@ -35,7 +51,7 @@ def main() -> None:
             for variant, field in variant_fields.items():
                 buckets[variant].append({
                     'messages': [
-                        {'role': 'system', 'content': SYSTEM_PROMPTS[variant]},
+                        {'role': 'system', 'content': prompt_by_variant[variant]},
                         {'role': 'user', 'content': row['user_text']},
                         {'role': 'assistant', 'content': row[field]},
                     ],
@@ -43,6 +59,7 @@ def main() -> None:
                     'language': row['language'],
                     'category': row['category'],
                     'target_style': variant,
+                    'system_prompt_mode': args.system_prompt_mode,
                     'requested_boundary': row.get('requested_boundary', ''),
                     'source_case_id': row.get('source_case_id', row['example_id']),
                 })
